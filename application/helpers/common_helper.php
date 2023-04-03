@@ -53,3 +53,50 @@ function getIp()
   $realip = !empty($onlineip[0]) ? $onlineip[0] : '0.0.0.0';
   return $realip;
 }
+
+function is_login()
+{
+  $CI = &get_instance();
+  $user_id = $CI->session->userdata('uid');
+  return isset($user_id);
+}
+
+function is_admin()
+{
+  $CI = &get_instance();
+
+  $user_id = $CI->session->userdata('uid');
+  $is_admin = $CI->db->get_where('members', array('id' => $user_id, 'role_id' => 3))->num_rows();
+  return ($is_admin == 1);
+}
+
+function display_role($role, $id)
+{
+  if ($role == $id) {
+    $show = '<span class="badge badge-success">Có</span>';
+  } else {
+    $show = '<span class="badge badge-danger">Không</span>';
+  }
+  return $show;
+}
+
+function display_banned($banned)
+{
+  if ($banned == 1) {
+    return '<span class="badge badge-success">Active</span>';
+  } else {
+    return '<span class="badge badge-danger">Banned</span>';
+  }
+}
+
+function display_time($time)
+{
+  return date('H:i:s d/m/Y', strtotime($time));
+}
+
+function display_last_ip($listIp)
+{
+  $array = explode(',', $listIp);
+  $last_ip = end($array);
+  return $last_ip;
+}
