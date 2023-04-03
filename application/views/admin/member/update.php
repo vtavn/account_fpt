@@ -25,6 +25,9 @@
             <div class="card-header">
               <h5 class="m-0">Cập nhật thành viên</h5>
             </div>
+            <?php
+            $this->load->view('message');
+            ?>
             <form action="" method="post">
               <div class="card-body">
                 <div class="row">
@@ -32,28 +35,28 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label>Email (*)</label>
-                      <input type="email" class="form-control" value="" name="email" required>
+                      <input type="email" class="form-control" value="<?= $user_info->email ?>" name="email" required>
                     </div>
                   </div>
 
                   <div class="col-md-3">
                     <div class="form-group">
                       <label>Username</label>
-                      <input type="text" class="form-control" value="" name="username" required>
+                      <input type="text" class="form-control" value="<?= $user_info->username ?>" name="username" required>
                     </div>
                   </div>
 
                   <div class="col-md-3">
                     <div class="form-group">
                       <label>Họ tên</label>
-                      <input type="text" class="form-control" value="" name="name" required>
+                      <input type="text" class="form-control" value="<?= $user_info->name ?>" name="name" required>
                     </div>
                   </div>
 
                   <div class="col-md-3">
                     <div class="form-group">
                       <label>Số điện thoại</label>
-                      <input type="text" class="form-control" value="" name="phone" required>
+                      <input type="text" class="form-control" value="<?= $user_info->phone ?>" name="phone" required>
                     </div>
                   </div>
 
@@ -71,8 +74,8 @@
                     <div class="form-group">
                       <label>Trạng thái</label>
                       <select class="form-control" name="status">
-                        <option value="1">Active</option>
-                        <option value="0">Banned</option>
+                        <option value="1" <?= ($user_info->status == 1) ? 'selected' : '' ?>>Active</option>
+                        <option value="0" <?= ($user_info->status == 0) ? 'selected' : '' ?>>Banned</option>
                       </select>
                     </div>
                   </div>
@@ -80,21 +83,45 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Quyền hạn</label>
-                      <select class="form-control" name="status">
-                        <option value="1">Thành Viên</option>
-                        <option value="2">CTV</option>
-                        <option value="3">Admin</option>
+                      <select class="form-control" name="role_id">
+                        <option value="1" <?= ($user_info->role_id == 1) ? 'selected' : '' ?>>Thành Viên</option>
+                        <option value="2" <?= ($user_info->role_id == 2) ? 'selected' : '' ?>>CTV</option>
+                        <option value="3" <?= ($user_info->role_id == 3) ? 'selected' : '' ?>>Admin</option>
                       </select>
                     </div>
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label>IP Login</label>
-                      <textarea cols="30" rows="10" class="form-control" disabled>sss</textarea>
+                      <textarea cols="30" rows="5" class="form-control" disabled><?= $user_info->ip_login ?></textarea>
                     </div>
                   </div>
 
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Số dư</label>
+                      <input type="text" class="form-control" placeholder="" disabled value="<?= number_format($user_info->money) ?>">
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Ngày tham gia</label>
+                      <input type="text" class="form-control" placeholder="" disabled value="<?= display_time($user_info->created_at) ?>">
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Ngày hoạt động gần đây</label>
+                      <input type="text" class="form-control" placeholder="" disabled value="<?= display_time($user_info->updated_at) ?>">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="card-footer clearfix">
+                  <button aria-label="" class="btn btn-info btn-icon-left m-b-10" type="submit"><i class="fas fa-save mr-1"></i>Lưu Ngay</button>
                 </div>
               </div>
             </form>
