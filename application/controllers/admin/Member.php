@@ -59,7 +59,51 @@ class Member extends MY_Controller
 
   function update()
   {
+    $id = $this->uri->rsegment('3');
 
+    $where = array('id' => $id);
+    $user_info = $this->member_model->get_info_rule($where);
+    if (!$user_info) {
+      return redirect(admin_url('member/index'));
+    }
+
+    if ($this->input->post()) {
+      $email = $this->input->post('email');
+      $username = $this->input->post('username');
+      $name = $this->input->post('name');
+      $phone = $this->input->post('phone');
+      $password = $this->input->post('password');
+      $status = $this->input->post('status');
+      $role_id = $this->input->post('role_id');
+
+      if ($password != '') {
+        $data = array(
+          'email' => $email,
+          'name' => $name,
+          'username' => $username,
+          'password' => md5($password),
+          'phone' => $phone,
+          'status' => $status,
+          'role_id' => $role_id,
+          'updated_at' => date("Y-m-d H:i:s", time()),
+        );
+      } else {
+        $data = array(
+          'email' => $email,
+          'name' => $name,
+          'username' => $username,
+          'phone' => $phone,
+          'status' => $status,
+          'role_id' => $role_id,
+          'updated_at' => date("Y-m-d H:i:s", time()),
+        );
+      }
+      $this->member_model->update($user_info->id, $data);
+      $this->session->set_flashdata('success', 'Cập nhật thành công!.');
+      return redirect(admin_url('member'));
+    }
+
+    $this->data['user_info'] = $user_info;
     $this->data['temp'] = 'admin/member/update';
     $this->load->view('admin/main', $this->data);
   }

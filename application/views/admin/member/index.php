@@ -61,6 +61,9 @@
           </div>
         </div>
         <section class="col-lg-12">
+          <?php
+          $this->load->view('message');
+          ?>
           <div class="card card-primary card-outline">
             <div class="card-header">
               <h5 class="m-0">Danh sách thành viên</h5>
