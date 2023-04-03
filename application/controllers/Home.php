@@ -11,6 +11,7 @@ class Home extends MY_Controller
 
   public function index()
   {
-    $this->load->view('client/main');
+    $this->data['title'] = 'Trang chủ';
+    $this->load->view('client/main', $this->data);
   }
 }
