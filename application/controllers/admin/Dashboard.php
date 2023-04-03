@@ -7,10 +7,15 @@ class Dashboard extends MY_Controller
   function __construct()
   {
     parent::__construct();
+    if (!is_admin()) {
+      return redirect(base_url('/'));
+    }
   }
 
   function index()
   {
-    $this->load->view('admin/dashboard/index');
+
+    $this->data['temp'] = 'admin/dashboard/index';
+    $this->load->view('admin/main', $this->data);
   }
 }

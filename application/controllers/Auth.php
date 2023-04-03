@@ -12,8 +12,9 @@ class Auth extends MY_Controller
 
   public function login()
   {
-    var_dump($this->session->userdata('uid'));
-    var_dump($this->session->userdata('username'));
+    if (is_login()) {
+      redirect(base_url('/'));
+    }
     if ($this->input->post()) {
       $this->form_validation->set_rules('email', 'Email', 'required');
       $this->form_validation->set_rules('password', 'Mật khẩu', 'required');
@@ -25,8 +26,6 @@ class Auth extends MY_Controller
         if ($user) {
           if ($user->status != 0) {
             $this->session->set_userdata('uid', $user->id);
-            $this->session->set_userdata('username', $user->username);
-            $this->session->set_userdata('uemail', $user->email);
             $this->session->set_userdata('urole', $user->role_id);
 
             //save ip login
@@ -38,9 +37,11 @@ class Auth extends MY_Controller
             }
             $data = array(
               'ip_login' => $iplist,
+              'updated_at' => date("Y-m-d H:i:s", time()),
             );
             $this->member_model->update($user->id, $data);
-            redirect(base_url('index'));
+
+            redirect(base_url('/'));
           } else {
             $this->session->set_flashdata('error', 'Tài khoản của bạn đã bị khoá.Vui lòng liên hệ admin để được hỗ trợ.');
           }
@@ -55,6 +56,9 @@ class Auth extends MY_Controller
 
   public function register()
   {
+    if (is_login()) {
+      redirect(base_url('/'));
+    }
     if ($this->input->post()) {
       $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email');
       $this->form_validation->set_rules('name', 'Họ Tên', 'required');
@@ -74,7 +78,7 @@ class Auth extends MY_Controller
           'name' => $name,
           'phone' => $phone,
           'username' => createUsername($email),
-          'price' => 0,
+          'money' => 0,
           'role_id' => 1, //member role
           'status' => 1, //1 active, 0 ban
         );
@@ -93,12 +97,13 @@ class Auth extends MY_Controller
 
   function logout()
   {
+    if (!is_login()) {
+      redirect(base_url('auth/login'));
+    }
     $this->session->unset_userdata('uid');
-    $this->session->unset_userdata('username');
-    $this->session->unset_userdata('uemail');
     $this->session->unset_userdata('urole');
     $this->session->sess_destroy();
-    return redirect('index');
+    return redirect(base_url('/'));
   }
 
   function check_email()
