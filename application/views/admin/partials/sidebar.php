@@ -33,6 +33,15 @@
             </li>
 
             <li class="nav-item">
+              <a href="<?= admin_url('package') ?>" class="nav-link <?= (($controller == 'package' && ($action == 'index' || $action == 'create'))) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-user-alt"></i>
+                <p>
+                  Gói Cước
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="<?= admin_url('member') ?>" class="nav-link <?= ($controller == 'member' && $action == 'index') ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-user-alt"></i>
                 <p>

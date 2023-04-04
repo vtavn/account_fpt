@@ -53,6 +53,8 @@ class Member extends MY_Controller
     $this->data['admin_count'] = $countAdmin;
     $this->data['ctv_count'] = $countCTV;
     $this->data['total_money'] = $totalMoney;
+
+    $this->data['title'] = 'Danh sách thành viên';
     $this->data['temp'] = 'admin/member/index';
     $this->load->view('admin/main', $this->data);
   }
@@ -104,6 +106,7 @@ class Member extends MY_Controller
     }
 
     $this->data['user_info'] = $user_info;
+    $this->data['title'] = 'Sửa thành viên';
     $this->data['temp'] = 'admin/member/update';
     $this->load->view('admin/main', $this->data);
   }

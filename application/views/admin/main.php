@@ -1,5 +1,5 @@
 <?php
-$this->load->view('admin/partials/header');
+$this->load->view('admin/partials/header', $this->data);
 $this->load->view('admin/partials/sidebar');
 ?>
 <!-- Content Wrapper. Contains page content -->
