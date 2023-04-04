@@ -1,0 +1,257 @@
+nav.main-header.navbar.navbar-expand-md.navbar-dark.navbar-dark {
+  background: #000;
+  border: none;
+}
+
+.product-item img {
+  display: inline !important;
+  width: 8% !important;
+}
+
+.footer {
+  background: #fff;
+}
+
+ul.foot-social {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+footer .footer {
+  background-color: #fff;
+  color: #869099;
+  padding: 10px 0 10px 0;
+}
+
+footer .row-logo {
+  border-bottom: 1px solid #E2E2E2;
+  padding: 10px 0 0 0;
+  margin-bottom: 19px;
+}
+
+.content-footer p {
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+
+.title-footer-item {
+  color: #df6f21;
+  font-size: 18px;
+  padding-bottom: 12px;
+  line-height: 24px;
+}
+
+footer ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.link-footer li {
+  margin-bottom: 8px;
+}
+
+.link-footer a {
+  line-height: 40px;
+  color: #232529;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.copyright {
+  background: #1f2636;
+  padding: 3px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* logo footer  */
+
+
+#logo-foot-slide .item {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.owl-carousel .owl-nav [class*='owl-'] {
+  transition: all .3s ease;
+}
+
+.owl-carousel .owl-nav [class*='owl-'].disabled:hover {
+  background-color: #D6D6D6;
+}
+
+.owl-carousel {
+  position: relative;
+}
+
+.owl-carousel .owl-next,
+.owl-carousel .owl-prev {
+  width: 50px;
+  height: 50px;
+  line-height: 44px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 25px);
+  font-size: 33px;
+  color: #000;
+  border: 1px solid rgb(70, 70, 70, .3);
+  text-align: center;
+}
+
+.owl-carousel .owl-prev {
+  left: -20px;
+}
+
+.owl-carousel .owl-next {
+  right: -20px;
+}
+
+/*custom*/
+
+.owl-carousel {
+  width: 100%;
+}
+
+.add_mgl {
+  margin-left: 143px;
+}
+
+.remove_mgl {
+  margin-left: 0;
+}
+
+.add_mgl_2item {
+  margin-left: 285px;
+}
+
+@media (max-width: 1024px) {
+  .owl-carousel .owl-prev {
+    left: -30px;
+  }
+
+  .owl-carousel .owl-next {
+    right: -30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .owl-carousel .owl-prev {
+    left: -10px;
+  }
+
+  .owl-carousel .owl-next {
+    right: -10px;
+  }
+}
+
+@media (max-width: 479px) {
+  .owl-carousel {
+    /* width: calc(100% + 30px); */
+    width: calc(100%);
+    /* full mÃƒÆ’Ã‚Â n hÃƒÆ’Ã‚Â¬nh khi hiÃƒÂ¡Ã‚Â»Ã†â€™n thÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¹ trÃƒÆ’Ã‚Âªn mobile */
+  }
+
+  .owl-carousel .owl-next,
+  .owl-carousel .owl-prev {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(70, 70, 70, .2);
+    line-height: 35px;
+    font-size: 28px
+  }
+
+  .owl-carousel .owl-prev {
+    left: -12px;
+  }
+
+  .owl-carousel .owl-next {
+    right: -12px;
+  }
+
+  .owl-carousel.owl-drag .owl-item {
+    padding: 8px
+  }
+}
+
+/* style for slide logo bootom */
+.owl-carousel.slide-logo {
+  padding: 20px 40px;
+}
+
+.slide-logo>div a {
+  width: 140px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  display: block;
+}
+
+.owl-carousel.slide-logo .owl-item img {
+  /* width: auto; */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.owl-carousel.slide-logo .owl-prev {
+  left: -25px;
+}
+
+.owl-carousel.slide-logo .owl-next {
+  right: -25px;
+}
+
+.owl-carousel.slide-logo .owl-prev i,
+.owl-carousel.slide-logo .owl-next i {
+  font-size: 27px;
+}
+
+.owl-carousel.slide-logo .owl-next,
+.owl-carousel.slide-logo .owl-prev {
+  width: 50px;
+  height: 50px;
+  top: calc(50% - 25px);
+  border: 1px solid rgb(70, 70, 70, 0);
+  font-size: 18px;
+  line-height: 50px;
+  color: var(--neutral600);
+}
+
+/* sp */
+#listAccounts button.owl-prev {
+  margin-left: 10px;
+}
+
+#listAccounts button.owl-next {
+  margin-right: 10px;
+}
+
+.content-footer {
+  border-bottom: 1px solid #E2E2E2;
+  padding-bottom: 12px;
+}
+
+.title-home {
+  font-weight: bold;
+  color: #000;
+}
+
+.title-home::before {
+  content: "";
+  background: url("/public/assets/client/img/icon-title.png") no-repeat;
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+}
+
+/* .card {
+  border-radius: 5%;
+} */
+
+.category-item img {
+  width: 70px;
+}
