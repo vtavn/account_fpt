@@ -255,3 +255,37 @@ footer ul {
 .category-item img {
   width: 70px;
 }
+
+.thumb img {
+  max-width: 100%;
+  border-radius: 5%;
+}
+
+.product-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.product-price h2 {
+  margin-top: 18px;
+  margin-bottom: 14px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -.03em;
+  color: #3d464d;
+}
+
+.product-action {
+  display: flex;
+  gap: 15px;
+}
+
+.device {
+  display: flex;
+  gap: 8px;
+}
+
+.device img {
+  width: 27px;
+  height: auto;
+}
