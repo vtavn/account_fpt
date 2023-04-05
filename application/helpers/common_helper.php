@@ -89,6 +89,17 @@ function display_banned($banned)
   }
 }
 
+function display_account($status)
+{
+  if ($status == 1) {
+    return '<span class="badge badge-warning">Đang bán</span>';
+  } elseif ($status == 2) {
+    return '<span class="badge badge-success">Đã bán</span>';
+  } else {
+    return '<span class="badge badge-danger">Xoá</span>';
+  }
+}
+
 function display_time($time)
 {
   return date('H:i:s d/m/Y', strtotime($time));
@@ -99,4 +110,58 @@ function display_last_ip($listIp)
   $array = explode(',', $listIp);
   $last_ip = end($array);
   return $last_ip;
+}
+
+
+function check_string($data)
+{
+  return trim(htmlspecialchars(addslashes($data)));
+}
+
+function getNameMemberById($id)
+{
+  $CI = &get_instance();
+  $CI->load->model('member_model');
+  $where = array('id' => $id);
+  $user = $CI->member_model->get_info_rule($where);
+  return $user;
+}
+
+function getNamePackageById($id)
+{
+  $CI = &get_instance();
+  $CI->load->model('package_model');
+  $where = array('id' => $id);
+  $package = $CI->package_model->get_info_rule($where);
+  return $package;
+}
+
+function getValueinGet($key)
+{
+  $CI = &get_instance();
+  return ($CI->input->get($key)) ? $CI->input->get($key) : '';
+}
+
+function getTotalAccountByIdPackage($id, $status = 1)
+{
+  $CI = &get_instance();
+  $CI->load->model('account_model');
+  $input['where'] = array('status = ' => $status, 'package_id' => $id);
+  return $CI->account_model->getTotal($input);
+}
+
+function insertLog($text)
+{
+  $CI = &get_instance();
+  $CI->load->model('log_model');
+  $user_id = $CI->session->userdata('uid');
+
+  $data = array(
+    'member_id' => $user_id,
+    'ip' => getIp(),
+    'device' => '',
+    'action' => $text
+  );
+
+  $CI->log_model->create($data);
 }

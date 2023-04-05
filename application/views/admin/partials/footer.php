@@ -20,16 +20,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="<?php echo public_url('admin/') ?>plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo public_url('admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- CuteAleart -->
-<script src="<?php echo public_url('admin/') ?>plugins/cute-alert/cute-alert.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
 </body>
 
 </html>

@@ -9,7 +9,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= $title ?></title>
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -18,6 +17,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>css/adminlte.min.css">
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>css/custom.css">
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/cute-alert/style.css">
+  <!-- jQuery -->
+  <script src="<?php echo public_url('admin/') ?>plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="<?php echo public_url('admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- CuteAleart -->
+  <script src="<?php echo public_url('admin/') ?>plugins/cute-alert/cute-alert.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
+
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <script src="<?php echo public_url('admin/') ?>plugins/select2/js/select2.full.min.js"></script>
 
 </head>
 

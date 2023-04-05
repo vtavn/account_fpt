@@ -146,20 +146,15 @@ class MY_Model extends CI_Model
 
   function getList($input = array())
   {
-    //xử lý các dữ liệu đầu vào
     $this->get_list_set_input($input);
-
-    //thực hiện truy vấn dữ liệu
     $query = $this->db->get($this->table);
 
-    //echo $this->db->last_query();
+    // echo $this->db->last_query() . '<br>';
     return $query->result();
   }
 
   protected function get_list_set_input($input = array())
   {
-    // Thêm điều kiện cho câu truy vấn truyền qua biến $input['where'] 
-    //(vi du: $input['where'] = array('email' => 'hoangdn@gmail.com'))
     if ((isset($input['where'])) && $input['where']) {
       $this->db->where($input['where']);
     }
@@ -176,15 +171,22 @@ class MY_Model extends CI_Model
     if ((isset($input['or_where_4'])) && $input['or_where_4']) {
       $this->db->or_where($input['or_where_4']);
     }
+    if ((isset($input['or_where_5'])) && $input['or_where_5']) {
+      $this->db->or_where($input['or_where_5']);
+    }
 
-    //tim kiem like
     // $input['like'] = array('name' => 'abc');
     if ((isset($input['like'])) && $input['like']) {
       $this->db->like($input['like']);
     }
+    if ((isset($input['or_like'])) && $input['or_like']) {
+      $this->db->or_like()($input['or_like']);
+    }
+    if ((isset($input['or_like_1'])) && $input['or_like_1']) {
+      $this->db->or_like($input['or_like_1']);
+    }
 
-    // Thêm sắp xếp dữ liệu thông qua biến $input['order'] 
-    //(ví dụ $input['order'] = array('id','DESC'))
+    //($input['order'] = array('id','DESC'))
     if (isset($input['order'][0]) && isset($input['order'][1])) {
       $this->db->order_by($input['order'][0], $input['order'][1]);
     } else {
@@ -193,8 +195,7 @@ class MY_Model extends CI_Model
       $this->db->order_by($order[0], $order[1]);
     }
 
-    // Thêm điều kiện limit cho câu truy vấn thông qua biến $input['limit'] 
-    //(ví dụ $input['limit'] = array('10' ,'0')) 
+    //($input['limit'] = array('10' ,'0')) 
     if (isset($input['limit'][0]) && isset($input['limit'][1])) {
       $this->db->limit($input['limit'][0], $input['limit'][1]);
     }

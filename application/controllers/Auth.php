@@ -39,6 +39,7 @@ class Auth extends MY_Controller
               'ip_login' => $iplist,
               'updated_at' => date("Y-m-d H:i:s", time()),
             );
+            insertLog('Đăng nhập website tại địa chỉa ip: ' . $remoteip);
             $this->member_model->update($user->id, $data);
 
             redirect(base_url('/'));
@@ -84,6 +85,7 @@ class Auth extends MY_Controller
         );
 
         if ($this->member_model->create($data)) {
+          insertLog('Tạo tài khoản thành công.');
           $this->session->set_flashdata('success', 'Tạo tài khoản thành công. Bây giờ bạn có thể đăng nhập!');
         } else {
           $this->session->set_flashdata('error', 'Tạo tài khoản thất bại vui lòng liên hệ admin để hỗ trợ.');

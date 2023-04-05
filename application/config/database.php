@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '28291112', //
-	'database' => 'accountfpt', // ci3_accountfpt
+	'hostname' => '103.82.20.33',
+	'username' => 'acc1vut7quC',
+	'password' => 'v9xMFKzL3i2SGWV', //
+	'database' => 'sdya_acc1vut7quc', // ci3_accountfpt
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
