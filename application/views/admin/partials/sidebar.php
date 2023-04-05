@@ -32,14 +32,54 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href="<?= admin_url('package') ?>" class="nav-link <?= (($controller == 'package' && ($action == 'index' || $action == 'create'))) ? 'active' : '' ?>">
+            <li class="nav-item <?= (($controller == 'account' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'menu-is-opening menu-open' : '' ?>">
+              <a href="#" class="nav-link <?= (($controller == 'account' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-store"></i>
+                <p>
+                  Tài khoản
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview ">
+                <li class="nav-item">
+                  <a href="<?= admin_url('account') ?>" class="nav-link <?= ($controller == 'account' && $action == 'index') ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tài khoản</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= admin_url('account/create') ?>" class="nav-link <?= ($controller == 'account' && $action == 'create') ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm Tài khoản</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item <?= (($controller == 'package' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'menu-is-opening menu-open' : '' ?>">
+              <a href="#" class="nav-link <?= (($controller == 'package' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-cubes"></i>
                 <p>
                   Gói Cước
+                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview ">
+                <li class="nav-item">
+                  <a href="<?= admin_url('package') ?>" class="nav-link <?= ($controller == 'package' && $action == 'index') ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Gói Cước</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= admin_url('package/create') ?>" class="nav-link <?= ($controller == 'package' && $action == 'create') ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm Gói Cước</p>
+                  </a>
+                </li>
+              </ul>
             </li>
+
 
             <li class="nav-item">
               <a href="<?= admin_url('member') ?>" class="nav-link <?= ($controller == 'member' && $action == 'index') ? 'active' : '' ?>">
@@ -49,6 +89,26 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item <?= (($controller == 'log' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'menu-is-opening menu-open' : '' ?>">
+              <a href="#" class="nav-link <?= (($controller == 'log' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-history"></i>
+                <p>
+                  Lịch Sử
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview ">
+                <li class="nav-item">
+                  <a href="<?= admin_url('log') ?>" class="nav-link <?= ($controller == 'log' && $action == 'index') ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Nhật ký hoạt động</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

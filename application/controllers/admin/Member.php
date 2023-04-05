@@ -101,6 +101,7 @@ class Member extends MY_Controller
         );
       }
       $this->member_model->update($user_info->id, $data);
+      insertLog('Sửa thông tin thành viên' . $user_info->id);
       $this->session->set_flashdata('success', 'Cập nhật thành công!.');
       return redirect(admin_url('member'));
     }
@@ -125,6 +126,7 @@ class Member extends MY_Controller
         'status' => 0,
         'deleted_at' => date("Y-m-d H:i:s", time()),
       );
+      insertLog('Xoá thành viên' . $id);
       $this->member_model->update($id, $data);
       $data = json_encode([
         'status'    => 'success',
