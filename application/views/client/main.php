@@ -23,7 +23,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition layout-top-nav">
   <div class="wrapper">
     <?php $this->load->view('client/partials/header'); ?>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Main content -->
@@ -31,7 +30,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <?php $this->load->view($temp, $this->data); ?>
       </div>
       <!-- /.content-wrapper -->
-
       <?php $this->load->view('client/partials/footer'); ?>
     </div>
     <!-- ./wrapper -->

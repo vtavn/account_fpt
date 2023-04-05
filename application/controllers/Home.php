@@ -7,10 +7,28 @@ class Home extends MY_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->model('package_model');
+    $this->load->model('account_model');
   }
 
   public function index()
   {
+
+    //package 
+    $filterPack = array();
+    $filterPack['order'] = array('id', 'DESC');
+    $filterPack['where'] = array('status', '1');
+    $packages = $this->package_model->getList($filterPack);
+    $this->data['list_package'] = $packages;
+
+    $fAccount = array();
+    $fAccount['order'] = array('id', 'RAND()');
+    $fAccount['where'] = array('status', '1');
+    $fAccount['limit'] = array(8, 0);
+    $accounts = $this->account_model->getList($fAccount);
+    $this->data['list_account'] = $accounts;
+
+
     $this->data['title'] = 'Trang chủ';
     $this->data['temp'] = 'client/pages/home';
     $this->load->view('client/main', $this->data);

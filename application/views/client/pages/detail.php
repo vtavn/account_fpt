@@ -7,13 +7,13 @@
           <div class="col-12 col-sm-3">
             <div class="col-12">
               <div class="thumb">
-                <img src="https://play-lh.googleusercontent.com/AEDP87Xprfiun-5W4Z0prhd_nJD0ZJKtYdqf2YC4evzzx9PdXRfCWin_Btac4n_HPg" class="product-image" alt="Product Image">
+                <img src="<?= $package_info->thumb ?>" class="product-image" alt="Product Image">
               </div>
             </div>
           </div>
           <div class="col-12 col-sm-9">
-            <h3 class="product-title my-3 text-uppercase">Gói tài khoản 3 tháng</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus alias impedit ad harum iste. Minus ipsum rerum vitae delectus voluptatibus, quam temporibus eos eaque, maxime sequi sed saepe? Deleniti numquam incidunt illo. Ea modi fuga minus? Dignissimos deleniti exercitationem odio..</p>
+            <h3 class="product-title my-3 text-uppercase"><?= $package_info->name ?></h3>
+            <p><?= $package_info->short_content ?></p>
 
             <div class="device">
               <img src="<?= public_url('client/img/iconfpt/') ?>android.png" alt="">
@@ -24,9 +24,16 @@
             </div>
             <hr>
             <div class="product-price">
-              <h2 class="mb-0">
-                100.000 vnđ
-              </h2>
+              <?php if ($package_info->sale_price > 0) : ?>
+                <h2 class="mb-0">
+                  Giá: <?= number_format($package_info->sale_price) ?> <s><sup>(<?= number_format($package_info->price) ?>)</sup></s> vnđ
+
+                </h2>
+              <?php else : ?>
+                <h2 class="mb-0">
+                  Giá: <?= number_format($package_info->price) ?> vnđ
+                </h2>
+              <?php endif; ?>
             </div>
             <hr>
             <div class="mt-4 product-action">
@@ -52,7 +59,7 @@
             </div>
           </nav>
           <div class="tab-content p-3" id="nav-tabContent">
-            <div class="tab-pane fade active show" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae condimentum erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed posuere, purus at efficitur hendrerit, augue elit lacinia arcu, a eleifend sem elit et nunc. Sed rutrum vestibulum est, sit amet cursus dolor fermentum vel. Suspendisse mi nibh, congue et ante et, commodo mattis lacus. Duis varius finibus purus sed venenatis. Vivamus varius metus quam, id dapibus velit mattis eu. Praesent et semper risus. Vestibulum erat erat, condimentum at elit at, bibendum placerat orci. Nullam gravida velit mauris, in pellentesque urna pellentesque viverra. Nullam non pellentesque justo, et ultricies neque. Praesent vel metus rutrum, tempus erat a, rutrum ante. Quisque interdum efficitur nunc vitae consectetur. Suspendisse venenatis, tortor non convallis interdum, urna mi molestie eros, vel tempor justo lacus ac justo. Fusce id enim a erat fringilla sollicitudin ultrices vel metus. </div>
+            <div class="tab-pane fade active show" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> <?= $package_info->content ?></div>
             <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab"></div>
           </div>
         </div>
