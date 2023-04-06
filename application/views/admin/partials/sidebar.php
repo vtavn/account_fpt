@@ -105,9 +105,34 @@
                     <p>Nhật ký hoạt động</p>
                   </a>
                 </li>
-
               </ul>
             </li>
+
+            <li class="nav-item <?= ((($controller == 'slider' || $controller == 'menu') && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'menu-is-opening menu-open' : '' ?>">
+              <a href="#" class="nav-link <?= ((($controller == 'slider' || $controller == 'menu') && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-tools"></i>
+                <p>
+                  Cài đặt Website
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview ">
+                <li class="nav-item">
+                  <a href="<?= admin_url('slider') ?>" class="nav-link <?= ($controller == 'slider' && $action == 'index') ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Banner</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="<?= admin_url('menu') ?>" class="nav-link <?= ($controller == 'menu' && $action == 'index') ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Menu</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
 
           </ul>
         </nav>
