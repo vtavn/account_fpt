@@ -86,17 +86,3 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
-
-  <script>
-    $(document).ready(function() {
-      $(".all-package").change(function() {
-        var idPackSelected = $('.all-package').find(":selected").val();
-        var name = $('.all-package').find(":selected").data('name');
-        var price = $('.all-package').find(":selected").data('price');
-        var price_sale = $('.all-package').find(":selected").data('sale');
-        $(".name").val(name);
-        $(".price").val(price);
-        $(".sale_price").val(price_sale);
-      });
-    });
-  </script>

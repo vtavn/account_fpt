@@ -1,5 +1,47 @@
 <?php
 
+function create_slug($string)
+{
+  $search = array(
+    '#(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)#',
+    '#(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)#',
+    '#(ì|í|ị|ỉ|ĩ)#',
+    '#(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)#',
+    '#(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)#',
+    '#(ỳ|ý|ỵ|ỷ|ỹ)#',
+    '#(đ)#',
+    '#(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)#',
+    '#(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)#',
+    '#(Ì|Í|Ị|Ỉ|Ĩ)#',
+    '#(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)#',
+    '#(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)#',
+    '#(Ỳ|Ý|Ỵ|Ỷ|Ỹ)#',
+    '#(Đ)#',
+    "/[^a-zA-Z0-9\-\_]/",
+  );
+  $replace = array(
+    'a',
+    'e',
+    'i',
+    'o',
+    'u',
+    'y',
+    'd',
+    'A',
+    'E',
+    'I',
+    'O',
+    'U',
+    'Y',
+    'D',
+    '-',
+  );
+  $string = preg_replace($search, $replace, $string);
+  $string = preg_replace('/(-)+/', '-', $string);
+  $string = strtolower($string);
+  return $string;
+}
+
 function public_url($url = '')
 {
   return base_url('public/assets/' . $url);
@@ -13,6 +55,11 @@ function admin_url($url = '')
 function createUsername($email)
 {
   return strtolower(explode('@', $email)[0]);
+}
+
+function client_url($text)
+{
+  return base_url(create_slug($text)) . '-';
 }
 
 function getIp()
@@ -162,11 +209,11 @@ function getTotalAccountByIdPackage($id, $status = 1)
   return $CI->account_model->getTotal($input);
 }
 
-function insertLog($text)
+function insertLog($text, $uid = '0')
 {
   $CI = &get_instance();
   $CI->load->model('log_model');
-  $user_id = $CI->session->userdata('uid');
+  $user_id = $CI->session->userdata('uid') ? $CI->session->userdata('uid') : $uid;
 
   $data = array(
     'member_id' => $user_id,
@@ -178,17 +225,44 @@ function insertLog($text)
   $CI->log_model->create($data);
 }
 
-function showCategories($categories, $parent_id = 0, $char = '')
+function showCategories($categories, $checked, $edit_id = 0)
 {
-  foreach ($categories as $key => $item) {
-    if ($item->parent_id == $parent_id) {
-      echo '<option value="' . $item->id . '">';
-      echo $char . $item->name;
-      echo '</option>';
-      unset($categories[$key]);
-      showCategories($categories, $item->id, $char . '|---');
+  $categoryMap = [];
+  foreach ($categories as $category) {
+    $categoryMap[$category->id] = $category;
+    $categoryMap[$category->id]->children = [];
+  }
+
+  foreach ($categoryMap as $category) {
+    if ($category->id == $edit_id) {
+      continue;
+    }
+    if (isset($categoryMap[$category->parent_id])) {
+      $categoryMap[$category->parent_id]->children[] = $category;
+    } else {
+      $tree[] = $category;
     }
   }
+
+  function buildOption($category, $char, $checked)
+  {
+    $selected = ($category->id == $checked) ? 'selected' : '';
+    echo '<option value="' . $category->id . '" ' . $selected . '>';
+    echo $char . $category->name;
+    echo '</option>';
+  }
+
+  function traverseTree($tree, $char, $checked)
+  {
+    foreach ($tree as $category) {
+      buildOption($category, $char, $checked);
+      if (!empty($category->children)) {
+        traverseTree($category->children, $char . '|---', $checked);
+      }
+    }
+  }
+
+  traverseTree($tree, '', $checked);
 }
 
 function showCategoriesInTable($categories, $parent_id = 0, $char = '')
@@ -197,19 +271,57 @@ function showCategoriesInTable($categories, $parent_id = 0, $char = '')
     if ($item->parent_id == $parent_id) {
       echo '<tr>';
       echo '<td>';
-      echo '<a href="' . $item->link . '">' . $char . $item->name . '</a>';
+      echo '<a href="' . base_url($item->link) . '">' . $char . $item->name . '</a>';
       echo '</td>';
       echo '<td>
       <a aria-label="" href="' . admin_url('menu/update/') . $item->id . '" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
         <i class="fas fa-edit mr-1"></i><span class="">Edit</span>
       </a>
-      <button style="color:white;" onclick="RemoveBanner(' . $item->id . ',\'' . $item->name . '\')" class="btn btn-danger btn-sm btn-icon-left m-b-10" type="button">
+      <button style="color:white;" onclick="RemoveMenu(' . $item->id . ',\'' . $item->name . '\')" class="btn btn-danger btn-sm btn-icon-left m-b-10" type="button">
         <i class="fas fa-trash mr-1"></i><span class="">Delete</span>
       </button>
     </td>';
       echo '</tr>';
       unset($categories[$key]);
       showCategoriesInTable($categories, $item->id, $char . '|---');
+    }
+  }
+}
+
+function showMenuClient($categories, $parent_id = 0, $char = '')
+{
+  $cate_child = array();
+  foreach ($categories as $key => $item) {
+    if ($item->parent_id == $parent_id) {
+      $cate_child[] = $item;
+      unset($categories[$key]);
+    }
+  }
+
+  if ($cate_child) {
+    foreach ($cate_child as $key => $item) {
+      $has_child = false;
+      foreach ($categories as $category) {
+        if ($category->parent_id == $item->id) {
+          $has_child = true;
+          break;
+        }
+      }
+      if ($has_child) {
+        echo '<li class="nav-item dropdown dropdown-hover">
+                <a id="'  . $item->id . '" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">'  . $item->name . '</a>
+                <ul aria-labelledby="'  . $item->id . '" class="dropdown-menu border-0 shadow">';
+      } else {
+        if ($char) {
+          echo '<li><a href="' . $item->link . '" class="dropdown-item">'  . $item->name . '</a></li>';
+        } else {
+          echo '<li class="nav-item"><a href="' . $item->link . '" class="nav-link">'  . $item->name . '</a></li>';
+        }
+      }
+      showMenuClient($categories, $item->id, $char . 'xxx');
+      if ($has_child) {
+        echo '</ul></li>';
+      }
     }
   }
 }

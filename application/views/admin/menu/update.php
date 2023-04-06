@@ -34,22 +34,25 @@
 
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Tên banner:</label>
-                      <input type="text" class="form-control name" name="name" value="<?= $banner_info->name ?>" placeholder=" Tên để nhận biết.">
+                      <label>Tên:</label>
+                      <input type="text" class="form-control name" name="name" value="<?= $menu_info->name ?>" placeholder="Tên để nhận biết.">
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Link:</label>
-                      <input type="text" class="form-control" name="link" value="<?= $banner_info->link ?>" placeholder="Link khi click vào banner.">
+                      <input type="text" class="form-control" name="link" value="<?= $menu_info->link ?>" placeholder="Link khi click vào.">
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Ảnh (Ưu tiên kích thước: 2048x560):</label>
-                      <input type="text" class="form-control" name="thumb" value="<?= $banner_info->thumb ?>" placeholder="Link ảnh...">
+                      <label>Cha</label>
+                      <select class="form-control" name="parent_id">
+                        <option value="0">Cha</option>
+                        <?php showCategories($listMenu, $menu_info->parent_id, $menu_info->id) ?>
+                      </select>
                     </div>
                   </div>
 
@@ -57,15 +60,22 @@
                     <div class="form-group">
                       <label>Trạng thái</label>
                       <select class="form-control" name="status">
-                        <option value="1" <?= ($banner_info->status == 1) ? 'selected' : '' ?>>Hiển thị</option>
-                        <option value="0" <?= ($banner_info->status == 0) ? 'selected' : '' ?>>Ẩn</option>
+                        <option value="1" <?= ($menu_info->status == 1) ? 'selected' : '' ?>>Hiển thị</option>
+                        <option value="0" <?= ($menu_info->status == 0) ? 'selected' : '' ?>>Ẩn</option>
                       </select>
                     </div>
                   </div>
 
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Ưu tiên:</label>
+                      <input type="number" class="form-control" value="<?= $menu_info->position ?>" name="position" placeholder="Ưu tiên hiển thị.">
+                      <i>* Giá trị số càng cao thì hiển thị hàng đầu.</i>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-footer clearfix">
-                  <button aria-label="" class="btn btn-info btn-icon-left m-b-10" type="submit"><i class="fas fa-save mr-1"></i>Sửa</button>
+                  <button aria-label="" class="btn btn-info btn-icon-left m-b-10" type="submit"><i class="fas fa-save mr-1"></i>Lưu</button>
                 </div>
               </div>
             </form>
@@ -76,17 +86,3 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
-
-  <script>
-    $(document).ready(function() {
-      $(".all-package").change(function() {
-        var idPackSelected = $('.all-package').find(":selected").val();
-        var name = $('.all-package').find(":selected").data('name');
-        var price = $('.all-package').find(":selected").data('price');
-        var price_sale = $('.all-package').find(":selected").data('sale');
-        $(".name").val(name);
-        $(".price").val(price);
-        $(".sale_price").val(price_sale);
-      });
-    });
-  </script>

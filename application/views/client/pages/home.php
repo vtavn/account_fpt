@@ -44,7 +44,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text"><b><?= $pack->name ?></b></span>
-                <a class="btn btn-xs btn-info" href="<?= base_url('goi-cuoc-') ?><?= $pack->id ?>.html">Xem ngay</a>
+                <a class="btn btn-xs btn-info" href="<?= client_url($pack->name) ?><?= $pack->id ?>.html">Xem ngay</a>
                 <!-- /.info-box-content -->
               </div>
               <!-- /.info-box -->

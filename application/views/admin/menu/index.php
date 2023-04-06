@@ -65,7 +65,7 @@
   <script type="text/javascript">
     function postRemove(id) {
       $.ajax({
-        url: "<?= admin_url('slider/remove'); ?>",
+        url: "<?= admin_url('menu/remove'); ?>",
         type: 'POST',
         dataType: "JSON",
         data: {
@@ -76,14 +76,14 @@
             cuteToast({
               type: "success",
               title: "Thành Công",
-              message: "Đã xóa thành công banner " + id,
+              message: "Đã xóa thành công " + id,
               timer: 3000
             });
           } else {
             cuteToast({
               type: "error",
               title: "Lỗi",
-              message: "Đã xảy ra lỗi khi xoá banner " + id,
+              message: "Đã xảy ra lỗi khi xoá " + id,
               timer: 5000
             });
           }
@@ -91,7 +91,7 @@
       });
     }
 
-    function RemoveBanner(id, name) {
+    function RemoveMenu(id, name) {
       cuteAlert({
         type: "question",
         title: "CẢNH BÁO",

@@ -18,7 +18,12 @@ class MY_Controller extends CI_Controller
     if ($this->session->userdata('uid') && $this->session->userdata('urole')) {
       $this->data['userId'] = $this->session->userdata('uid');
       $user = $this->member_model->get_info_rule(['id' => $this->session->userdata('uid')]);
-      $this->data['user'] = $user;
+      $this->data['my_info'] = $user;
     }
+
+    //header menu
+    $this->load->model('menu_model');
+    $mFilter['order'] = array('position', 'DESC');
+    $this->data['menuShowClient'] = $this->menu_model->getList($mFilter);
   }
 }

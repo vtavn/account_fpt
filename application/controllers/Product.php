@@ -13,12 +13,12 @@ class Product extends MY_Controller
 
   public function index()
   {
-    $id = $this->uri->rsegment('3');
+    $id = $this->uri->rsegment('4');
 
     $where = array('id' => $id);
     $package_info = $this->package_model->get_info_rule($where);
     if (!$package_info) {
-      return redirect('/');
+      return redirect(base_url('/'));
     }
 
     // if ($this->input->post()) {

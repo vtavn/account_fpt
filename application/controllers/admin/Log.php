@@ -53,7 +53,7 @@ class Log extends MY_Controller
 
     $config = array();
     $config['total_rows'] = $total_rows[0]->total;
-    $config['base_url'] = admin_url('account/index');
+    $config['base_url'] = admin_url('log/index');
     $config['per_page'] = 15;
     $config['reuse_query_string'] = true;
     $config['uri_segment'] = 4;

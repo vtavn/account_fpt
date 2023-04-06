@@ -54,4 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //custom router
-$route['goi-cuoc-(:num).html'] = 'product/index/$1';
+$route['(:any)-(:num)\.html'] = 'product/index/$1/$2';

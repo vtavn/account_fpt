@@ -14,7 +14,7 @@
             <img src="<?php echo public_url('admin/') ?>img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?= $user->username ?></a>
+            <a href="#" class="d-block"><?= $my_info->username ?></a>
             <a href="<?= base_url('auth/logout') ?>" class="badge badge-danger">Đăng xuất</a>
           </div>
         </div>
@@ -86,6 +86,15 @@
                 <i class="nav-icon fas fa-user-alt"></i>
                 <p>
                   Thành Viên
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?= admin_url('bank') ?>" class="nav-link <?= ($controller == 'bank' && ($action == 'index' || $action == 'update')) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-university"></i>
+                <p>
+                  Ngân Hàng
                 </p>
               </a>
             </li>
