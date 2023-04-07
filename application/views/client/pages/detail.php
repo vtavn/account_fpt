@@ -1,6 +1,5 @@
-<div class="container ">
+<div class="container">
   <div class="row pt-3">
-
     <div class="col-lg-12">
       <div class="card p-3">
         <div class="row">
@@ -25,11 +24,13 @@
             <hr>
             <div class="product-price">
               <?php if ($package_info->sale_price > 0) : ?>
+                <?php $priceBuy = $package_info->sale_price; ?>
                 <h2 class="mb-0">
                   Giá: <?= number_format($package_info->sale_price) ?> <s><sup>(<?= number_format($package_info->price) ?>)</sup></s> vnđ
 
                 </h2>
               <?php else : ?>
+                <?php $priceBuy = $package_info->price; ?>
                 <h2 class="mb-0">
                   Giá: <?= number_format($package_info->price) ?> vnđ
                 </h2>
@@ -37,11 +38,20 @@
             </div>
             <hr>
             <div class="mt-4 product-action">
-              <a href="" class="btn btn-info btn-lg">
-                <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                Mua Tài Khoản
-              </a>
-
+              <?php if (getTotalAccountByPackage($package_info->id) > 0) : ?>
+                <!-- <form action="" method="post" id="buyForm"> -->
+                <input type="text" name="package_id" id="package_id" value="<?= $package_info->id ?>" hidden>
+                <button type="submit" onClick="BuyClick('<?= $package_info->name ?>', '<?= number_format($priceBuy) ?>')" id="buyBtn" class="btn btn-info btn-lg">
+                  <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                  Mua Tài Khoản
+                </button>
+                <!-- </form> -->
+              <?php else : ?>
+                <button class="btn btn-info btn-lg" disabled>
+                  <i class="fas fa-store-slash fa-lg mr-2"></i>
+                  Hết hàng
+                </button>
+              <?php endif ?>
               <a href="" class="btn btn-default btn-lg">
                 <i class="fas fa-heart fa-lg mr-2"></i>
                 Liên hệ Admin
@@ -309,3 +319,63 @@
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->
+
+<script>
+  function BuyClick(name, price) {
+    cuteAlert({
+      type: "question",
+      title: "CẢNH BÁO",
+      message: "Bạn có muốn mua <b>" + name + "</b> với giá: <b>" + price + "đ</b> không?",
+      confirmText: "Đồng Ý",
+      cancelText: "Hủy"
+    }).then((e) => {
+      console.log(e)
+      if (e) {
+        // $("#buyForm").submit(function(e) {
+        //e.preventDefault();
+        $('#buyBtn').html('<i class="fa fa-spinner fa-spin"></i> Đang xử lý...').prop(
+          'disabled',
+          true);
+        $.ajax({
+          url: "<?= base_url('product/buyAccount') ?>",
+          method: "POST",
+          dataType: "JSON",
+          data: {
+            type: 'buy-package',
+            'package_id': $("#package_id").val(),
+            token: '<?= $my_info->token ?>'
+          },
+          success: function(respone) {
+            if (respone.status == 'success') {
+              cuteToast({
+                type: "success",
+                title: "Thành Công",
+                message: respone.msg,
+                timer: 5000
+              });
+              console.log('loadding');
+              setTimeout("location.href = '<?= base_url('payment/invoice/') ?>" + respone.trans_id + "'", 500);
+            } else {
+              Swal.fire(
+                'Thất bại',
+                respone.msg,
+                'error'
+              );
+            }
+            $('#buyBtn').html('Mua tài khoản').prop('disabled', false);
+          },
+          error: function() {
+            cuteToast({
+              type: "success",
+              title: "Thất bại",
+              message: 'Không thể xử lý',
+              timer: 5000
+            });
+            $('#buyBtn').html('Mua tài khoản').prop('disabled', false);
+          }
+          //  });
+        });
+      }
+    })
+  }
+</script>

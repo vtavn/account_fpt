@@ -51,7 +51,7 @@
                       <label>Cha</label>
                       <select class="form-control" name="parent_id">
                         <option value="0">Cha</option>
-                        <?php showCategories($listMenu) ?>
+                        <?php showCategories($listMenu, '', '') ?>
                       </select>
                     </div>
                   </div>

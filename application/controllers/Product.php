@@ -9,9 +9,10 @@ class Product extends MY_Controller
     parent::__construct();
     $this->load->model('package_model');
     $this->load->model('account_model');
+    $this->load->model('order_model');
   }
 
-  public function index()
+  function index()
   {
     $id = $this->uri->rsegment('4');
 
@@ -21,35 +22,65 @@ class Product extends MY_Controller
       return redirect(base_url('/'));
     }
 
-    // if ($this->input->post()) {
-    //   $this->form_validation->set_rules('package_id', 'Gói cần được phải chọn.', 'required');
-    //   if ($this->form_validation->run()) {
-    //     $package_id = $this->input->post('package_id');
-    //     $name = $this->input->post('name');
-    //     $price = $this->input->post('price');
-    //     $sale_price = $this->input->post('sale_price');
-    //     $status = $this->input->post('status');
-    //     $account = $this->input->post('account');
-
-    //     $data = array(
-    //       'name' => $name,
-    //       'price' => $price,
-    //       'sale_price' => $sale_price,
-    //       'package_id' => $package_id,
-    //       'account' => $account,
-    //       'status' => $status,
-    //       'updated_at' => date("Y-m-d H:i:s", time())
-    //     );
-    //     insertLog('Mua tài khoản fpt ' . $package_info->name);
-    //     $this->account_model->update($package_info->id, $data);
-    //     $this->session->set_flashdata('success', 'Cập nhật thành công!.');
-    //     return redirect(admin_url('account'));
-    //   }
-    // }
-
     $this->data['package_info'] = $package_info;
     $this->data['title'] = 'Mua tài khoản FPT ' . $package_info->name;
     $this->data['temp'] = 'client/pages/detail';
     $this->load->view('client/main', $this->data);
+  }
+
+  function buyAccount()
+  {
+    if ($this->input->post()) {
+      //check package id
+      $package_id = check_string($this->input->post('package_id'));
+      $where = array('id' => $package_id);
+      $package_info = $this->package_model->get_info_rule($where);
+      if (!$package_info) {
+        die(json_encode(['status' => 'error', 'msg' => 'Lỗi vui lòng thử lại sau.']));
+      } else {
+
+        //get account
+        $sql = "SELECT * FROM accounts WHERE package_id = '$package_id' AND status = 1 ORDER BY RAND() LIMIT 1";
+        $result = $this->account_model->query($sql);
+        if ($result) {
+          $accountOK = $result[0];
+          $member_id = $this->session->userdata('uid');
+          $token = check_string($this->input->post('token'));
+          // deduct money from member 
+          if ($accountOK->sale_price == 0) {
+            $pricePay = $accountOK->price;
+          } else {
+            $pricePay = $accountOK->sale_price;
+          }
+          $getMoneyUser = $this->member_model->get_info_rule(['id' => $member_id, 'token' => $token])->money;
+
+          if ($getMoneyUser < $pricePay) {
+            die(json_encode(['status' => 'error', 'msg' => 'Số dư tài khoản của bạn không đủ.']));
+          } else {
+            $trans_id = random("CUAQWERTYUPASDFGHJKZXCVBNM123456789", 10);
+            $this->member_model->deductMoney("members", "money", $pricePay, $member_id);
+            // update accout => out of stock
+            $this->account_model->update($accountOK->id, ['status' => 2, 'buyer_id' => $member_id, 'updated_at' => date("Y-m-d H:i:s", time())]);
+            // send account to history member
+            $orderData = array(
+              'trans_id' => $trans_id,
+              'seller_id' => $accountOK->seller_id,
+              'buyer_id' => $member_id,
+              'package_id' => $accountOK->package_id,
+              'amount' => 1,
+              'pay' => $pricePay,
+              'cost' => 0,
+              'status' => 1
+            );
+            $this->order_model->create($orderData);
+            //insert log
+            insertLog("Mua tài khoản mã giao dịch #" . $trans_id);
+            die(json_encode(['status' => 'success', 'msg' => 'Mua tài khoản thành công.', 'trans_id' => $trans_id]));
+          }
+        } else {
+          die(json_encode(['status' => 'success', 'msg' => 'Hết hàng vui lòng quay lại sau']));
+        }
+      }
+    }
   }
 }

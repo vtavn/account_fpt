@@ -29,7 +29,7 @@ class Home extends MY_Controller
     $accounts = $this->account_model->getList($fAccount);
     $this->data['list_account'] = $accounts;
 
-    //package 
+    //banner 
     $fillterS = array();
     $fillterS['order'] = array('id', 'DESC');
     $fillterS['where'] = array('status', '1');

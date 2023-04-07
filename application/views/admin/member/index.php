@@ -99,9 +99,12 @@
                         </td>
                         <td>
                           <ul>
-                            <li>Số dư khả dụng: <b style="color:blue"><?= $user->money ?></b></li>
-                            <li>Tài khoản đang bán: <b style="color:blue">xx</b></li>
-                            <li>Tài khoản đã bán: <b style="color:green">xx</b></li>
+                            <li>Số dư khả dụng: <b style="color:blue"><?= number_format($user->money) ?>đ</b></li>
+                            <li>Số tiền đã nạp: <b style="color:green"><?= number_format(getTotalPaymentById($user->id)) ?>đ</b></li>
+                            <li>Số tiền đã tiêu: <b style="color:red"><?= number_format(getTotalPaymentById($user->id) - $user->money) ?>đ</b></li>
+                            <li>Tài khoản đang bán: <b style="color:blue"><?= number_format(getTotalAccountById($user->id, 'seller')) ?></b></li>
+                            <li>Tài khoản đã bán: <b style="color:green"><?= number_format(getTotalAccountById($user->id, 'sell_done')) ?></b></li>
+                            <li>Tài khoản đã mua: <b style="color:green"><?= number_format(getTotalAccountById($user->id, 'buyer')) ?></b></li>
                           </ul>
                         </td>
                         <td>

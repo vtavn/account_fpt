@@ -25,8 +25,10 @@ class Auth extends MY_Controller
 
         if ($user) {
           if ($user->status != 0) {
+            $genToken = createToken();
             $this->session->set_userdata('uid', $user->id);
             $this->session->set_userdata('urole', $user->role_id);
+            $this->session->set_userdata('token', $genToken);
 
             //save ip login
             $iplist = $user->ip_login;
@@ -36,6 +38,7 @@ class Auth extends MY_Controller
               $iplist .= $remoteip;
             }
             $data = array(
+              'token' => $genToken,
               'ip_login' => $iplist,
               'updated_at' => date("Y-m-d H:i:s", time()),
             );
@@ -105,6 +108,73 @@ class Auth extends MY_Controller
     $this->session->unset_userdata('urole');
     $this->session->sess_destroy();
     return redirect(base_url('/'));
+  }
+
+  function profile()
+  {
+    $this->data['title'] = 'Trang cá nhân';
+    $this->data['temp'] = 'auth/profile';
+    $this->load->view('client/main', $this->data);
+  }
+
+  function changeinfo()
+  {
+    if (!is_login()) {
+      redirect(base_url('/'));
+    }
+
+    if ($this->input->post()) {
+      $this->form_validation->set_rules('email', 'Email', 'required');
+
+      if ($this->form_validation->run()) {
+        $email = $this->input->post('email');
+        $where = array('email' => $email);
+        $user = $this->member_model->get_info_rule($where);
+
+        $username = $this->input->post('username');
+        $name = $this->input->post('name');
+        $phone = $this->input->post('phone');
+        $changePassword = $this->input->post('changePassword');
+
+        $remoteip = getIp();
+        if ($user) {
+          if ($changePassword == 1) {
+            $oldPassword = $this->input->post('oldPassword');
+            $newPassword = $this->input->post('phone');
+            $fPass = array('email' => $email, 'password' => md5($oldPassword));
+            $checkPass = $this->member_model->get_info_rule($fPass);
+
+            if ($checkPass) {
+              $data = array(
+                'username' => $username,
+                'name' => $name,
+                'phone' => $phone,
+                'password' => md5($newPassword),
+                'updated_at' => date("Y-m-d H:i:s", time()),
+              );
+              insertLog('[WARN] Đổi thông tin tài khoản & mật khẩu : ' . $remoteip, $user->id);
+              $this->member_model->update($user->id, $data);
+            } else {
+              $this->session->set_flashdata('error', 'Mật khẩu hiện tại không đúng.');
+            }
+          } else {
+            $data = array(
+              'username' => $username,
+              'name' => $name,
+              'phone' => $phone,
+              'updated_at' => date("Y-m-d H:i:s", time()),
+            );
+            insertLog('[WARN] Đổi thông tin tài khoản : ' . $remoteip, $user->id);
+            $this->member_model->update($user->id, $data);
+            $this->session->set_flashdata('success', 'Thay đổi thông tin cá nhân thành công.');
+          }
+          redirect(base_url('auth/profile'));
+        } else {
+          $this->session->set_flashdata('error', 'Vui lòng kiểm tra lại hoặc liên hệ với admin.');
+        }
+        redirect(base_url('auth/profile'));
+      }
+    }
   }
 
   function check_email()

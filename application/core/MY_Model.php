@@ -68,6 +68,18 @@ class MY_Model extends CI_Model
     return TRUE;
   }
 
+  function addMoney($table, $data, $amount, $where)
+  {
+    $row = $this->db->query("UPDATE `$table` SET `$data` = `$data` + '$amount' WHERE $where ");
+    return $row;
+  }
+
+  function deductMoney($table, $data, $amount, $where)
+  {
+    $row = $this->db->query("UPDATE `$table` SET `$data` = `$data` - '$amount' WHERE $where ");
+    return $row;
+  }
+
   function deleteRule($where)
   {
     if (!$where) {

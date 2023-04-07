@@ -17,7 +17,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>css/adminlte.min.css">
   <link rel="stylesheet" href="<?php echo public_url('client/') ?>css/style.css">
   <link rel="stylesheet" href="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.css">
-  <!-- <link rel="stylesheet" href="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.theme.default.min.css"> -->
+  <link rel="stylesheet" href="<?php echo public_url('admin/plugins/') ?>sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/cute-alert/style.css">
+
+  <!-- jQuery -->
+  <script src="<?php echo public_url('admin/') ?>plugins/jquery/jquery.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="<?php echo public_url('admin/') ?>plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  <!-- CuteAleart -->
+  <script src="<?php echo public_url('admin/') ?>plugins/cute-alert/cute-alert.js"></script>
+
 </head>
 
 <body class="hold-transition layout-top-nav">

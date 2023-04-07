@@ -325,3 +325,76 @@ function showMenuClient($categories, $parent_id = 0, $char = '')
     }
   }
 }
+
+function random($string, $int)
+{
+  return substr(str_shuffle($string), 0, $int);
+}
+
+function createToken()
+{
+  return md5(random('QWERTYUIOPASDGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789', 6) . time());
+}
+
+
+function display_invoice($status)
+{
+  if ($status == 'waiting') {
+    return '<span class="badge bg-warning">Waiting</span>';
+  } elseif ($status == 'expired') {
+    return '<span class="badge bg-danger">Expired</span>';
+  } else if ($status == 'completed') {
+    return '<span class="badge bg-success">Completed</span>';
+  } else if ($status == 0) {
+    return '<p class="mb-0 text-warning font-weight-bold d-flex justify-content-start align-items-center">' . 'Đang chờ thanh toán' . '</p>';
+  } else if ($status == 1) {
+    return '<p class="mb-0 text-success font-weight-bold d-flex justify-content-start align-items-center">' . 'Đã thanh toán' . '</p>';
+  } else if ($status == 2) {
+    return '<p class="mb-0 text-danger font-weight-bold d-flex justify-content-start align-items-center">' . 'Huỷ bỏ' . '</p>';
+  } else {
+    return '<b style="color:yellow;">Khác</b>';
+  }
+}
+
+function getTotalPaymentById($id)
+{
+  $CI = &get_instance();
+  $CI->load->model('invoice_model');
+  $where = array('member_id' => $id);
+  $total = $CI->invoice_model->getSum('pay', $where);
+  return $total;
+}
+
+
+function getTotalAccountById($id, $type)
+{
+  $CI = &get_instance();
+  $CI->load->model('account_model');
+
+  $where = "";
+  if ($type == 'seller') {
+    $where = "seller_id = $id AND status = 1";
+  } else if ($type == 'buyer') {
+    $where = "buyer_id = $id AND status = 1";
+  } else if ($type == 'sell_done') {
+    $where = "seller_id = $id AND status = 2";
+  }
+
+  $sql = "SELECT COUNT(id) as total FROM accounts WHERE " . $where;
+  $total = $CI->account_model->query($sql);
+
+  return $total[0]->total;
+}
+
+function getTotalAccountByPackage($id, $status = '1')
+{
+  $CI = &get_instance();
+  $CI->load->model('account_model');
+
+  $where = "package_id = $id AND status = $status";
+
+  $sql = "SELECT COUNT(id) as total FROM accounts WHERE " . $where;
+  $total = $CI->account_model->query($sql);
+
+  return $total[0]->total;
+}

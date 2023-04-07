@@ -99,6 +99,14 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="<?= admin_url('invoices') ?>" class="nav-link  <?= ($controller == 'invoices' && ($action == 'index' || $action == 'update')) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                <p>
+                  Hoá Đơn
+                </p>
+              </a>
+            </li>
             <li class="nav-item <?= (($controller == 'log' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'menu-is-opening menu-open' : '' ?>">
               <a href="#" class="nav-link <?= (($controller == 'log' && ($action == 'index' || $action == 'create' || $action == 'update'))) ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-history"></i>
