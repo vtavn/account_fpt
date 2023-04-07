@@ -69,7 +69,9 @@
                       <th>Giá</th>
                       <th>Giá Sale</th>
                       <th>Gói</th>
+                      <th>Thời Hạn</th>
                       <th>Người bán</th>
+                      <th>Người mua</th>
                       <th>Trạng thái</th>
                       <th>Action</th>
                     </tr>
@@ -83,7 +85,9 @@
                         <td><?= number_format($item->price) ?></td>
                         <td><?= number_format($item->sale_price) ?></td>
                         <td><span class="badge badge-info"><?= getNamePackageById($item->package_id)->name ?></span></td>
+                        <td><span class="badge badge-info"><?= $item->duration ?> Tháng</span></td>
                         <td><span class="badge badge-info"><?= getNameMemberById($item->seller_id)->name ?></span></td>
+                        <td><span class="badge badge-success"><?= ($item->buyer_id) ? getNameMemberById($item->buyer_id)->name : 'none' ?></span></td>
                         <td><?= display_account($item->status) ?></td>
 
                         <td>

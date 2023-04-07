@@ -321,6 +321,50 @@
 <!-- /.content -->
 
 <script>
+  function handleBuyAccount() {
+    $('#buyBtn').html('<i class="fa fa-spinner fa-spin"></i> Đang xử lý...').prop(
+      'disabled',
+      true);
+    $.ajax({
+      url: "<?= base_url('product/buyAccount') ?>",
+      method: "POST",
+      dataType: "JSON",
+      data: {
+        type: 'buy-package',
+        'package_id': $("#package_id").val(),
+        token: '<?= $my_info->token ?>'
+      },
+      success: function(respone) {
+        if (respone.status == 'success') {
+          cuteToast({
+            type: "success",
+            title: "Thành Công",
+            message: respone.msg,
+            timer: 5000
+          });
+          console.log('loadding');
+          setTimeout("location.href = '<?= base_url('payment/invoice/') ?>" + respone.trans_id + "'", 500);
+        } else {
+          Swal.fire(
+            'Thất bại',
+            respone.msg,
+            'error'
+          );
+        }
+        $('#buyBtn').html('Mua tài khoản').prop('disabled', false);
+      },
+      error: function() {
+        cuteToast({
+          type: "success",
+          title: "Thất bại",
+          message: 'Không thể xử lý',
+          timer: 5000
+        });
+        $('#buyBtn').html('Mua tài khoản').prop('disabled', false);
+      }
+    });
+  }
+
   function BuyClick(name, price) {
     cuteAlert({
       type: "question",
@@ -330,51 +374,8 @@
       cancelText: "Hủy"
     }).then((e) => {
       console.log(e)
-      if (e) {
-        // $("#buyForm").submit(function(e) {
-        //e.preventDefault();
-        $('#buyBtn').html('<i class="fa fa-spinner fa-spin"></i> Đang xử lý...').prop(
-          'disabled',
-          true);
-        $.ajax({
-          url: "<?= base_url('product/buyAccount') ?>",
-          method: "POST",
-          dataType: "JSON",
-          data: {
-            type: 'buy-package',
-            'package_id': $("#package_id").val(),
-            token: '<?= $my_info->token ?>'
-          },
-          success: function(respone) {
-            if (respone.status == 'success') {
-              cuteToast({
-                type: "success",
-                title: "Thành Công",
-                message: respone.msg,
-                timer: 5000
-              });
-              console.log('loadding');
-              setTimeout("location.href = '<?= base_url('payment/invoice/') ?>" + respone.trans_id + "'", 500);
-            } else {
-              Swal.fire(
-                'Thất bại',
-                respone.msg,
-                'error'
-              );
-            }
-            $('#buyBtn').html('Mua tài khoản').prop('disabled', false);
-          },
-          error: function() {
-            cuteToast({
-              type: "success",
-              title: "Thất bại",
-              message: 'Không thể xử lý',
-              timer: 5000
-            });
-            $('#buyBtn').html('Mua tài khoản').prop('disabled', false);
-          }
-          //  });
-        });
+      if (e == "confirm") {
+        handleBuyAccount();
       }
     })
   }

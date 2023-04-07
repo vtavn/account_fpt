@@ -375,7 +375,7 @@ function getTotalAccountById($id, $type)
   if ($type == 'seller') {
     $where = "seller_id = $id AND status = 1";
   } else if ($type == 'buyer') {
-    $where = "buyer_id = $id AND status = 1";
+    $where = "buyer_id = $id AND status = 2";
   } else if ($type == 'sell_done') {
     $where = "seller_id = $id AND status = 2";
   }

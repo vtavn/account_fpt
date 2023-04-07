@@ -289,3 +289,45 @@ footer ul {
   width: 27px;
   height: auto;
 }
+
+.pagination strong,
+.pagination a:hover {
+  background: #3f6791;
+  color: #FFF;
+}
+
+.pagination a:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.pagination a:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.pagination strong,
+.pagination a {
+  min-width: 35px;
+  color: #000;
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0 -1px 10px 0;
+  border: 1px solid #ddd;
+  /*font-weight: bold;*/
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+}
+
+.pagination strong {
+  color: white;
+}

@@ -38,14 +38,14 @@
                       <select class="form-control all-package" name="package_id">
                         <option value="">Chọn gói</option>
                         <?php foreach ($all_packages as $pack) : ?>
-                          <option value="<?= $pack->id ?>" data-name="<?= $pack->name ?>" data-price="<?= $pack->price ?>" data-sale="<?= $pack->sale_price ?>"><?= $pack->name ?></option>
+                          <option value="<?= $pack->id ?>" data-name="<?= $pack->name ?>" data-price="<?= $pack->price ?>" data-sale="<?= $pack->sale_price ?>" data-duration="<?= $pack->duration ?>"><?= $pack->name ?></option>
                         <?php endforeach ?>
                       </select>
                       <?= (form_error('package_id')) ? form_error('package_id', "<p style='color:red'>", "</p>") : '' ?>
                     </div>
                   </div>
 
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label>Tên tài khoản</label>
                       <input type="text" class="form-control name" name="name" placeholder="Mặc định sẽ lấy theo tên gói.">
@@ -53,7 +53,15 @@
                     </div>
                   </div>
 
-                  <div class="col-md-12">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Thời hạn (*)</label>
+                      <input type="text" class="form-control duration" name="duration" placeholder="Thời hạn..." required>
+                      <i>* bỏ trống thời hạn sẽ được tự động lấy theo gói đã chọn.</i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label>Giá (*)</label>
                       <input type="text" class="form-control price" name="price" placeholder="Giá gói..." required>
@@ -61,7 +69,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label>Giá Sale</label>
                       <input type="text" class="form-control sale_price" name="sale_price" placeholder="Giá giảm nếu có...">
@@ -108,9 +116,11 @@
         var name = $('.all-package').find(":selected").data('name');
         var price = $('.all-package').find(":selected").data('price');
         var price_sale = $('.all-package').find(":selected").data('sale');
+        var duration = $('.all-package').find(":selected").data('duration');
         $(".name").val(name);
         $(".price").val(price);
         $(".sale_price").val(price_sale);
+        $(".duration").val(duration);
       });
     });
   </script>

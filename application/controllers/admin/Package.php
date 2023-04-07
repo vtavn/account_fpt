@@ -60,6 +60,7 @@ class Package extends MY_Controller
       $sale_price = $this->input->post('sale_price');
       $thumb = $this->input->post('thumb');
       $status = $this->input->post('status');
+      $duration = $this->input->post('duration');
       $member_id = $this->session->userdata('uid');
 
       $data = array(
@@ -67,6 +68,7 @@ class Package extends MY_Controller
         'content' => $content,
         'short_content' => $short_content,
         'price' => $price,
+        'duration' => $duration,
         'sale_price' => $sale_price,
         'thumb' => $thumb,
         'status' => $status,
@@ -122,12 +124,14 @@ class Package extends MY_Controller
         $sale_price = $this->input->post('sale_price');
         $thumb = $this->input->post('thumb');
         $status = $this->input->post('status');
+        $duration = $this->input->post('duration');
         $member_id = $this->session->userdata('uid');
 
         $data = array(
           'name' => $name,
           'content' => $content,
           'short_content' => $short_content,
+          'duration' => $duration,
           'price' => $price,
           'sale_price' => $sale_price,
           'thumb' => $thumb,
