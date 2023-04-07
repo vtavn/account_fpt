@@ -32,10 +32,18 @@
               <div class="card-body">
                 <div class="row">
 
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label>Tên gói (*)</label>
                       <input type="text" class="form-control" name="name" placeholder="Gói cước 1 tháng..." required>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Thời hạn (*)</label>
+                      <input type="text" class="form-control" name="duration" placeholder="Thời hạn..." required>
+                      <i>Đơn vị tháng: 1 tháng = 1, 1 năm = 12,...</i>
                     </div>
                   </div>
 

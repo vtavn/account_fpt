@@ -35,6 +35,7 @@
                       <th>ID</th>
                       <th>Ảnh</th>
                       <th>Tên gói</th>
+                      <th>Thời hạn</th>
                       <th>Giá</th>
                       <th>Giá Sale</th>
                       <th>Tài khoản</th>
@@ -48,6 +49,7 @@
                         <td><?= $item->id ?></td>
                         <td><img src="<?= $item->thumb ?>" alt="" width="40px"></td>
                         <td><?= $item->name ?></td>
+                        <td><?= $item->duration ?> tháng</td>
                         <td><?= number_format($item->price) ?></td>
                         <td><?= number_format($item->sale_price) ?></td>
                         <td><span class="badge badge-success"><?= number_format(getTotalAccountByIdPackage($item->id)) ?></span></td>

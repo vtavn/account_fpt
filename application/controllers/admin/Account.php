@@ -11,7 +11,8 @@ class Account extends MY_Controller
     $this->load->model('package_model');
     $this->load->model('account_model');
 
-    $allPackage = $this->package_model->getList(['status' => '1']);
+    $packS['where'] = array('deleted_at' => null);
+    $allPackage = $this->package_model->getList($packS);
     $this->data['all_packages'] = $allPackage;
 
     if (!is_admin()) {
@@ -148,6 +149,8 @@ class Account extends MY_Controller
     if ($this->input->post()) {
 
       $this->form_validation->set_rules('package_id', 'Gói cần được phải chọn.', 'required');
+      $this->form_validation->set_rules('price', 'Giá sản phẩm bắt buộc.', 'required');
+      $this->form_validation->set_rules('sale_price', 'Giá sale sản phẩm bắt buộc.', 'required');
 
       if ($this->form_validation->run()) {
         $package_id = $this->input->post('package_id');
@@ -156,6 +159,7 @@ class Account extends MY_Controller
         $sale_price = $this->input->post('sale_price');
         $seller_id = $this->session->userdata('uid');
         $status = $this->input->post('status');
+        $duration = $this->input->post('duration');
 
         $account = check_string($this->input->post('account'));
         $accounts = explode(PHP_EOL, $account);
@@ -169,6 +173,7 @@ class Account extends MY_Controller
             'seller_id' => $seller_id,
             'account' => $account,
             'status' => $status,
+            'duration' => $duration
           );
 
           if ($this->account_model->create($data)) {

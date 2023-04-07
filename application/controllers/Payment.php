@@ -113,9 +113,27 @@ class Payment extends MY_Controller
   function invoices()
   {
     $where = "WHERE member_id = '" . $this->session->userdata('uid') . "'";
-    $sql = 'SELECT * FROM invoices ' . $where . ' ORDER BY id DESC ';
-    $list_invoice = $this->invoice_model->query($sql);
-    $this->data['list_invoices'] = $list_invoice;
+
+    $sql_2 = 'SELECT count(id) as total from invoices ' . $where;
+    $total_rows = $this->invoice_model->query($sql_2);
+    $this->data['total_rows'] = $total_rows[0]->total;
+
+    $config = array();
+    $config['total_rows'] = $total_rows[0]->total;
+    $config['base_url'] = base_url('payment/invoices');
+    $config['per_page'] = 15;
+    $config['reuse_query_string'] = true;
+    $config['uri_segment'] = 4;
+    $this->pagination->initialize($config);
+    $segment = $this->uri->segment(3);
+    $segment = intval($segment);
+    $limit = 'LIMIT ' . $segment . ', ' . $config['per_page'];
+    $sql = 'SELECT * FROM invoices ' . $where . ' ORDER BY id DESC ' . $limit;
+    $list_invoices = $this->invoice_model->query($sql);
+    $this->data['list_invoices'] = $list_invoices;
+    $pagination = $this->pagination->create_links();
+    $this->data['pagination'] = $pagination;
+    // end pagination
 
     $this->data['title'] = 'Danh sách hoá đơn';
     $this->data['temp'] = 'client/pages/invoices';
