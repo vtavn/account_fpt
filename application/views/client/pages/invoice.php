@@ -68,9 +68,9 @@
         <div class="navbar-header" style="position: relative">
           <div class="col-xs-12 col-sm-12 col-md-12 text-right" style="padding-right: 0px;">
             <img src="<?= public_url('client/faces'); ?>/javax.faces.resource/images/hotline.svg" alt="logo-security" width="35" />
-            <span>0987.654.321</span>
+            <span><?= getSettingByName('phone') ?></span>
             <img src="<?= public_url('client/faces'); ?>/javax.faces.resource/images/email.svg" alt="logo-security" width="35" />
-            <a href="mailto:admin@gmail.com"><span>admin@gmail.com</span></a>
+            <a href="mailto:<?= getSettingByName('email') ?>"><span><?= getSettingByName('email') ?></span></a>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
         <div class="col-xs-12 col-sm-12 col-md-4 left">
           <div class="info-box">
             <div class="receipt">
-              <img src="" alt="Logo" width="100%" />
+              <img src="<?= getSettingByName('logo') ?>" alt="Logo" width="100%" />
             </div>
             <div class="entry">
               <p><i class="fa fa-university" aria-hidden="true"></i>

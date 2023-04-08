@@ -34,7 +34,7 @@
 
               <h3 class="profile-username text-center"><?= $my_info->username ?></h3>
 
-              <p class="text-muted text-center"><?= $my_info->role_id ?></p>
+              <p class="text-muted text-center"><?= getRoleById($my_info->role_id)->name ?></p>
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">

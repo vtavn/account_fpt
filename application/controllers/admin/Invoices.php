@@ -115,9 +115,11 @@ class Invoices extends MY_Controller
         'status' => $status,
       );
 
+      if ($status == 1) {
+        $this->member_model->addMoney("members", "money", $pay, $invoice_info->member_id);
+      }
+
       $this->invoice_model->update($invoice_info->id, $data);
-      //update add money to user 
-      $this->member_model->addMoney("members", "money", $pay, $invoice_info->member_id);
 
       insertLog('Sửa hoá đơn #' . $invoice_info->trans_id);
       $this->session->set_flashdata('success', 'Cập nhật thành công!.');

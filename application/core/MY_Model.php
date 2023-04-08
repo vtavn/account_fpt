@@ -6,6 +6,11 @@ if (!defined('BASEPATH'))
 class MY_Model extends CI_Model
 {
 
+  function __construct()
+  {
+    parent::__construct();
+  }
+
   var $table = '';
   var $key = 'id';
   var $order = '';
@@ -239,5 +244,12 @@ class MY_Model extends CI_Model
       return $query->row();
     }
     return FALSE;
+  }
+
+  function update_setting($key, $value)
+  {
+    $this->db->set('value', $value);
+    $this->db->where('name', $key);
+    $this->db->update('settings');
   }
 }

@@ -149,8 +149,6 @@ class Account extends MY_Controller
     if ($this->input->post()) {
 
       $this->form_validation->set_rules('package_id', 'Gói cần được phải chọn.', 'required');
-      // $this->form_validation->set_rules('price', 'Giá sản phẩm bắt buộc.', 'required');
-      // $this->form_validation->set_rules('sale_price', 'Giá sale sản phẩm bắt buộc.', 'required');
 
       if ($this->form_validation->run()) {
         $package_id = $this->input->post('package_id');

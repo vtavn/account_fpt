@@ -45,9 +45,9 @@
                 </div>
                 <div class="col-lg-6">
                   <strong>Lưu ý khi sử dụng</strong>
-                  <p>- Lưu ý 1</p>
-                  <p>- Lưu ý 2</p>
-                  <p>- Lưu ý 3</p>
+                  <div>
+                    <?= getSettingByName('note_don_hang') ?>
+                  </div>
                 </div>
               </div>
               <a href="<?= base_url('orders') ?>" class="btn btn-block btn-primary btn-flat">Quay lại</a>

@@ -29,7 +29,7 @@ class Orders extends MY_Controller
 
     $config = array();
     $config['total_rows'] = $total_rows[0]->total;
-    $config['base_url'] = base_url('order/index');
+    $config['base_url'] = base_url('orders/index');
     $config['per_page'] = 15;
     $config['reuse_query_string'] = true;
     $config['uri_segment'] = 4;

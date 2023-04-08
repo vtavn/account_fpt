@@ -52,7 +52,7 @@
                   Hết hàng
                 </button>
               <?php endif ?>
-              <a href="" class="btn btn-default btn-lg">
+              <a href="<?= getSettingByName('facebook_admin') ?>" class="btn btn-default btn-lg">
                 <i class="fas fa-heart fa-lg mr-2"></i>
                 Liên hệ Admin
               </a>

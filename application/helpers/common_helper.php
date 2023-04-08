@@ -195,6 +195,15 @@ function getNamePackageById($id)
   return $package;
 }
 
+function getRoleById($id)
+{
+  $CI = &get_instance();
+  $CI->load->model('role_model');
+  $where = array('id' => $id);
+  $role = $CI->role_model->get_info_rule($where);
+  return $role;
+}
+
 function getValueinGet($key)
 {
   $CI = &get_instance();
@@ -436,4 +445,13 @@ function daysUntil($timeBuy, $timeExpired)
   $diff = strtotime($timeExpired) - $now;
   $days = round($diff / 86400);
   return $days;
+}
+
+function getSettingByName($name)
+{
+  $CI = &get_instance();
+  $CI->load->model('setting_model');
+  $where = array('name' => $name);
+  $setting = $CI->setting_model->get_info_rule($where);
+  return $setting->value;
 }

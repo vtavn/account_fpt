@@ -2,7 +2,7 @@
 <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark">
   <div class="container">
     <a href="/" class="navbar-brand">
-      <img src="https://fptplay.vn/images/logo-2.png" alt="Logo" class="">
+      <img src="<?= getSettingByName('logo') ?>" al="Logo" class="">
     </a>
 
     <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
