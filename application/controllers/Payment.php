@@ -10,9 +10,12 @@ class Payment extends MY_Controller
     $this->load->model('bank_model');
     $this->load->model('member_model');
     $this->load->model('invoice_model');
-    if (!is_login()) {
-      redirect(base_url('auth/login'));
-    }
+    $this->load->model('account_model');
+    $this->load->model('order_model');
+
+    // if (!is_login()) {
+    //   redirect(base_url('auth/login'));
+    // }
   }
 
   public function recharge()
@@ -138,5 +141,102 @@ class Payment extends MY_Controller
     $this->data['title'] = 'Danh sách hoá đơn';
     $this->data['temp'] = 'client/pages/invoices';
     $this->load->view('client/main', $this->data);
+  }
+
+  function totalPayment()
+  {
+    if ($this->input->post()) {
+      $type = check_string($this->input->post('type'));
+      $account_id = check_string($this->input->post('id'));
+      $token = check_string($this->input->post('token'));
+
+      if (empty($token)) {
+        die('Vui lòng đăng nhập.');
+      }
+
+      if (empty($type) || empty($account_id) || empty($token)) {
+        die('Lỗi vui lòng kiểm tra lại.');
+      }
+
+      if ($type == 'account') {
+        $checkUser = $this->member_model->get_info_rule(['token' => $token]);
+        if (!$checkUser) {
+          die('Vui lòng đăng nhập.');
+        }
+
+        //get account
+        $sql = "SELECT * FROM accounts WHERE id = '$account_id' AND status = 1 ORDER BY RAND() LIMIT 1";
+        $result = $this->account_model->query($sql);
+        if ($result) {
+          $accountOK = $result[0];
+          if ($accountOK->sale_price == 0) {
+            $pricePay = $accountOK->price;
+          } else {
+            $pricePay = $accountOK->sale_price;
+          }
+          die(number_format($pricePay));
+        } else {
+          die('Tài khoản không còn.!');
+        }
+      }
+    }
+
+    //
+  }
+
+  function buyProduct()
+  {
+    if ($this->input->post()) {
+      //check id
+      $id_account = check_string($this->input->post('id'));
+      $token = check_string($this->input->post('token'));
+      $member_id = $this->session->userdata('uid');
+
+      if (empty($id_account) || empty($token)) {
+        die(json_encode(['status' => 'error', 'msg' => 'Lỗi vui lòng kiểm tra lại.']));
+      }
+
+      //get account
+      $sql = "SELECT * FROM accounts WHERE id = '$id_account' AND status = 1 ORDER BY RAND() LIMIT 1";
+      $result = $this->account_model->query($sql);
+      if ($result) {
+        $accountOK = $result[0];
+        // deduct money from member 
+        if ($accountOK->sale_price == 0) {
+          $pricePay = $accountOK->price;
+        } else {
+          $pricePay = $accountOK->sale_price;
+        }
+
+        $getMoneyUser = $this->member_model->get_info_rule(['id' => $member_id, 'token' => $token])->money;
+        if ($getMoneyUser < $pricePay) {
+          die(json_encode(['status' => 'error', 'msg' => 'Số dư tài khoản của bạn không đủ.']));
+        } else {
+          $trans_id = random("CUAQWERTYUPASDFGHJKZXCVBNM0123456789", 10);
+          $time_expired = date("Y-m-d H:i:s", strtotime(convertNumberToTime($accountOK->duration)));
+          $this->member_model->deductMoney("members", "money", $pricePay, $member_id);
+          // update accout => out of stock
+          $this->account_model->update($accountOK->id, ['trans_id' => $trans_id, 'status' => 2, 'buyer_id' => $member_id, 'updated_at' => date("Y-m-d H:i:s", time()), 'buyed_at' => date("Y-m-d H:i:s", time())]);
+          // send account to history member
+          $orderData = array(
+            'trans_id' => $trans_id,
+            'seller_id' => $accountOK->seller_id,
+            'buyer_id' => $member_id,
+            'package_id' => $accountOK->package_id,
+            'amount' => 1,
+            'pay' => $pricePay,
+            'cost' => 0,
+            'status' => 1,
+            'expired_at' => $time_expired,
+          );
+          $this->order_model->create($orderData);
+          //insert log
+          insertLog("Mua tài khoản mã giao dịch #" . $trans_id . " hết hạn vào ngày " . $time_expired);
+          die(json_encode(['status' => 'success', 'msg' => 'Mua tài khoản thành công.', 'trans_id' => $trans_id]));
+        }
+      } else {
+        die(json_encode(['status' => 'error', 'msg' => 'Hết hàng vui lòng quay lại sau.']));
+      }
+    }
   }
 }

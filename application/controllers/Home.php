@@ -18,14 +18,16 @@ class Home extends MY_Controller
     //package 
     $filterPack = array();
     $filterPack['order'] = array('id', 'DESC');
-    $filterPack['where'] = array('status', '1');
+    $filterPack['where'] = array('deleted_at' => null);
     $packages = $this->package_model->getList($filterPack);
     $this->data['list_package'] = $packages;
 
     $fAccount = array();
-    $fAccount['order'] = array('id', 'RAND()');
+    $fAccount['order'] = array('id', 'DESC');
     $fAccount['where'] = array('status', '1');
+    $fAccount['where'] = array('buyed_at' => null);
     $fAccount['limit'] = array(8, 0);
+
     $accounts = $this->account_model->getList($fAccount);
     $this->data['list_account'] = $accounts;
 

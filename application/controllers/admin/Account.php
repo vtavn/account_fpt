@@ -149,14 +149,14 @@ class Account extends MY_Controller
     if ($this->input->post()) {
 
       $this->form_validation->set_rules('package_id', 'Gói cần được phải chọn.', 'required');
-      $this->form_validation->set_rules('price', 'Giá sản phẩm bắt buộc.', 'required');
-      $this->form_validation->set_rules('sale_price', 'Giá sale sản phẩm bắt buộc.', 'required');
+      // $this->form_validation->set_rules('price', 'Giá sản phẩm bắt buộc.', 'required');
+      // $this->form_validation->set_rules('sale_price', 'Giá sale sản phẩm bắt buộc.', 'required');
 
       if ($this->form_validation->run()) {
         $package_id = $this->input->post('package_id');
         $name = $this->input->post('name');
-        $price = $this->input->post('price');
-        $sale_price = $this->input->post('sale_price');
+        $price = empty($this->input->post('price')) ? 0 : $this->input->post('price');
+        $sale_price = empty($this->input->post('sale_price')) ? 0 : $this->input->post('sale_price');
         $seller_id = $this->session->userdata('uid');
         $status = $this->input->post('status');
         $duration = $this->input->post('duration');

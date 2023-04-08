@@ -342,8 +342,7 @@
             message: respone.msg,
             timer: 5000
           });
-          console.log('loadding');
-          setTimeout("location.href = '<?= base_url('payment/invoice/') ?>" + respone.trans_id + "'", 500);
+          setTimeout("location.href = '<?= base_url('orders/show/') ?>" + respone.trans_id + "'", 500);
         } else {
           Swal.fire(
             'Thất bại',

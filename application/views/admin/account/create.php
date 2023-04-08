@@ -57,7 +57,7 @@
                     <div class="form-group">
                       <label>Thời hạn (*)</label>
                       <input type="text" class="form-control duration" name="duration" placeholder="Thời hạn..." required>
-                      <i>* bỏ trống thời hạn sẽ được tự động lấy theo gói đã chọn.</i>
+                      <i>* thời hạn mặc định sẽ lấy theo gói đã chọn.</i>
                     </div>
                   </div>
 
@@ -65,7 +65,7 @@
                     <div class="form-group">
                       <label>Giá (*)</label>
                       <input type="text" class="form-control price" name="price" placeholder="Giá gói..." required>
-                      <i>* bỏ trống giá gói sẽ được tự động lấy theo gói đã chọn.</i>
+                      <i>* giá mặc định sẽ lấy theo gói đã chọn.</i>
                     </div>
                   </div>
 
@@ -73,7 +73,7 @@
                     <div class="form-group">
                       <label>Giá Sale</label>
                       <input type="text" class="form-control sale_price" name="sale_price" placeholder="Giá giảm nếu có...">
-                      <i>* bỏ trống giá sale sẽ được tự động lấy theo gói đã chọn.</i>
+                      <i>* giá giảm mặc định sẽ lấy theo gói đã chọn hoặc điền 0 nếu không có.</i>
                     </div>
                   </div>
 

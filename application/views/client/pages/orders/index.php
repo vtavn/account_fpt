@@ -23,6 +23,7 @@
       <div class="row">
         <section class="col-lg-12">
           <div class="card card-primary card-outline">
+            <?php $this->load->view('message'); ?>
             <div class="card-header">
               <h5 class="m-0"><?= $title ?></h5>
             </div>
@@ -45,7 +46,7 @@
                         <td><?= $item->id ?></td>
                         <td><a href="<?= base_url('orders/show/') ?><?= $item->trans_id ?>"><i class="fas fa-file-alt"></i>
                             <?= $item->trans_id ?></b></a></td>
-                        <td><b><?= $item->package_id ?></b></td>
+                        <td><b><?= getNamePackageById($item->package_id)->name ?></b></td>
                         <td><?= display_time($item->created_at) ?></td>
                         <td><?= display_time($item->created_at) ?></td>
                         <td>

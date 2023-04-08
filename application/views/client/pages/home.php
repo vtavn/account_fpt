@@ -92,7 +92,7 @@
                       <i class="fas fa-star text-warning mr-1 main_star"></i>
                     </div>
                     <div class="mb-4"></div>
-                    <button class="btn btn-block btn-primary" onclick="">
+                    <button class="btn btn-block btn-primary" onclick="modalBuy('<?= $account->id ?>', '<?= $account->name ?>')">
                       <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
                   </div>
                 </div>
@@ -105,7 +105,7 @@
 
 
       <div class="col-lg-12">
-        <h3 class="mt-3 d-flex title-home">Tài nổi bật</h3>
+        <h3 class="mt-3 d-flex title-home">Tài khoản nổi bật</h3>
         <div class="row owl-carousel owl-theme" id="listAccounts2">
           <?php foreach ($list_account as $account) : ?>
             <!-- card item account -->
@@ -143,7 +143,7 @@
                       <i class="fas fa-star text-warning mr-1 main_star"></i>
                     </div>
                     <div class="mb-4"></div>
-                    <button class="btn btn-block btn-primary" onclick="">
+                    <button class="btn btn-block btn-primary" onclick="modalBuy('<?= $account->id ?>', '<?= $account->name ?>')">
                       <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
                   </div>
                 </div>
@@ -162,6 +162,9 @@
       </div>
     </div>
     <!-- /.row -->
+
+    <?php $this->load->view('client/models/buymodel'); ?>
+
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->

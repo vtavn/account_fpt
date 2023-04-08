@@ -70,13 +70,13 @@ class MY_Model extends CI_Model
 
   function addMoney($table, $data, $amount, $where)
   {
-    $row = $this->db->query("UPDATE `$table` SET `$data` = `$data` + '$amount' WHERE $where ");
+    $row = $this->db->query("UPDATE `$table` SET `$data` = `$data` + '$amount' WHERE `id` = $where ");
     return $row;
   }
 
   function deductMoney($table, $data, $amount, $where)
   {
-    $row = $this->db->query("UPDATE `$table` SET `$data` = `$data` - '$amount' WHERE $where ");
+    $row = $this->db->query("UPDATE `$table` SET `$data` = `$data` - '$amount' WHERE `id` = $where");
     return $row;
   }
 

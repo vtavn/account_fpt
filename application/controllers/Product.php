@@ -38,7 +38,6 @@ class Product extends MY_Controller
       if (!$package_info) {
         die(json_encode(['status' => 'error', 'msg' => 'Lỗi vui lòng thử lại sau.']));
       } else {
-
         //get account
         $sql = "SELECT * FROM accounts WHERE package_id = '$package_id' AND status = 1 ORDER BY RAND() LIMIT 1";
         $result = $this->account_model->query($sql);
@@ -57,10 +56,11 @@ class Product extends MY_Controller
           if ($getMoneyUser < $pricePay) {
             die(json_encode(['status' => 'error', 'msg' => 'Số dư tài khoản của bạn không đủ.']));
           } else {
-            $trans_id = random("CUAQWERTYUPASDFGHJKZXCVBNM123456789", 10);
+            $trans_id = random("CUAQWERTYUPASDFGHJKZXCVBNM0123456789", 10);
+            $time_expired = date("Y-m-d H:i:s", strtotime(convertNumberToTime($accountOK->duration)));
             $this->member_model->deductMoney("members", "money", $pricePay, $member_id);
             // update accout => out of stock
-            $this->account_model->update($accountOK->id, ['status' => 2, 'buyer_id' => $member_id, 'updated_at' => date("Y-m-d H:i:s", time())]);
+            $this->account_model->update($accountOK->id, ['trans_id' => $trans_id, 'status' => 2, 'buyer_id' => $member_id, 'updated_at' => date("Y-m-d H:i:s", time()), 'buyed_at' => date("Y-m-d H:i:s", time())]);
             // send account to history member
             $orderData = array(
               'trans_id' => $trans_id,
@@ -70,15 +70,16 @@ class Product extends MY_Controller
               'amount' => 1,
               'pay' => $pricePay,
               'cost' => 0,
-              'status' => 1
+              'status' => 1,
+              'expired_at' => $time_expired,
             );
             $this->order_model->create($orderData);
             //insert log
-            insertLog("Mua tài khoản mã giao dịch #" . $trans_id);
+            insertLog("Mua tài khoản mã giao dịch #" . $trans_id . " hết hạn vào ngày " . $time_expired);
             die(json_encode(['status' => 'success', 'msg' => 'Mua tài khoản thành công.', 'trans_id' => $trans_id]));
           }
         } else {
-          die(json_encode(['status' => 'success', 'msg' => 'Hết hàng vui lòng quay lại sau']));
+          die(json_encode(['status' => 'error', 'msg' => 'Hết hàng vui lòng quay lại sau']));
         }
       }
     }

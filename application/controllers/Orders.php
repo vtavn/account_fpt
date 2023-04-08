@@ -10,6 +10,7 @@ class Orders extends MY_Controller
     $this->load->model('bank_model');
     $this->load->model('member_model');
     $this->load->model('invoice_model');
+    $this->load->model('account_model');
 
     $this->load->model('order_model');
 
@@ -44,7 +45,47 @@ class Orders extends MY_Controller
     // end pagination
 
     $this->data['title'] = 'Lịch sử mua hàng';
-    $this->data['temp'] = 'client/pages/orders';
+    $this->data['temp'] = 'client/pages/orders/index';
     $this->load->view('client/main', $this->data);
+  }
+
+  function show()
+  {
+    $trans_id = $this->uri->segment(3);
+    $token_user = $this->session->userdata('token');
+    $id_user = $this->session->userdata('uid');
+
+    if ($trans_id) {
+      //find user
+      $fMem = array('token' => $token_user, 'id' => $id_user);
+      $checkMem = $this->member_model->get_info_rule($fMem);
+      if (!$checkMem) {
+        $this->session->set_flashdata('error', 'Người dùng không tồn tại.');
+        return redirect(base_url('orders'));
+      } else {
+        $where = array('trans_id' => $trans_id, 'buyer_id' => $checkMem->id);
+        $order_info = $this->order_model->get_info_rule($where);
+        if (!$order_info) {
+          $this->session->set_flashdata('error', 'Đơn hàng này không phải của bạn.');
+          return redirect(base_url('orders'));
+        } else {
+          // check order by user
+          $account_info = $this->account_model->get_info_rule($where);
+          if (!$account_info) {
+            $this->session->set_flashdata('error', 'Đơn hàng này không phải của bạn.');
+            return redirect(base_url('orders'));
+          } else {
+            $this->data['account_info'] = $account_info;
+            $this->data['order_info'] = $order_info;
+            $this->data['title'] = 'Thông tin đơn hàng #' . $order_info->trans_id;
+            $this->data['temp'] = 'client/pages/orders/show';
+            $this->load->view('client/main', $this->data);
+          }
+        }
+      }
+    } else {
+      $this->session->set_flashdata('error', 'Thiếu giá trị truyền vào.');
+      return redirect(base_url('orders'));
+    }
   }
 }

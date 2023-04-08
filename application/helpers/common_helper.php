@@ -398,3 +398,42 @@ function getTotalAccountByPackage($id, $status = '1')
 
   return $total[0]->total;
 }
+
+function convertNumberToTime($number)
+{
+  $time = '';
+  switch ($number) {
+    case 1:
+      $time = '+1 month';
+      break;
+    case 3:
+      $time = '+3 month';
+      break;
+    case 6:
+      $time = '+6 month';
+      break;
+    case 12:
+      $time = '+1 year';
+      break;
+    default:
+      $time = '+1 month';
+      break;
+  }
+
+  return $time;
+}
+
+function explodeData($item)
+{
+  $data = explode("|", $item);
+  return $data;
+}
+
+
+function daysUntil($timeBuy, $timeExpired)
+{
+  $now = strtotime($timeBuy);
+  $diff = strtotime($timeExpired) - $now;
+  $days = round($diff / 86400);
+  return $days;
+}
