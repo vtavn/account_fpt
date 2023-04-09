@@ -152,7 +152,7 @@ footer ul {
   .owl-carousel {
     /* width: calc(100% + 30px); */
     width: calc(100%);
-    /* full mÃƒÆ’Ã‚Â n hÃƒÆ’Ã‚Â¬nh khi hiÃƒÂ¡Ã‚Â»Ã†â€™n thÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¹ trÃƒÆ’Ã‚Âªn mobile */
+    /* full mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â n hÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¬nh khi hiÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€ Ã¢â‚¬â„¢n thÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ trÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªn mobile */
   }
 
   .owl-carousel .owl-next,
@@ -253,7 +253,7 @@ footer ul {
 } */
 
 .category-item img {
-  width: 70px;
+  width: 70px !important;
 }
 
 .thumb img {

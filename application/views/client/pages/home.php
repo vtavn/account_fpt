@@ -36,18 +36,16 @@
 
     <!-- categories -->
     <div class="col-lg-12 mt-3">
-      <div class="row">
+      <div class="row owl-carousel owl-theme" id="listPackageHome">
         <?php foreach ($list_package as $pack) : ?>
-          <div class="col-12 col-sm-6 col-md-3">
+          <div class="col-12">
             <div class="info-box category-item">
               <span><img src="<?= $pack->thumb ?>" alt=""></span>
 
               <div class="info-box-content">
                 <span class="info-box-text"><b><?= $pack->name ?></b></span>
-                <a class="btn btn-xs btn-info" href="<?= client_url($pack->name) ?><?= $pack->id ?>.html">Xem ngay</a>
-                <!-- /.info-box-content -->
+                <a class="btn btn-xs btn-info" href="<?= client_url($pack->name) ?><?= $pack->id ?>.html">Mua ngay</a>
               </div>
-              <!-- /.info-box -->
             </div>
           </div>
         <?php endforeach; ?>

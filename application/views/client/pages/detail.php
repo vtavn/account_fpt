@@ -76,245 +76,52 @@
       </div>
     </div>
 
-    <div class="col-lg-12">
-      <h3 class="mt-3 d-flex title-home">Tài khoản mới</h3>
-      <div class="row owl-carousel owl-theme" id="listAccounts">
-        <!-- card item account -->
-        <div class="product-item mt-4 mt-md-3">
-          <div class="card basic-drop-shadow p-3 shadow-showcase shadow">
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <p><img class="mr-1" src="https://fptplay.vn/favicon.ico" width="25px"><b>Tài khoản FPT Play 3 Tháng</b>
-                </p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Bảo hành trong suốt quá trình sử dụng.</i></p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Cam kết sử dụng đủ thời hạn.</i></p>
-                <p style="font-size: 13px;"><i class="fas fa-user mr-1"></i><i>Người bán: <a href="#">Admin <i class="fas fa-check mr-1"></i></a></i></p>
-              </div>
-              <div class="col-md-12">
-                <span class="btn mb-1 btn-sm btn-outline-danger">
-                  Giá: <b>100.000đ</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-info">
-                  Còn lại: <b>39</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-success">
-                  Đã bán: <b>128</b>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <div class="mb-2"></div>
-                <div class="text-center">
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                </div>
-                <div class="mb-4"></div>
-                <button class="btn btn-block btn-primary" onclick="">
-                  <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end card item account -->
-        <!-- card item account -->
-        <div class="product-item mt-4 mt-md-3">
-          <div class="card basic-drop-shadow p-3 shadow-showcase shadow">
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <p><img class="mr-1" src="https://fptplay.vn/favicon.ico" width="25px"><b>Tài khoản FPT Play 3 Tháng</b>
-                </p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Bảo hành trong suốt quá trình sử dụng.</i></p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Cam kết sử dụng đủ thời hạn.</i></p>
-                <p style="font-size: 13px;"><i class="fas fa-user mr-1"></i><i>Người bán: <a href="#">Admin <i class="fas fa-check mr-1"></i></a></i></p>
-              </div>
-              <div class="col-md-12">
-                <span class="btn mb-1 btn-sm btn-outline-danger">
-                  Giá: <b>100.000đ</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-info">
-                  Còn lại: <b>39</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-success">
-                  Đã bán: <b>128</b>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <div class="mb-2"></div>
-                <div class="text-center">
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                </div>
-                <div class="mb-4"></div>
-                <button class="btn btn-block btn-primary" onclick="">
-                  <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end card item account -->
-        <!-- card item account -->
-        <div class="product-item mt-4 mt-md-3">
-          <div class="card basic-drop-shadow p-3 shadow-showcase shadow">
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <p><img class="mr-1" src="https://fptplay.vn/favicon.ico" width="25px"><b>Tài khoản FPT Play 3 Tháng</b>
-                </p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Bảo hành trong suốt quá trình sử dụng.</i></p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Cam kết sử dụng đủ thời hạn.</i></p>
-                <p style="font-size: 13px;"><i class="fas fa-user mr-1"></i><i>Người bán: <a href="#">Admin <i class="fas fa-check mr-1"></i></a></i></p>
-              </div>
-              <div class="col-md-12">
-                <span class="btn mb-1 btn-sm btn-outline-danger">
-                  Giá: <b>100.000đ</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-info">
-                  Còn lại: <b>39</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-success">
-                  Đã bán: <b>128</b>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <div class="mb-2"></div>
-                <div class="text-center">
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                </div>
-                <div class="mb-4"></div>
-                <button class="btn btn-block btn-primary" onclick="">
-                  <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end card item account -->
-        <!-- card item account -->
-        <div class="product-item mt-4 mt-md-3">
-          <div class="card basic-drop-shadow p-3 shadow-showcase shadow">
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <p><img class="mr-1" src="https://fptplay.vn/favicon.ico" width="25px"><b>Tài khoản FPT Play 3 Tháng</b>
-                </p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Bảo hành trong suốt quá trình sử dụng.</i></p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Cam kết sử dụng đủ thời hạn.</i></p>
-                <p style="font-size: 13px;"><i class="fas fa-user mr-1"></i><i>Người bán: <a href="#">Admin <i class="fas fa-check mr-1"></i></a></i></p>
-              </div>
-              <div class="col-md-12">
-                <span class="btn mb-1 btn-sm btn-outline-danger">
-                  Giá: <b>100.000đ</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-info">
-                  Còn lại: <b>39</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-success">
-                  Đã bán: <b>128</b>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <div class="mb-2"></div>
-                <div class="text-center">
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                </div>
-                <div class="mb-4"></div>
-                <button class="btn btn-block btn-primary" onclick="">
-                  <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end card item account -->
-        <!-- card item account -->
-        <div class="product-item mt-4 mt-md-3">
-          <div class="card basic-drop-shadow p-3 shadow-showcase shadow">
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <p><img class="mr-1" src="https://fptplay.vn/favicon.ico" width="25px"><b>Tài khoản FPT Play 3 Tháng</b>
-                </p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Bảo hành trong suốt quá trình sử dụng.</i></p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Cam kết sử dụng đủ thời hạn.</i></p>
-                <p style="font-size: 13px;"><i class="fas fa-user mr-1"></i><i>Người bán: <a href="#">Admin <i class="fas fa-check mr-1"></i></a></i></p>
-              </div>
-              <div class="col-md-12">
-                <span class="btn mb-1 btn-sm btn-outline-danger">
-                  Giá: <b>100.000đ</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-info">
-                  Còn lại: <b>39</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-success">
-                  Đã bán: <b>128</b>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <div class="mb-2"></div>
-                <div class="text-center">
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                </div>
-                <div class="mb-4"></div>
-                <button class="btn btn-block btn-primary" onclick="">
-                  <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end card item account -->
-        <!-- card item account -->
-        <div class="product-item mt-4 mt-md-3">
-          <div class="card basic-drop-shadow p-3 shadow-showcase shadow">
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <p><img class="mr-1" src="https://fptplay.vn/favicon.ico" width="25px"><b>Tài khoản FPT Play 3 Tháng</b>
-                </p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Bảo hành trong suốt quá trình sử dụng.</i></p>
-                <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Cam kết sử dụng đủ thời hạn.</i></p>
-                <p style="font-size: 13px;"><i class="fas fa-user mr-1"></i><i>Người bán: <a href="#">Admin <i class="fas fa-check mr-1"></i></a></i></p>
-              </div>
-              <div class="col-md-12">
-                <span class="btn mb-1 btn-sm btn-outline-danger">
-                  Giá: <b>100.000đ</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-info">
-                  Còn lại: <b>39</b>
-                </span>
-                <span class="btn mb-1 btn-sm btn-outline-success">
-                  Đã bán: <b>128</b>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <div class="mb-2"></div>
-                <div class="text-center">
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                  <i class="fas fa-star text-warning mr-1 main_star"></i>
-                </div>
-                <div class="mb-4"></div>
-                <button class="btn btn-block btn-primary" onclick="">
-                  <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end card item account -->
-      </div>
-    </div>
+    <?php
+    // <div class="col-lg-12">
+    //       <h3 class="mt-3 d-flex title-home">Tài khoản mới</h3>
+    //       <div class="row owl-carousel owl-theme" id="listAccounts">
+    //         <!-- card item account -->
+    //         <div class="product-item mt-4 mt-md-3">
+    //           <div class="card basic-drop-shadow p-3 shadow-showcase shadow">
+    //             <div class="row">
+    //               <div class="col-md-12 mb-3">
+    //                 <p><img class="mr-1" src="https://fptplay.vn/favicon.ico" width="25px"><b>Tài khoản FPT Play 3 Tháng</b>
+    //                 </p>
+    //                 <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Bảo hành trong suốt quá trình sử dụng.</i></p>
+    //                 <p style="font-size: 12px;"><i class="fas fa-angle-right mr-1"></i><i>Cam kết sử dụng đủ thời hạn.</i></p>
+    //                 <p style="font-size: 13px;"><i class="fas fa-user mr-1"></i><i>Người bán: <a href="#">Admin <i class="fas fa-check mr-1"></i></a></i></p>
+    //               </div>
+    //               <div class="col-md-12">
+    //                 <span class="btn mb-1 btn-sm btn-outline-danger">
+    //                   Giá: <b>100.000đ</b>
+    //                 </span>
+    //                 <span class="btn mb-1 btn-sm btn-outline-info">
+    //                   Còn lại: <b>39</b>
+    //                 </span>
+    //                 <span class="btn mb-1 btn-sm btn-outline-success">
+    //                   Đã bán: <b>128</b>
+    //                 </span>
+    //               </div>
+    //               <div class="col-md-12">
+    //                 <div class="mb-2"></div>
+    //                 <div class="text-center">
+    //                   <i class="fas fa-star text-warning mr-1 main_star"></i>
+    //                   <i class="fas fa-star text-warning mr-1 main_star"></i>
+    //                   <i class="fas fa-star text-warning mr-1 main_star"></i>
+    //                   <i class="fas fa-star text-warning mr-1 main_star"></i>
+    //                   <i class="fas fa-star text-warning mr-1 main_star"></i>
+    //                 </div>
+    //                 <div class="mb-4"></div>
+    //                 <button class="btn btn-block btn-primary" onclick="">
+    //                   <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <!-- end card item account -->
+    //       </div>
+    //     </div> 
+    ?>
     <!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
