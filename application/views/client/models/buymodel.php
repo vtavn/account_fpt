@@ -81,11 +81,19 @@
           $urlReturn = '<?= base_url('orders/show/'); ?>' + data.trans_id;
           setTimeout("location.href = '" + $urlReturn + "';", 1000);
         } else {
-          Swal.fire(
-            'Thất bại',
-            data.msg,
-            'error'
-          );
+          Swal.fire({
+            title: 'Thất bại',
+            html: data.msg,
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.href = data.url;
+            }
+          })
         }
       },
       error: function() {

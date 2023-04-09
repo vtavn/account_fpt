@@ -218,7 +218,7 @@ class Payment extends MY_Controller
 
         $getMoneyUser = $this->member_model->get_info_rule(['id' => $member_id, 'token' => $token])->money;
         if ($getMoneyUser < $pricePay) {
-          die(json_encode(['status' => 'error', 'msg' => 'Số dư tài khoản của bạn không đủ.']));
+          die(json_encode(['status' => 'error', 'msg' => 'Số dư tài khoản của bạn không đủ. <br> Vui lòng nạp thêm tiền để mua tài khoản này.', 'url' => base_url('payment/recharge')]));
         } else {
           $trans_id = random("CUAQWERTYUPASDFGHJKZXCVBNM0123456789", 10);
           $time_expired = date("Y-m-d H:i:s", strtotime(convertNumberToTime($accountOK->duration)));

@@ -138,11 +138,19 @@
           });
           setTimeout("location.href = '<?= base_url('orders/show/') ?>" + respone.trans_id + "'", 500);
         } else {
-          Swal.fire(
-            'Thất bại',
-            respone.msg,
-            'error'
-          );
+          Swal.fire({
+            title: 'Thất bại',
+            html: respone.msg,
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.href = respone.url;
+            }
+          })
         }
         $('#buyBtn').html('Mua tài khoản').prop('disabled', false);
       },

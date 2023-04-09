@@ -28,7 +28,7 @@
             </div>
             <div class="card-body">
               <p>Chọn 1 trong những ngân hàng phía dưới để nạp tiền.</p>
-              <div class="row">
+              <div class="row" style="gap: 13px;">
                 <?php foreach ($list_banks as $bank) { ?>
                   <div class="shadow col-sm-6 col-md-6 col-lg-3 mt-3 mt-lg-0 mb-3">
                     <div type="button" onclick="openModalAmount(<?= $bank->id; ?>)" class="blur-shadow p-4 shadow-showcase text-center">
