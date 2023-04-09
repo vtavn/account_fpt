@@ -19,6 +19,17 @@ class MY_Controller extends CI_Controller
       $this->data['userId'] = $this->session->userdata('uid');
       $user = $this->member_model->get_info_rule(['id' => $this->session->userdata('uid')]);
       $this->data['my_info'] = $user;
+
+      //check token change after logout
+      $tokenCurrentSession = $this->session->userdata('token');
+      $tokenCurrentData = $user->token;
+      if ($tokenCurrentData != $tokenCurrentSession) {
+        $this->session->unset_userdata('uid');
+        $this->session->unset_userdata('urole');
+        $this->session->unset_userdata('token');
+        $this->session->sess_destroy();
+        return redirect(base_url('/'));
+      }
     }
 
     //header menu
