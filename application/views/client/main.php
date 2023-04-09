@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo public_url('client/') ?>css/style.css">
   <link rel="stylesheet" href="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="<?php echo public_url('admin/plugins/') ?>sweetalert2/sweetalert2.min.css">
-  <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/cute-alert/style.css">
+  <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/cute-alert/style.css?v=1">
 
   <!-- jQuery -->
   <script src="<?php echo public_url('admin/') ?>plugins/jquery/jquery.min.js"></script>
@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- AdminLTE App -->
   <script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
   <script src="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.js"></script>
-  <script src="<?php echo public_url('client/js/') ?>owl.js"></script>
+  <script src="<?php echo public_url('client/js/') ?>owl.js?v=1"></script>
 </body>
 
 </html>
