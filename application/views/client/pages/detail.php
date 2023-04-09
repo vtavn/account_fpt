@@ -55,20 +55,29 @@
             </div>
             <hr>
             <div class="mt-4 product-action">
-              <?php if (getTotalAccountByPackage($package_info->id) > 0) : ?>
-                <!-- <form action="" method="post" id="buyForm"> -->
-                <input type="text" name="package_id" id="package_id" value="<?= $package_info->id ?>" hidden>
-                <button type="submit" onClick="BuyClick('<?= $package_info->name ?>', '<?= number_format($priceBuy) ?>')" id="buyBtn" class="btn btn-info btn-lg">
-                  <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                  Mua Tài Khoản
-                </button>
-                <!-- </form> -->
-              <?php else : ?>
-                <button class="btn btn-info btn-lg" disabled>
-                  <i class="fas fa-store-slash fa-lg mr-2"></i>
-                  Hết hàng
-                </button>
-              <?php endif ?>
+
+              <?php
+              if (isset($my_info)) :
+                if (getTotalAccountByPackage($package_info->id) > 0) : ?>
+                  <!-- <form action="" method="post" id="buyForm"> -->
+                  <input type="text" name="package_id" id="package_id" value="<?= $package_info->id ?>" hidden>
+                  <button type="submit" onClick="BuyClick('<?= $package_info->name ?>', '<?= number_format($priceBuy) ?>')" id="buyBtn" class="btn btn-info btn-lg">
+                    <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                    Mua Tài Khoản
+                  </button>
+                  <!-- </form> -->
+                <?php else : ?>
+                  <button class="btn btn-info btn-lg" disabled>
+                    <i class="fas fa-store-slash fa-lg mr-2"></i>
+                    Hết hàng
+                  </button>
+                <?php endif;
+              else : ?>
+                <a href="<?= base_url('auth/login') ?>" class="btn btn-info btn-lg">
+                  <i class="fas fa-sign-in-alt fa-lg mr-2"></i>
+                  Đăng nhập
+                </a>
+              <?php endif; ?>
               <a href="<?= getSettingByName('facebook_admin') ?>" class="btn btn-default btn-lg">
                 <i class="fas fa-heart fa-lg mr-2"></i>
                 Liên hệ Admin

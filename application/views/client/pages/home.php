@@ -106,8 +106,12 @@
 </div>
 <!-- /.content -->
 
-<script>
-  setTimeout(function() {
-    $('#noticeAdmin').modal('show')
-  }, 1000);
-</script>
+<?php
+if (isset($my_info)) {
+?>
+  <script>
+    setTimeout(function() {
+      $('#noticeAdmin').modal('show')
+    }, 1000);
+  </script>
+<?php } ?>
