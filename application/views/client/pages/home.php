@@ -108,10 +108,12 @@
 
 <?php
 if (isset($my_info)) {
+  if ($my_info->role_id != '3') {
 ?>
-  <script>
-    setTimeout(function() {
-      $('#noticeAdmin').modal('show')
-    }, 1000);
-  </script>
-<?php } ?>
+    <script>
+      setTimeout(function() {
+        $('#noticeAdmin').modal('show')
+      }, 1000);
+    </script>
+<?php }
+} ?>
