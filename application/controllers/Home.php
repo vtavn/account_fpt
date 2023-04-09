@@ -16,24 +16,17 @@ class Home extends MY_Controller
   {
 
     //package 
-    $filterPack = array();
-    $filterPack['order'] = array('id', 'DESC');
-    $filterPack['where'] = array('deleted_at' => null);
-    $packages = $this->package_model->getList($filterPack);
+    $sql = "SELECT * FROM `packages` WHERE `status` = 1 ORDER BY CAST(duration AS UNSIGNED) ASC";
+    $packages = $this->package_model->query($sql);
     $this->data['list_package'] = $packages;
 
-    $fAccount = array();
-    $fAccount['order'] = array('id', 'DESC');
-    $fAccount['where'] = array('status', '1');
-    $fAccount['where'] = array('buyed_at' => null);
-    $fAccount['limit'] = array(8, 0);
-
-    $accounts = $this->account_model->getList($fAccount);
+    $sql_account = "SELECT * FROM `accounts` WHERE `buyed_at` IS NULL AND `status` = 1 ORDER BY RAND() LIMIT 8";
+    $accounts = $this->account_model->query($sql_account);
     $this->data['list_account'] = $accounts;
 
     //banner 
     $fillterS = array();
-    $fillterS['order'] = array('id', 'DESC');
+    $fillterS['order'] = array('updated_at', 'DESC');
     $fillterS['where'] = array('status', '1');
     $banners = $this->slider_model->getList($fillterS);
     $this->data['list_banner'] = $banners;

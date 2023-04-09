@@ -1,48 +1,31 @@
 $(document).ready(function () {
 	//slide account home
-	$("#listAccounts").owlCarousel({
-		loop: true,
-		margin: 10,
-		nav: true,
-		navText: [
-			"<i class='fas fa-chevron-left'></i>",
-			"<i class='fas fa-chevron-right'></i>",
-		],
-		dots: false,
-		responsive: {
-			0: {
-				items: 1,
+	function initCarousel(carouselID) {
+		$(carouselID).owlCarousel({
+			loop: true,
+			margin: 10,
+			nav: true,
+			navText: [
+				"<i class='fas fa-chevron-left'></i>",
+				"<i class='fas fa-chevron-right'></i>",
+			],
+			dots: false,
+			responsive: {
+				0: {
+					items: 1,
+				},
+				600: {
+					items: 3,
+				},
+				1000: {
+					items: 4,
+				},
 			},
-			600: {
-				items: 3,
-			},
-			1000: {
-				items: 4,
-			},
-		},
-	});
+		});
+	}
 
-	$("#listAccounts2").owlCarousel({
-		loop: true,
-		margin: 10,
-		nav: true,
-		navText: [
-			"<i class='fas fa-chevron-left'></i>",
-			"<i class='fas fa-chevron-right'></i>",
-		],
-		dots: false,
-		responsive: {
-			0: {
-				items: 1,
-			},
-			600: {
-				items: 3,
-			},
-			1000: {
-				items: 4,
-			},
-		},
-	});
+	initCarousel("#listAccounts");
+	initCarousel("#listAccounts2");
 
 	$("#listPackageHome").owlCarousel({
 		loop: true,

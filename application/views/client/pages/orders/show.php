@@ -29,17 +29,18 @@
             </div>
             <div class="card-body">
               <div class="row">
+                <p class="show-note text-red font-weight-bold">Bạn đã mua tài khoản thành công. Hãy đăng nhập theo thông tin phía dưới để sử dụng dịch vụ.</p>
                 <div class="col-lg-6">
                   <form>
                     <label for="">Tài khoản</label>
-                    <input type="text" value="<?= explodeData($account_info->account)[0] ?>" class="form-control" disabled>
+                    <input type="text" value="<?= explodeData($account_info->account)[0] ?>" class="form-control text-red font-weight-bold" disabled>
                     <label for="">Mật khẩu</label>
-                    <input type="text" value="<?= explodeData($account_info->account)[1] ?>" class="form-control" disabled>
+                    <input type="text" value="<?= explodeData($account_info->account)[1] ?>" class="form-control text-red font-weight-bold" disabled>
                     <div class="mt-3">
                       <p>Hạn sử dụng: <b><?= $account_info->duration ?> tháng</b>.</p>
                       <p>Ngày mua: <b><?= display_time($account_info->buyed_at) ?></b>.</p>
                       <p>Ngày hết hạn: <b><?= display_time($order_info->expired_at) ?> </b>.</p>
-                      <p>Số ngày dùng còn lại: <b><?= daysUntil($account_info->buyed_at, $order_info->expired_at) ?></b> ngày.</p>
+                      <p>Số ngày dùng còn lại: <b class="text-red"><?= daysUntil(date("Y-m-d H:i:s", time()), $order_info->expired_at) ?></b> ngày.</p>
                     </div>
                   </form>
                 </div>
@@ -47,6 +48,9 @@
                   <strong>Lưu ý khi sử dụng</strong>
                   <div>
                     <?= getSettingByName('note_don_hang') ?>
+                  </div>
+                  <div>
+                    <img src="<?= public_url('client/img/iconfpt/download-app.jpg') ?>" alt="">
                   </div>
                 </div>
               </div>

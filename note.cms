@@ -1,1 +1,6 @@
-- hi
+- thêm popup thông báo khi đăng nhập
+- mua tài khoản : đưa cảnh báo và chuyển hướng nếu người dùng chưa đăng nhập
+- fix bộ lọc hoá đơn
+sắp xếp đơn hàng theo thứ tự tăng dần.
+- trang thanh toán thêm đếm ngược 60s và hiển thị nút liên hệ admin.
+- trang thanh toán sau 60s hiển thị popup thông báo

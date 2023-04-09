@@ -39,7 +39,7 @@
                   </select>
                   <select class="form-control  col-sm-2 mb-2" name="status">
                     <option value="">Trạng thái</option>
-                    <option value="0" <?= (getValueinGet('status') == 0) ? 'selected' : '' ?>>Đang chờ thanh toán</option>
+                    <option value="pending" <?= (getValueinGet('status') == 'pending') ? 'selected' : '' ?>>Đang chờ thanh toán</option>
                     <option value="1" <?= (getValueinGet('status') == 1) ? 'selected' : '' ?>>Đã thanh toán</option>
                     <option value="2" <?= (getValueinGet('status') == 2) ? 'selected' : '' ?>>Huỷ bỏ</option>
                   </select>

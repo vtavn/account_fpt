@@ -22,6 +22,10 @@ class Product extends MY_Controller
       return redirect(base_url('/'));
     }
 
+    $sql_account = "SELECT * FROM `accounts` WHERE `buyed_at` IS NULL AND `status` = 1 ORDER BY RAND() LIMIT 8";
+    $accounts = $this->account_model->query($sql_account);
+    $this->data['list_account'] = $accounts;
+
     $this->data['package_info'] = $package_info;
     $this->data['title'] = 'Mua tài khoản FPT ' . $package_info->name;
     $this->data['temp'] = 'client/pages/detail';

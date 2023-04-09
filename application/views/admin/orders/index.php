@@ -79,7 +79,7 @@
                         <td><b><?= getNamePackageById($item->package_id)->name ?></b></td>
                         <td><?= display_time($item->created_at) ?></td>
                         <td><?= display_time($item->created_at) ?></td>
-                        <td><b><?= daysUntil($item->updated_at, $item->expired_at) ?></b> ngày.</b></td>
+                        <td><b><?= daysUntil(date("Y-m-d H:i:s", time()), $item->expired_at) ?></b> ngày.</b></td>
                         <td>
                           <a title="Chi tiết hoá đơn" aria-label="" href="<?= admin_url('orders/show/') ?><?= $item->trans_id ?>" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
                             <i class="fas fa-eye"></i><span class=""> Xem</span>

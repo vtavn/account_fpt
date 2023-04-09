@@ -24,8 +24,9 @@ class Invoices extends MY_Controller
     //search 
     $member_id = $this->input->get('member_id');
     $trans_id = $this->input->get('trans_id');
-    $payment_method = $this->input->get('payment_method');
     $status = $this->input->get('status');
+    $payment_method = $this->input->get('payment_method');
+
 
     $where = "WHERE id like '%'";
 
@@ -40,7 +41,9 @@ class Invoices extends MY_Controller
       $where .= " AND payment_method = '" . $payment_method . "'";
     }
 
-    if ($status) {
+    if ($status == 'pending') {
+      $where .= " AND status = '0'";
+    } elseif ($status) {
       $where .= " AND status = '" . $status . "'";
     }
 

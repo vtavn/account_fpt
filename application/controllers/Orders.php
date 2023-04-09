@@ -77,7 +77,7 @@ class Orders extends MY_Controller
           } else {
             $this->data['account_info'] = $account_info;
             $this->data['order_info'] = $order_info;
-            $this->data['title'] = 'Thông tin đơn hàng #' . $order_info->trans_id;
+            $this->data['title'] = 'Thông tin đơn hàng <b class="text-red">#' . $order_info->trans_id . '</b>';
             $this->data['temp'] = 'client/pages/orders/show';
             $this->load->view('client/main', $this->data);
           }

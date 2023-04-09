@@ -331,3 +331,10 @@ footer ul {
 .pagination strong {
   color: white;
 }
+
+.show-note {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex: auto;
+}

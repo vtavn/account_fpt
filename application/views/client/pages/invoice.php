@@ -52,6 +52,17 @@
     .receipt {
       border-bottom: 1px solid #424242
     }
+
+    div#staticBackdrop {
+      z-index: 9999999;
+    }
+
+    p.note-admin {
+      margin-top: 10px;
+      border: 2px solid red;
+      padding: 5px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 
@@ -85,14 +96,14 @@
             </div>
             <div class="entry">
               <p><i class="fa fa-university" aria-hidden="true"></i>
-                <span style="padding-left: 5px;"><?= ('Ngân hàng'); ?></span>
+                <span style="padding-left: 5px;">Ngân hàng</span>
                 <br />
                 <span style="padding-left: 25px;word-break: keep-all;"><?= $info_bank->name; ?></span>
               </p>
             </div>
             <div class="entry">
               <p><i class="fa fa-credit-card" aria-hidden="true"></i>
-                <span style="padding-left: 5px;"><?= ('Số tài khoản'); ?></span>
+                <span style="padding-left: 5px;">Số tài khoản</span>
                 <br />
                 <b id="copyStk" style="padding-left: 25px;word-break: keep-all;color:greenyellow;"><?= $info_bank->accountNumber; ?></b>
                 <i onclick="copy()" data-clipboard-target="#copyStk" class="fas fa-copy copy"></i>
@@ -100,21 +111,21 @@
             </div>
             <div class="entry">
               <p><i class="fa fa-user" aria-hidden="true"></i>
-                <span style="padding-left: 5px;"><?= ('Chủ tài khoản'); ?></span>
+                <span style="padding-left: 5px;">Chủ tài khoản</span>
                 <br />
                 <span style="padding-left: 25px;word-break: keep-all;"><?= $info_bank->accountName; ?></span>
               </p>
             </div>
             <div class="entry">
               <p><i class="fa fa-money" aria-hidden="true"></i>
-                <span style="padding-left: 5px;"><?= ('Số tiền cần thanh toán'); ?></span>
+                <span style="padding-left: 5px;">Số tiền cần thanh toán</span>
                 <br />
                 <b style="padding-left: 25px;color:aqua;"><?= number_format($invoice_info->amount); ?></b>
               </p>
             </div>
             <div class="entry">
               <p><i class="fa fa-comment" aria-hidden="true"></i>
-                <span style="padding-left: 5px;"><?= ('Nội dung chuyển khoản'); ?></span>
+                <span style="padding-left: 5px;">Nội dung chuyển khoản</span>
                 <br />
                 <b id="copyNoiDung" style="padding-left: 25px;word-break: keep-all;color:yellow;"><?= $invoice_info->trans_id; ?></b>
                 <i onclick="copy()" data-clipboard-target="#copyNoiDung" class="fas fa-copy copy"></i>
@@ -122,10 +133,26 @@
             </div>
             <div class="entry">
               <p><i class="fa fa-barcode" aria-hidden="true"></i>
-                <span style="padding-left: 5px;"><?= ('Trạng thái'); ?>
+                <span style="padding-left: 5px;">Trạng thái
                 </span>
                 <br />
-                <i class="fa fa-spinner fa-spin"></i><span id="status_payment" style="padding-left: 25px;word-break: break-all;"><?= ('Đang tìm dữ liệu...'); ?></span>
+                <i class="fa fa-spinner fa-spin"></i><span id="status_payment" style="padding-left: 25px;word-break: break-all;">Đang tìm dữ liệu...</span>
+              </p>
+            </div>
+            <div class="entry">
+              <p><i class="fas fa-paper-plane" aria-hidden="true"></i>
+                <span style="padding-left: 5px;">Liên hệ
+                </span>
+                <br />
+                <a href="<?= getSettingByName('zalo_admin') ?>">
+                  <img src="<?= public_url('client/img/social/zalo.svg') ?>" alt="">
+                </a>
+                <a href="<?= getSettingByName('facebook_admin') ?>">
+                  <img src="<?= public_url('client/img/social/facebook.svg') ?>" alt="">
+                </a>
+                <a href="<?= getSettingByName('tele_admin') ?>">
+                  <img src="<?= public_url('client/img/social/telegram-app.svg') ?>" alt="">
+                </a>
               </p>
             </div>
           </div>
@@ -134,6 +161,10 @@
           <div class="content">
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12">
+                <div>
+                  <h1>Đang chờ thanh toán <b id="paycount">0</b>s
+                  </h1>
+                </div>
                 <div class="message" id="loginForm">
                   <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -142,13 +173,13 @@
                         if ($invoice_info->payment_method == 'MOMO') { ?>
                           <div class="payment-cta">
                             <div>
-                              <h1><?= ('Quét mã QR để thanh toán'); ?></h1>
+                              <h1>Quét mã QR để thanh toán</h1>
                             </div>
-                            <a><?= ('Sử dụng <b> App MoMo </b> hoặc ứng dụng camera hỗ trợ QR code để quét mã'); ?></a>
+                            <a>Sử dụng <b> App MoMo </b> hoặc ứng dụng camera hỗ trợ QR code để quét mã</a>
                           </div>
                           <?= file_get_contents("https://api.web2m.com/api/qrmomo.php?amount=" . $invoice_info->pay . "&phone=" . $info_bank->accountNumber . "&noidung=" . $invoice_info->trans_id); ?>
-                          <h3 class="text-center"><?= ('Nội dung chuyển tiền'); ?> <b style="color: blue;"><?= $invoice_info->trans_id; ?></b></h3>
-                          <h4><?= ('Vui lòng nhập đúng nội dung chuyển tiền'); ?></h4>
+                          <h3 class="text-center">Nội dung chuyển tiền <b style="color: blue;"><?= $invoice_info->trans_id; ?></b></h3>
+                          <h4>Vui lòng nhập đúng nội dung chuyển tiền</h4>
 
                         <?php } elseif ($invoice_info->payment_method == 'THESIEURE') { ?>
 
@@ -156,9 +187,9 @@
                           <h3 class="text-center">Thực hiện chuyển quỹ vào ví có số điện thoại là
                             <b><?= $invoice_info->accountNumber; ?></b>
                           </h3>
-                          <h3 class="text-center"><?= ('Số tiền cần chuyển là'); ?> <b style="color: red;"><?= number_format($invoice_info->pay); ?></b></h3>
-                          <h3 class="text-center"><?= ('Nội dung chuyển tiền'); ?> <b style="color: blue;"><?= $invoice_info->trans_id; ?></b></h3>
-                          <h4 class="text-center"><?= ('Hệ thống tự động xử lý giao dịch khi thực hiện chuyển tiền thành công'); ?></h4>
+                          <h3 class="text-center">Số tiền cần chuyển là <b style="color: red;"><?= number_format($invoice_info->pay); ?></b></h3>
+                          <h3 class="text-center">Nội dung chuyển tiền <b style="color: blue;"><?= $invoice_info->trans_id; ?></b></h3>
+                          <h4 class="text-center">Hệ thống tự động xử lý giao dịch khi thực hiện chuyển tiền thành công</h4>
 
 
                         <?php } elseif (
@@ -181,17 +212,17 @@
                           $invoice_info->payment_method == 'CIMB Clicks Malaysia' ||
                           $invoice_info->payment_method == 'United Bank for Africa (UBA)'
                         ) { ?>
-                          <h3 class="text-center"><?= ('Số tiền cần chuyển là'); ?> <b style="color: red;"><?= number_format($invoice_info->pay); ?></b></h3>
-                          <h3 class="text-center"><?= ('Nội dung chuyển tiền'); ?> <b style="color: blue;"><?= $invoice_info->trans_id; ?></b></h3>
-                          <h4><?= ('Vui lòng nhập đúng nội dung chuyển tiền'); ?></h4>
+                          <h3 class="text-center">Số tiền cần chuyển là <b style="color: red;"><?= number_format($invoice_info->pay); ?></b></h3>
+                          <h3 class="text-center">Nội dung chuyển tiền <b style="color: blue;"><?= $invoice_info->trans_id; ?></b></h3>
+                          <h4>Vui lòng nhập đúng nội dung chuyển tiền</h4>
                         <?php } else { ?>
 
 
                           <div class="payment-cta">
                             <div>
-                              <h1><?= ('Quét mã QR để thanh toán'); ?></h1>
+                              <h1>Quét mã QR để thanh toán</h1>
                             </div>
-                            <a><?= ('Sử dụng <b> App Internet Banking </b> hoặc ứng dụng camera hỗ trợ QR code để quét mã'); ?></a>
+                            <a>Sử dụng <b> App Internet Banking </b> hoặc ứng dụng camera hỗ trợ QR code để quét mã</a>
                           </div>
                           <img src="https://api.vietqr.io/<?= $invoice_info->payment_method; ?>/<?= $info_bank->accountNumber; ?>/<?= $invoice_info->pay; ?>/<?= $invoice_info->trans_id; ?>/vietqr_net_2.jpg?accountName=<?= $info_bank->accountName; ?>" width="100%" />
 
@@ -212,16 +243,53 @@
           <div class="copyrights text-center">
             <p style="color: #737373;   font-size: 11pt; font-weight: bold;">
               <br />
-              <?= ('Vui lòng thanh toán vào thông tin tài khoản trên để hệ thống xử lý hoá đơn tự động.'); ?>
+              Vui lòng thanh toán vào thông tin tài khoản trên để hệ thống xử lý hoá đơn tự động.
             </p>
             <a href="<?= base_url('payment/invoices'); ?>">
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
-              <span><?= ('Quay lại'); ?></span></a>
+              <span>Quay lại</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Thông báo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?= getSettingByName('note_invoice_pending') ?>
+            <p class="note-admin">
+              Tôi cần nạp tiền cho Mã giao dịch : <b><?= $invoice_info->trans_id; ?></b> đã chuyển khoản <?= $info_bank->name; ?> (<?= $info_bank->accountNumber; ?>) <b><?= number_format($invoice_info->amount); ?></b>đ
+            </p>
+
+            <p class="d-flex justify-content-center gap-2">
+              <a href="<?= getSettingByName('zalo_admin') ?>">
+                <img src="<?= public_url('client/img/social/zalo.svg') ?>" alt="">
+              </a>
+              <a href="<?= getSettingByName('facebook_admin') ?>">
+                <img src="<?= public_url('client/img/social/facebook.svg') ?>" alt="">
+              </a>
+              <a href="<?= getSettingByName('tele_admin') ?>">
+                <img src="<?= public_url('client/img/social/telegram-app.svg') ?>" alt="">
+              </a>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a href="<?= base_url('') ?>" class="btn btn-primary">Trang chủ</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <script src="<?= public_url('client/faces'); ?>/javax.faces.resource/adyen/js/tracking-version=1.2.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="<?= public_url('client/faces'); ?>/javax.faces.resource/adyen/js/tether.min.js"></script>
@@ -238,9 +306,11 @@
     });
   </script>
   <script type="text/javascript">
+    var timeCount = 0;
+
     function getStatusInvoice() {
       $.ajax({
-        url: "<?= base_url('payment/invoice/'); ?><?= $invoice_info->trans_id ?>",
+        url: "<?= base_url('payment/invoice/') ?><?= $invoice_info->trans_id ?>",
         type: "POST",
         dataType: "JSON",
         data: {
@@ -248,7 +318,7 @@
         },
         success: function(result) {
           if (result.return == 1) {
-            setTimeout("location.href = '<?= base_url('payment/invoices'); ?>';", 1000);
+            setTimeout("location.href = '<?= base_url('payment/invoices') ?>';", 1000);
           }
           $('#status_payment').html(result.status);
         }
@@ -257,12 +327,20 @@
     setInterval(function() {
       $('#status_payment').load(getStatusInvoice());
     }, 5000);
+
+    setInterval(function() {
+      timeCount += 1;
+      $('#paycount').html(timeCount);
+      if (timeCount == 60) {
+        $('#staticBackdrop').modal('show')
+      }
+    }, 1000);
     new ClipboardJS(".copy");
 
     function copy() {
       cuteToast({
         type: "success",
-        message: "<?= ('Đã sao chép vào bộ nhớ tạm'); ?>",
+        message: "Đã sao chép vào bộ nhớ tạm",
         timer: 5000
       });
     }

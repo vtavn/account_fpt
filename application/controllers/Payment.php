@@ -20,6 +20,10 @@ class Payment extends MY_Controller
 
   public function recharge()
   {
+    if (!is_login()) {
+      redirect(base_url('auth/login'));
+    }
+
     $fillterS = array();
     $fillterS['order'] = array('id', 'DESC');
     $banks = $this->bank_model->getList($fillterS);
@@ -115,6 +119,10 @@ class Payment extends MY_Controller
 
   function invoices()
   {
+    if (!is_login()) {
+      redirect(base_url('auth/login'));
+    }
+
     $where = "WHERE member_id = '" . $this->session->userdata('uid') . "'";
 
     $sql_2 = 'SELECT count(id) as total from invoices ' . $where;

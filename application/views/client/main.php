@@ -39,18 +39,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <?php $this->load->view($temp, $this->data); ?>
       </div>
       <!-- /.content-wrapper -->
-      <?php $this->load->view('client/partials/footer'); ?>
     </div>
-    <!-- ./wrapper -->
+  </div>
+  <!-- ./wrapper -->
+  <?php $this->load->view('client/partials/footer'); ?>
 
-    <!-- jQuery -->
-    <script src="<?php echo public_url('admin/') ?>plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?php echo public_url('admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
-    <script src="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.js"></script>
-    <script src="<?php echo public_url('client/js/') ?>owl.js"></script>
+  <!-- jQuery -->
+  <script src="<?php echo public_url('admin/') ?>plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="<?php echo public_url('admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
+  <script src="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.js"></script>
+  <script src="<?php echo public_url('client/js/') ?>owl.js"></script>
 </body>
 
 </html>

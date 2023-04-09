@@ -112,6 +112,10 @@ class Auth extends MY_Controller
 
   function profile()
   {
+    if (!is_login()) {
+      redirect(base_url('auth/login'));
+    }
+
     $this->data['title'] = 'Trang cá nhân';
     $this->data['temp'] = 'auth/profile';
     $this->load->view('client/main', $this->data);
