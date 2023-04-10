@@ -37,8 +37,13 @@
           </div>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?= base_url('auth/register') ?>">
+            <i class="fas fa-sign-in-alt"></i> Đăng ký
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<?= base_url('auth/login') ?>">
-            <i class="fas fa-sign-in-alt"></i>
+            <i class="fas fa-sign-in-alt"></i> Đăng nhập
           </a>
         </li>
       <?php else : ?>

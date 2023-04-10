@@ -42,10 +42,10 @@ foreach ($list_account as $account) : ?>
           </div>
           <div class="mb-4"></div>
           <?php if ((!empty($uid) && !empty($token))) : ?>
-            <button class="btn btn-block btn-primary" onclick="modalBuy('<?= $account->id ?>', '<?= $account->name ?>')">
+            <button class="btn btn-block btn-buy-cua" onclick="modalBuy('<?= $account->id ?>', '<?= $account->name ?>')">
               <i class="fas fa-shopping-cart mr-1"></i>MUA NGAY </button>
           <?php else : ?>
-            <a class="btn btn-block btn-primary" href="<?= base_url('auth/login') ?>">
+            <a class="btn btn-block btn-buy-cua" href="<?= base_url('auth/login') ?>">
               <i class="fas fa-shopping-cart mr-1"></i>Đăng nhập </a>
           <?php endif; ?>
         </div>

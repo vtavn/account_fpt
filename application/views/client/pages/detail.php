@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-3">
     <div class="col-lg-12">
-      <div class="card p-3">
+      <div class="card p-3 product-detail">
         <div class="row">
           <div class="col-12 col-sm-3">
             <div class="col-12">
@@ -23,7 +23,7 @@
             </div>
             <hr>
             <div class="row justify-content-center align-items-center">
-              <div class="col-6">
+              <div class="col-12 mb-3 col-lg-6">
                 <div class="product-price">
                   <?php if ($package_info->sale_price > 0) : ?>
                     <?php $priceBuy = $package_info->sale_price; ?>
@@ -39,7 +39,7 @@
                   <?php endif; ?>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-lg-6">
                 <div class="d-flex justify-content-center gap-2">
                   <a target="_blank" href="<?= getSettingByName('zalo_admin') ?>">
                     <img src="<?= public_url('client/img/social/zalo.svg') ?>" alt="">
@@ -61,24 +61,24 @@
                 if (getTotalAccountByPackage($package_info->id) > 0) : ?>
                   <!-- <form action="" method="post" id="buyForm"> -->
                   <input type="text" name="package_id" id="package_id" value="<?= $package_info->id ?>" hidden>
-                  <button type="submit" onClick="BuyClick('<?= $package_info->name ?>', '<?= number_format($priceBuy) ?>')" id="buyBtn" class="btn btn-info btn-lg">
+                  <button type="submit" onClick="BuyClick('<?= $package_info->name ?>', '<?= number_format($priceBuy) ?>')" id="buyBtn" class="btn btn-buy-cua-2">
                     <i class="fas fa-cart-plus fa-lg mr-2"></i>
                     Mua Tài Khoản
                   </button>
                   <!-- </form> -->
                 <?php else : ?>
-                  <button class="btn btn-info btn-lg" disabled>
+                  <button class="btn btn-cua" disabled>
                     <i class="fas fa-store-slash fa-lg mr-2"></i>
                     Hết hàng
                   </button>
                 <?php endif;
               else : ?>
-                <a href="<?= base_url('auth/login') ?>" class="btn btn-info btn-lg">
+                <a href="<?= base_url('auth/login') ?>" class="btn btn-buy-cua-2">
                   <i class="fas fa-sign-in-alt fa-lg mr-2"></i>
                   Đăng nhập
                 </a>
               <?php endif; ?>
-              <a href="<?= getSettingByName('facebook_admin') ?>" class="btn btn-default btn-lg">
+              <a href="<?= getSettingByName('facebook_admin') ?>" class="btn btn-cua">
                 <i class="fas fa-heart fa-lg mr-2"></i>
                 Liên hệ Admin
               </a>
@@ -92,14 +92,20 @@
             <div class="nav nav-tabs justify-content-center" id="product-tab" role="tablist">
               <a class="nav-item nav-link active font-weight-bold" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Mô Tả</a>
               <a class="nav-item nav-link font-weight-bold" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">Đánh giá</a>
+              <a class="nav-item nav-link font-weight-bold" id="product-comment" data-toggle="tab" href="#product-comment" role="tab" aria-controls="product-comment" aria-selected="false">Bình luận</a>
             </div>
           </nav>
           <div class="tab-content p-3" id="nav-tabContent">
             <div class="tab-pane fade active show" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> <?= $package_info->content ?></div>
-            <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab"></div>
+            <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">Rate</div>
+            <div class="tab-pane fade" id="product-comment" role="tabpanel" aria-labelledby="product-comment-tab">Comment</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="col-lg-12">
+      <?= getSettingByName('ads_before_detail') ?>
     </div>
 
     <div class="col-lg-12">

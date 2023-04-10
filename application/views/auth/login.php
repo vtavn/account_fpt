@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <?= (form_error('password')) ? form_error('password', "<p style='color:red'>", "</p>") : '' ?>
 
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div class="icheck-primary">
                 <input type="checkbox" id="remember">
                 <label for="remember">
@@ -61,6 +61,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
               </div>
             </div>
             <!-- /.col -->
+            <div class="col-6">
+              <a href="<?= base_url('auth/register') ?>" class="btn btn-warning btn-block text-white">Đăng ký</a>
+            </div>
             <div class="col-6">
               <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
             </div>
@@ -71,8 +74,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <!-- <p class="mb-1">
           <a href="forgot-password.html">I forgot my password</a>
         </p> -->
-        <p class="mb-0">
-          <a href="<?= base_url('auth/register') ?>" class="text-center">Bạn chưa có tài khoản?</a>
+        <hr>
+        <p class="m-2">
+          <?= getSettingByName('note_before_login') ?>
         </p>
       </div>
       <!-- /.card-body -->

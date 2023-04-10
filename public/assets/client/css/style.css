@@ -1,3 +1,47 @@
+@font-face {
+  font-family: 'SFProDisplay';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(/public/assets/client/fonts/SF-UI-Display-Light.ttf);
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/public/assets/client/fonts/SF-UI-Display-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/public/assets/client/fonts/SF-UI-Display-Semibold.ttf);
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(/public/assets/client/fonts/SF-UI-Display-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(/_nuxt/fonts/SF-Pro-Display-Heavy.cfa3bd7.otf);
+}
+
+body {
+  font-family: "SFProDisplay", Arial, sans-serif !important;
+}
+
 nav.main-header.navbar.navbar-expand-md.navbar-dark.navbar-dark {
   background: #000;
   border: none;
@@ -237,7 +281,7 @@ footer ul {
 
 .title-home {
   font-weight: bold;
-  color: #000;
+  color: #fff;
 }
 
 .title-home::before {
@@ -337,4 +381,142 @@ footer ul {
   display: flex;
   justify-content: center;
   flex: auto;
+}
+
+.btn-buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  transition: all .2s ease;
+  font-weight: 500;
+  margin-right: 4px;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(114.88deg, #fe592a 0%, #e93013 97.15%);
+  border: none;
+  width: 113px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+
+img.bg-home {
+  width: 100%;
+  height: 100px;
+}
+
+.link-slide {
+  display: flex;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .product-action {
+    flex-direction: column;
+  }
+}
+
+/* update dark */
+
+.content-wrapper {
+  background: #000;
+  color: #fff;
+}
+
+.product-item {
+  color: #000;
+}
+
+.info-box-text {
+  color: #000;
+}
+
+.btn-buy-cua {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  transition: all .2s ease;
+  font-weight: 500;
+  margin-right: 4px;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(114.88deg, #fe592a 0%, #e93013 97.15%);
+  border: none;
+}
+
+.btn-buy-cua:hover,
+.btn-buy-cua-2:hover,
+.btn-cua:hover {
+  color: #fff;
+}
+
+.btn-buy-cua-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  transition: all .2s ease;
+  font-weight: 500;
+  margin-right: 4px;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(114.88deg, #fe592a 0%, #e93013 97.15%);
+  border: none;
+  padding: 10px;
+}
+
+.btn-cua {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  transition: all .2s ease;
+  font-weight: 500;
+  margin-right: 4px;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(114.88deg, #3e2afe 0%, #13a7e9 97.15%);
+  border: none;
+  padding: 10px;
+}
+
+.product-detail {
+  background: #000;
+  color: #fff;
+  border: 2px solid #2c2c2e;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #2c2c2e;
+}
+
+.product-price h2 {
+  color: #fff;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background: linear-gradient(114.88deg, #fe592a 0%, #e93013 97.15%);
+  border: none;
+  color: #fff;
+}
+
+a {
+  color: #fe592a;
+}
+
+a:hover {
+  color: #fe592a;
+  text-decoration: none;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border: none;
 }

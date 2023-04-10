@@ -1,15 +1,18 @@
+<?php
+$titleShow = $title . ' <b class="text-red">#' . $order_info->trans_id . '</b>';
+?>
 <div class="container">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><?= $title ?></h1>
+          <h1 class="m-0"><?= $titleShow ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= admin_url('dashboard') ?>">Trang chủ</a></li>
-            <li class="breadcrumb-item active"><?= $title ?></li>
+            <li class="breadcrumb-item active"><?= $titleShow ?></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -25,11 +28,14 @@
           <div class="card card-primary card-outline">
             <?php $this->load->view('message'); ?>
             <div class="card-header">
-              <h5 class="m-0"><?= $title ?></h5>
+              <h5 class="m-0"><?= $titleShow ?></h5>
             </div>
             <div class="card-body">
               <div class="row">
-                <p class="show-note text-red font-weight-bold">Bạn đã mua tài khoản thành công. Hãy đăng nhập theo thông tin phía dưới để sử dụng dịch vụ.</p>
+                <div class="col-lg-12">
+                  <?= getSettingByName('ads_after_invoice') ?>
+                </div>
+                <h5 class="show-note font-weight-bold mt-2">Bạn đã mua tài khoản thành công. Hãy đăng nhập theo thông tin phía dưới để sử dụng dịch vụ.</h5>
                 <div class="col-lg-6">
                   <form>
                     <label for="">Tài khoản</label>
@@ -50,7 +56,7 @@
                     <?= getSettingByName('note_don_hang') ?>
                   </div>
                   <div>
-                    <img src="<?= public_url('client/img/iconfpt/download-app.jpg') ?>" alt="">
+                    <img class="img-thumbnail" src="<?= public_url('client/img/iconfpt/download-app.jpg') ?>" alt="">
                   </div>
                 </div>
               </div>

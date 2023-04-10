@@ -4,3 +4,5 @@
 sắp xếp đơn hàng theo thứ tự tăng dần.
 - trang thanh toán thêm đếm ngược 60s và hiển thị nút liên hệ admin.
 - trang thanh toán sau 60s hiển thị popup thông báo
+===
+- Thêm phương thức thanh toán cho ctv
