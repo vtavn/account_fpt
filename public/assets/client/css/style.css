@@ -562,11 +562,22 @@ a:hover {
 }
 
 .btn-cua-top {
-  background: #F7971E !important;
-  background: -webkit-linear-gradient(to right, #FFD200, #F7971E) !important;
-  background: linear-gradient(to right, #FFD200, #F7971E) !important;
+  background: #0F2027 !important;
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027) !important;
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027) !important;
+}
+
+.btn-cua-top-2 {
+  background: #cb2d3e;
+  background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);
+  background: linear-gradient(to right, #ef473a, #cb2d3e);
 }
 
 .content span {
   font-weight: bold;
+}
+
+.phone-topbar {
+  font-size: 20px;
+  word-spacing: 5px;
 }

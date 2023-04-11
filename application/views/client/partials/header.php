@@ -6,13 +6,14 @@
           <span>Chăm sóc khách hàng</span>
           <span>Email: <a href="mailto:<?= getSettingByName('email') ?>" class="text-white"><?= getSettingByName('email') ?></a></span>
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center">
+          <span class="phone-topbar"><i class="fas fa-phone-alt"></i> <?= getSettingByName('phone') ?></span>
         </div>
         <div class="col-12 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">
           <a href="tel:<?= getSettingByName('phone') ?>" class="btn btn-block btn-buy-cua btn-cua-top">Hỗ Trợ Trực Tuyến</a>
         </div>
         <div class="col-12 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">
-          <a href="<?= getSettingByName('facebook_admin') ?>" class="btn btn-block btn-buy-cua btn-cua-top">Đăng Ký Đại Lý/CTV</a>
+          <a href="<?= getSettingByName('facebook_admin') ?>" class="btn btn-block btn-buy-cua btn-cua-top-2">Đăng Ký Đại Lý/CTV</a>
         </div>
       </div>
     </div>
