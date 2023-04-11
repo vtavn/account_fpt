@@ -34,9 +34,10 @@
     <div class="col-lg-12 mt-2">
       <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="3" scrolldelay="5" direction="left">
         <div class="link-slide">
-          <p>- Tài khoản <b>098***565</b> đã mua gói <b>tài khoản 1 tháng</b> cách đấy <b>5 phút</b></p>
-          <p>- Tài khoản <b>036***254</b> đã mua gói <b>tài khoản 6 tháng</b> cách đấy <b>24 phút</b></p>
-          <p>- Tài khoản <b>092***332</b> đã mua gói <b>tài khoản 3 tháng</b> cách đấy <b>30 phút</b></p>
+          <p>🏷️ Tài khoản <b>098***565</b> đã mua gói <b>tài khoản 1 tháng</b> cách đấy <b>5 phút</b></p>
+          <p>🏷️ Tài khoản <b>036***254</b> đã mua gói <b>tài khoản 6 tháng</b> cách đấy <b>24 phút</b></p>
+          <p>🏷️ Tài khoản <b>092***332</b> đã mua gói <b>tài khoản 3 tháng</b> cách đấy <b>30 phút</b></p>
+          <p>🏷️ Tài khoản <b>035***632</b> đã mua gói <b>tài khoản 12 tháng</b> cách đấy <b>35 phút</b></p>
         </div>
       </marquee>
       <?= getSettingByName('ads_before_banner') ?>

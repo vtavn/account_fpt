@@ -89,14 +89,11 @@
               <a href="#" class="dropdown-item dropdown-footer">Xem tất cả thông báo</a>
             </div>
           </li>
-          <li class="nav-item">
-            <b class="nav-link">
-              <i class="fas fa-dollar-sign"></i> <?= number_format($my_info->money) ?> vnđ
-            </b>
-          </li>
+
           <li class="nav-item dropdown dropdown-hover">
             <a id="drMemberHeader" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><?= $my_info->username ?></a>
             <ul aria-labelledby="drMemberHeader" class="dropdown-menu border-0 shadow">
+              <li><a href="#" class="dropdown-item">Số dư: <?= number_format($my_info->money) ?> vnđ</a></li>
               <li><a href="<?= base_url('auth/profile') ?>" class="dropdown-item">Thông tin của bạn </a></li>
               <li><a href="<?= base_url('auth/logout') ?>" class="dropdown-item">Đăng xuất</a></li>
             </ul>
