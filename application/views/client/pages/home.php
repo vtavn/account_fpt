@@ -7,7 +7,9 @@
     foreach ($list_banner as $banner) :
     ?>
       <div class="carousel-item <?= ($count == 0) ? 'active' : '' ?>">
-        <img class="d-block w-100" src="<?= $banner->thumb ?>" alt="<?= $banner->name ?>">
+        <a href="<?= $banner->link ?>">
+          <img class="d-block w-100" src="<?= $banner->thumb ?>" alt="<?= $banner->name ?>">
+        </a>
       </div>
     <?php
       $count++;
