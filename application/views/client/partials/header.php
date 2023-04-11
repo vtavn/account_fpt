@@ -2,7 +2,7 @@
   <div class="top-bar">
     <div class="container">
       <div class="row content">
-        <div class="col-12 col-lg-4 d-none d-lg-flex flex-column align-items-center ">
+        <div class="col-12 col-lg-4 d-none d-lg-flex flex-column">
           <span>Chăm sóc khách hàng</span>
           <span>Email: <a href="mailto:<?= getSettingByName('email') ?>" class="text-white"><?= getSettingByName('email') ?></a></span>
         </div>
@@ -21,11 +21,13 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark">
     <div class="container">
-      <a href="/" class="navbar-brand">
+
+
+      <a href="/" class="navbar-brand order-1">
         <img src="<?= getSettingByName('logo') ?>" al="Logo" class="">
       </a>
 
-      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 

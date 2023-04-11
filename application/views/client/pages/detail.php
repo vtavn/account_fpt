@@ -3,8 +3,8 @@
     <div class="col-lg-12">
       <div class="card p-3 product-detail">
         <div class="row">
-          <div class="col-12 col-sm-3">
-            <div class="col-12">
+          <div class="col-3 col-lg-3">
+            <div class="col-12 col-lg-12">
               <div class="thumb">
                 <img src="<?= $package_info->thumb ?>" class="product-image" alt="Product Image">
               </div>

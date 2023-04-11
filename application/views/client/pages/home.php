@@ -31,21 +31,23 @@
 
 <div class="container">
   <div class="row">
+
     <div class="col-lg-12 mt-2">
       <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="3" scrolldelay="5" direction="left">
         <div class="link-slide">
-          <p>🏷️ Tài khoản <b>098***565</b> đã mua gói <b>tài khoản 1 tháng</b> cách đấy <b>5 phút</b></p>
-          <p>🏷️ Tài khoản <b>036***254</b> đã mua gói <b>tài khoản 6 tháng</b> cách đấy <b>24 phút</b></p>
-          <p>🏷️ Tài khoản <b>092***332</b> đã mua gói <b>tài khoản 3 tháng</b> cách đấy <b>30 phút</b></p>
-          <p>🏷️ Tài khoản <b>035***632</b> đã mua gói <b>tài khoản 12 tháng</b> cách đấy <b>35 phút</b></p>
+          <?php
+          $listFakeOrders = explode(PHP_EOL, getSettingByName('fake_order'));
+          foreach ($listFakeOrders as $notice) :
+          ?>
+            <p>🏷️ <?= $notice ?></p>
+          <?php endforeach; ?>
         </div>
       </marquee>
-      <?= getSettingByName('ads_before_banner') ?>
     </div>
     <!-- endslider -->
 
     <!-- categories -->
-    <div class="col-lg-12 mt-3">
+    <div class="col-lg-12">
       <div class="row owl-carousel owl-theme" id="listPackageHome">
         <?php foreach ($list_package as $pack) : ?>
           <div class="col-12">
@@ -53,68 +55,90 @@
               <span><img src="<?= $pack->thumb ?>" alt=""></span>
 
               <div class="info-box-content">
-                <span class="info-box-text"><b><?= $pack->name ?></b></span>
+                <span class="info-box-text"><?= $pack->name ?></span>
                 <a class="btn btn-xs btn-buy-cua" href="<?= client_url($pack->name) ?><?= $pack->id ?>.html">Mua ngay</a>
               </div>
             </div>
           </div>
         <?php endforeach; ?>
       </div>
+    </div>
 
-      <div class="col-lg-12">
-        <h3 class="mt-3 d-flex title-home">Tài khoản mới</h3>
-        <div class="row owl-carousel owl-theme" id="listAccounts">
-          <?php $this->load->view('client/pages/products/listAccounts') ?>
-        </div>
-      </div>
-
-
-      <div class="col-lg-12">
-        <h3 class="mt-3 d-flex title-home">Tài khoản nổi bật</h3>
-        <div class="row owl-carousel owl-theme" id="listAccounts2">
-          <?php $this->load->view('client/pages/products/listAccounts') ?>
-
-        </div>
-      </div>
-
-      <div class="col-lg-12">
-        <h3 class="mt-3 d-flex title-home">Tin tức</h3>
-        <div class="row">
-          tin tức
-        </div>
+    <div class="col-lg-12">
+      <h3 class="mt-3 d-flex title-home">Tài khoản mới</h3>
+      <div class="row owl-carousel owl-theme" id="listAccounts">
+        <?php $this->load->view('client/pages/products/listAccounts') ?>
       </div>
     </div>
-    <!-- /.row -->
 
-    <?php $this->load->view('client/models/buymodel'); ?>
-
-    <!-- Modal -->
-
-    <div class="modal fade" id="noticeAdmin">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Thông báo</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <?= getSettingByName('notice_home_admin') ?>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
+    <div class="col-lg-6">
+      <?= getSettingByName('ads_img_home') ?>
     </div>
-    <!-- /.modal -->
+    <div class="col-lg-6">
+      <?= getSettingByName('ads_video_home') ?>
+    </div>
 
-  </div><!-- /.container-fluid -->
-</div>
+    <div class="col-lg-12">
+      <h3 class="mt-3 d-flex title-home">Tài khoản nổi bật</h3>
+      <div class="row owl-carousel owl-theme" id="listAccounts2">
+        <?php $this->load->view('client/pages/products/listAccounts') ?>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <h3 class="mt-3 d-flex title-home">Tin tức</h3>
+      <div class="row">
+        tin tức
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <?php $this->load->view('client/models/buymodel'); ?>
+
+  <!-- Modal -->
+
+  <div class="modal fade" id="noticeAdmin">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Thông báo</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <?= getSettingByName('notice_home_admin') ?>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+</div><!-- /.container-fluid -->
 <!-- /.content -->
+
+<div class="show">
+  <div class="overlay"></div>
+  <div class="img-show">
+    <span>X</span>
+    <?= getSettingByName('popup_home') ?>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    setTimeout($(".show").fadeIn(), 1500);
+    $("span, .overlay").click(function() {
+      $(".show").fadeOut();
+    });
+  });
+</script>
 
 <?php
 if (isset($my_info)) {

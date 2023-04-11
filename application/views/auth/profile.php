@@ -48,7 +48,7 @@
                 </li>
               </ul>
 
-              <a href="<?= getSettingByName('phone') ?>" class="btn btn-primary btn-block"><b>Gọi hỗ trợ</b></a>
+              <a href="tel:<?= getSettingByName('phone') ?>" class="btn btn-buy-auto btn-block"><b>Gọi hỗ trợ</b></a>
             </div>
             <!-- /.card-body -->
           </div>

@@ -12,7 +12,7 @@ $titleShow = $title . ' <b class="text-red">#' . $order_info->trans_id . '</b>';
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= admin_url('dashboard') ?>">Trang chủ</a></li>
-            <li class="breadcrumb-item active"><?= $titleShow ?></li>
+            <li class="breadcrumb-item active"><?= $title ?></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -28,7 +28,7 @@ $titleShow = $title . ' <b class="text-red">#' . $order_info->trans_id . '</b>';
           <div class="card card-primary card-outline">
             <?php $this->load->view('message'); ?>
             <div class="card-header">
-              <h5 class="m-0"><?= $titleShow ?></h5>
+              <h5 class="m-0"><?= $title ?></h5>
             </div>
             <div class="card-body">
               <div class="row">
@@ -55,12 +55,13 @@ $titleShow = $title . ' <b class="text-red">#' . $order_info->trans_id . '</b>';
                   <div>
                     <?= getSettingByName('note_don_hang') ?>
                   </div>
+                  <strong>Tải app FPT Play ngay trên kho ứng dụng để tận hưởng</strong>
                   <div>
                     <img class="img-thumbnail" src="<?= public_url('client/img/iconfpt/download-app.jpg') ?>" alt="">
                   </div>
                 </div>
               </div>
-              <a href="<?= base_url('orders') ?>" class="btn btn-block btn-primary btn-flat">Quay lại</a>
+              <a href="<?= base_url('orders') ?>" class="btn btn-buy">Quay lại</a>
             </div>
           </div>
       </div>

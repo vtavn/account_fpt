@@ -50,7 +50,7 @@
                         <td><?= display_time($item->created_at) ?></td>
                         <td><?= display_time($item->expired_at) ?></td>
                         <td>
-                          <a title="Chi tiết hoá đơn" target="_blank" aria-label="" href="<?= base_url('orders/show/') ?><?= $item->trans_id ?>" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
+                          <a title="Chi tiết hoá đơn" target="_blank" aria-label="" href="<?= base_url('orders/show/') ?><?= $item->trans_id ?>" style="color:white;" class="btn btn-buy-auto btn-sm btn-icon-left m-b-10" type="button">
                             <i class="fas fa-eye"></i><span class=""> Xem</span>
                           </a>
 

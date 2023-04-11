@@ -196,7 +196,7 @@ footer ul {
   .owl-carousel {
     /* width: calc(100% + 30px); */
     width: calc(100%);
-    /* full mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â n hÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¬nh khi hiÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€ Ã¢â‚¬â„¢n thÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ trÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªn mobile */
+    /* full mÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â n hÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬nh khi hiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢n thÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹ trÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªn mobile */
   }
 
   .owl-carousel .owl-next,
@@ -316,7 +316,7 @@ footer ul {
   font-size: 28px;
   font-weight: 700;
   letter-spacing: -.03em;
-  color: #3d464d;
+  color: #fff;
 }
 
 .product-action {
@@ -336,7 +336,7 @@ footer ul {
 
 .pagination strong,
 .pagination a:hover {
-  background: #3f6791;
+  background: #e74c3c;
   color: #FFF;
 }
 
@@ -361,6 +361,7 @@ footer ul {
   /*font-weight: bold;*/
   padding: 0 6px;
   font-size: 12px;
+  border-radius: 5px;
 }
 
 .pagination {
@@ -402,6 +403,24 @@ footer ul {
   gap: 10px;
 }
 
+.btn-buy-auto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  transition: all .2s ease;
+  font-weight: 500;
+  margin-right: 4px;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(114.88deg, #fe592a 0%, #e93013 97.15%);
+  border: none;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+
 img.bg-home {
   width: 100%;
   height: 100px;
@@ -421,10 +440,6 @@ img.bg-home {
 
 .nav-tabs {
   border-bottom: 1px solid #2c2c2e;
-}
-
-.product-price h2 {
-  /* color: #fff; */
 }
 
 .nav-tabs .nav-item.show .nav-link,
@@ -509,13 +524,15 @@ a:hover {
 }
 
 .info-box-text {
-  color: #000;
+  color: #fff;
 }
 
 .product-detail {
   background: #000;
   color: #fff;
-  border: 2px solid #2c2c2e;
+  border: 7px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, gray, #ff6a00);
 }
 
 .dark-mode .content-wrapper {
@@ -523,12 +540,13 @@ a:hover {
 }
 
 .dark-mode .info-box {
-  background-color: #fff !important;
+  background-color: #ffffff1a !important;
+  color: #fff !important;
 }
 
 .dark-mode .card {
-  background-color: #ffffff !important;
-  color: #000 !important;
+  background-color: #ffffff1a !important;
+  color: #fff !important;
 }
 
 .dark-mode .modal-content {
@@ -554,6 +572,10 @@ a:hover {
   color: #6c757d;
 }
 
+.dark-mode .nav-tabs {
+  border-color: #2c2c2e;
+}
+
 /* topbar */
 
 .top-bar {
@@ -576,10 +598,82 @@ a:hover {
 }
 
 .content span {
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .phone-topbar {
   font-size: 20px;
   word-spacing: 5px;
+}
+
+a:hover {
+  color: #fff !important;
+}
+
+.nav-pills .nav-link:not(.active):hover {
+  color: #e74c3c !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #fe592a !important;
+}
+
+.profile-user-img {
+  border: none;
+}
+
+/* popup */
+.show {
+  z-index: 999;
+  display: none;
+}
+
+.show .overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .66);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.show .img-show {
+  width: 400px;
+  height: 400px;
+  background: #FFF;
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  z-index: 99999;
+  border: 3px solid;
+}
+
+.img-show span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+  cursor: pointer;
+  font-size: 20px;
+  font: weight bold;
+  ;
+}
+
+.img-show img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*End style*/
+
+.d-flex.justify-content-center.gap-2 {
+  gap: 12px;
 }
