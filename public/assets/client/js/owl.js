@@ -3,8 +3,11 @@ $(document).ready(function () {
 	function initCarousel(carouselID) {
 		$(carouselID).owlCarousel({
 			loop: true,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplayHoverPause: true,
 			margin: 10,
-			nav: true,
+			nav: false,
 			navText: [
 				"<i class='fas fa-chevron-left'></i>",
 				"<i class='fas fa-chevron-right'></i>",
@@ -29,8 +32,11 @@ $(document).ready(function () {
 
 	$("#listPackageHome").owlCarousel({
 		loop: true,
+		autoplay: true,
+		autoplayTimeout: 3000,
+		autoplayHoverPause: true,
 		margin: 10,
-		nav: true,
+		nav: false,
 		navText: [
 			"<i class='fas fa-chevron-left'></i>",
 			"<i class='fas fa-chevron-right'></i>",
@@ -52,12 +58,15 @@ $(document).ready(function () {
 	// logo footer loop
 	$("#logo-foot-slide").owlCarousel({
 		loop: true,
+		autoplay: true,
+		autoplayTimeout: 2000,
+		autoplayHoverPause: true,
 		center: false,
 		items: 3,
 		margin: 0,
 		autoplay: false,
 		dots: true,
-		nav: true,
+		nav: false,
 		autoplayTimeout: 9500, //8500
 		smartSpeed: 250, //450
 		navText: [

@@ -89,11 +89,11 @@ class Auth extends MY_Controller
 
         if ($this->member_model->create($data)) {
           $this->session->set_flashdata('success', 'Tạo tài khoản thành công. Bây giờ bạn có thể đăng nhập!');
+          redirect(base_url('auth/login'));
         } else {
           $this->session->set_flashdata('error', 'Tạo tài khoản thất bại vui lòng liên hệ admin để hỗ trợ.');
+          redirect(base_url('auth/register'));
         }
-
-        redirect(base_url('auth/register'));
       }
     }
     $this->load->view('auth/register');
