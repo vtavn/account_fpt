@@ -562,15 +562,17 @@ a:hover {
 }
 
 .btn-cua-top {
-  background: #0F2027 !important;
+  background: #0c4da2;
+  /* background: #0F2027 !important;
   background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027) !important;
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027) !important;
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027) !important; */
 }
 
 .btn-cua-top-2 {
-  background: #cb2d3e;
+  background: #4db848;
+  /* background: #cb2d3e;
   background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);
-  background: linear-gradient(to right, #ef473a, #cb2d3e);
+  background: linear-gradient(to right, #ef473a, #cb2d3e); */
 }
 
 .content span {

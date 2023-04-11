@@ -2,11 +2,11 @@
   <div class="top-bar">
     <div class="container">
       <div class="row content">
-        <div class="col-12 col-lg-4 d-flex flex-column align-items-center">
+        <div class="col-12 col-lg-4 d-none d-lg-flex flex-column align-items-center ">
           <span>Chăm sóc khách hàng</span>
           <span>Email: <a href="mailto:<?= getSettingByName('email') ?>" class="text-white"><?= getSettingByName('email') ?></a></span>
         </div>
-        <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center">
+        <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center m-2 m-lg-0">
           <span class="phone-topbar"><i class="fas fa-phone-alt"></i> <?= getSettingByName('phone') ?></span>
         </div>
         <div class="col-12 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">

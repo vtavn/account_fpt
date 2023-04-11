@@ -63,6 +63,12 @@
       padding: 5px;
       border-radius: 10px;
     }
+
+    h5#staticBackdropLabel {
+      color: #000;
+      font-size: 18px;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -92,7 +98,7 @@
         <div class="col-xs-12 col-sm-12 col-md-4 left">
           <div class="info-box">
             <div class="receipt">
-              <img src="<?= getSettingByName('logo') ?>" alt="Logo" width="100%" />
+              <img src="<?= getSettingByName('logo') ?>" alt="Logo" />
             </div>
             <div class="entry">
               <p><i class="fa fa-university" aria-hidden="true"></i>

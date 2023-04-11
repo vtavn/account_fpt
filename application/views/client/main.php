@@ -26,6 +26,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- CuteAleart -->
   <script src="<?php echo public_url('admin/') ?>plugins/cute-alert/cute-alert.js"></script>
 
+  <link href="https://fpt.vn/assets/frontend/smart_banner/smartbanner.css" rel="stylesheet">
+  <!--******** // CAI DAT APP HI FPT _ DoanVH  *****-->
+  <!--****** các thẻ meta cần thiết để chạy CAI DAT APP HI FPT _ DVH ******-->
+  <meta name="smartbanner:title" content="">
+  <meta name="smartbanner:author" content="">
+  <meta name="smartbanner:price" content="">
+  <meta name="smartbanner:price-suffix-apple" content="">
+  <meta name="smartbanner:price-suffix-google" content="">
+  <meta name="smartbanner:icon-apple" content="">
+  <meta name="smartbanner:icon-google" content="">
+  <meta name="smartbanner:button" content="">
+  <meta name="smartbanner:rating-Itunes" content="">
+  <meta name="smartbanner:rating-Google" content="">
+  <meta name="smartbanner:button-url-apple" content="">
+  <meta name="smartbanner:button-url-google" content="">
+  <meta name="smartbanner:enabled-platforms" content="android,ios">
+  <!--****** các thẻ meta cần thiết để chạy CAI DAT APP HI FPT _ DVH ******-->
+  <!--******** css AND js CAI DAT APP HI FPT _ DVH ********-->
+  <script src="https://fpt.vn/assets/frontend/smart_banner/smartbanner.js" type="text/javascript"></script>
+  <script src="https://fpt.vn/assets/frontend/smart_banner/data_smartbanner.js" type="text/javascript"></script>
+  <script src="https://fpt.vn/assets/frontend/smart_banner/carousel-banner.js" type="text/javascript"></script>
+  <script src="https://fpt.vn/assets/frontend/js/nav.js" type="text/javascript"></script>
+  <!--******** // css AND js CAI DAT APP HI FPT _ DVH  *****-->
+
 </head>
 
 <body class="hold-transition layout-top-nav dark-mode">
