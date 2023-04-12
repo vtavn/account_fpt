@@ -20,9 +20,13 @@ class Home extends MY_Controller
     $packages = $this->package_model->query($sql);
     $this->data['list_package'] = $packages;
 
-    $sql_account = "SELECT * FROM `accounts` WHERE `buyed_at` IS NULL AND `status` = 1 ORDER BY RAND() LIMIT 8";
+    $sql_account = "SELECT * FROM `accounts` WHERE `buyed_at` IS NULL AND `status` = 1 AND `ctv` != 1 ORDER BY RAND() LIMIT 8";
     $accounts = $this->account_model->query($sql_account);
     $this->data['list_account'] = $accounts;
+
+    $sql_account_ctv = "SELECT * FROM `accounts` WHERE `buyed_at` IS NULL AND `status` = 1  AND `ctv` = 1  ORDER BY RAND() LIMIT 8";
+    $accounts_ctv = $this->account_model->query($sql_account_ctv);
+    $this->data['list_account_ctv'] = $accounts_ctv;
 
     //banner 
     $fillterS = array();

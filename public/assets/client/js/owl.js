@@ -29,6 +29,7 @@ $(document).ready(function () {
 
 	initCarousel("#listAccounts");
 	initCarousel("#listAccounts2");
+	initCarousel("#listAccounts3");
 
 	$("#listPackageHome").owlCarousel({
 		loop: true,

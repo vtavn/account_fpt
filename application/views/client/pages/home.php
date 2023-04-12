@@ -66,9 +66,13 @@
 
     <div class="col-lg-12">
       <h3 class="mt-3 d-flex title-home">Tài khoản mới</h3>
-      <div class="row owl-carousel owl-theme" id="listAccounts">
-        <?php $this->load->view('client/pages/products/listAccounts') ?>
-      </div>
+      <?php if (count($list_account) > 0) : ?>
+        <div class="row owl-carousel owl-theme" id="listAccounts">
+          <?php $this->load->view('client/pages/products/listAccounts') ?>
+        </div>
+      <?php else : ?>
+        <h4 class="alert alert-danger text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
+      <?php endif; ?>
     </div>
 
     <div class="col-lg-6">
@@ -79,10 +83,25 @@
     </div>
 
     <div class="col-lg-12">
+      <h3 class="mt-3 d-flex title-home">Tài khoản Cộng Tác Viên</h3>
+      <?php if (count($list_account_ctv) > 0) : ?>
+        <div class="row owl-carousel owl-theme" id="listAccounts2">
+          <?php $this->load->view('client/pages/products/listAccountsCtv') ?>
+        </div>
+      <?php else : ?>
+        <h4 class="alert alert-danger text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
+      <?php endif; ?>
+    </div>
+
+    <div class="col-lg-12">
       <h3 class="mt-3 d-flex title-home">Tài khoản nổi bật</h3>
-      <div class="row owl-carousel owl-theme" id="listAccounts2">
-        <?php $this->load->view('client/pages/products/listAccounts') ?>
-      </div>
+      <?php if (count($list_account) > 0) : ?>
+        <div class="row owl-carousel owl-theme" id="listAccounts3">
+          <?php $this->load->view('client/pages/products/listAccounts') ?>
+        </div>
+      <?php else : ?>
+        <h4 class="alert alert-danger text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
+      <?php endif; ?>
     </div>
 
     <div class="col-lg-12">

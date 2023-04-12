@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- AdminLTE App -->
   <script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
   <script src="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.js"></script>
-  <script src="<?php echo public_url('client/js/') ?>owl.js?v=1.0.1"></script>
+  <script src="<?php echo public_url('client/js/') ?>owl.js?v=1.0.2"></script>
 </body>
 
 </html>
