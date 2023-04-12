@@ -223,6 +223,15 @@ class Payment extends MY_Controller
           $trans_id = random("CUAQWERTYUPASDFGHJKZXCVBNM0123456789", 10);
           $time_expired = date("Y-m-d H:i:s", strtotime(convertNumberToTime($accountOK->duration)));
           $this->member_model->deductMoney("members", "money", $pricePay, $member_id);
+
+          //add money to seller 
+          if ($accountOK->ctv) {
+            $percenSell = getSettingMoneyByKey('pecent_sell');
+            $moneyEarn = $pricePay - (($pricePay * $percenSell) / 100);
+            $this->member_model->addMoney("members", "money_ctv", $moneyEarn, $accountOK->seller_id);
+            insertLog("nhận tiền từ bán tài khoản số: " . $accountOK->id . " người mua: " . getNameMemberById($member_id)->name . " số tiền thụ hưởng: " . $moneyEarn, $accountOK->seller_id);
+          }
+
           // update accout => out of stock
           $this->account_model->update($accountOK->id, ['trans_id' => $trans_id, 'status' => 2, 'buyer_id' => $member_id, 'updated_at' => date("Y-m-d H:i:s", time()), 'buyed_at' => date("Y-m-d H:i:s", time())]);
           // send account to history member

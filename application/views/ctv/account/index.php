@@ -7,7 +7,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?= admin_url('dashboard') ?>">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="<?= ctv_url('dashboard') ?>">Trang chủ</a></li>
             <li class="breadcrumb-item active">Danh sách tài khoản</li>
           </ol>
         </div><!-- /.col -->
@@ -27,7 +27,7 @@
             </div>
             <?php $this->load->view('message'); ?>
             <div class="card-body">
-              <form method="get" action="<?= admin_url('account') ?>" class="mb-2">
+              <form method="get" action="<?= ctv_url('account') ?>" class="mb-2">
                 <div class="row">
                   <input class="form-control col-sm-2 mb-2" name="account" value="<?= getValueinGet('account') ?>" placeholder="Tài khoản">
                   <select class="form-control select2bs4 col-sm-2 m-2" name="package_id">
@@ -45,8 +45,7 @@
                   <select class="form-control  col-sm-2 mb-2" name="status">
                     <option value="">Trạng thái</option>
                     <option value="1" <?= (getValueinGet('status') == 1) ? 'selected' : '' ?>>Đang Bán</option>
-                    <option value="2" <?= (getValueinGet('status') == 2) ? 'selected' : '' ?>>Đã Bán</option>
-                    <option value="2" <?= (getValueinGet('status') == 3) ? 'selected' : '' ?>>Đã Huỷ</option>
+                    <option value="2" <?= (getValueinGet('status') == 2) ? 'selected' : '' ?>>Đã bán</option>
                     <option value="4" <?= (getValueinGet('status') == 4) ? 'selected' : '' ?>>Đang chờ duyệt</option>
                   </select>
 
@@ -54,7 +53,7 @@
                     <button type="submit" class="btn btn-warning"><i class="fa fa-search"></i>
                       Tìm kiếm
                     </button>
-                    <a class="btn btn-danger" href="<?= admin_url('account') ?>"><i class="fa fa-trash"></i>
+                    <a class="btn btn-danger" href="<?= ctv_url('account') ?>"><i class="fa fa-trash"></i>
                       Bỏ lọc
                     </a>
                   </div>
@@ -93,7 +92,7 @@
                         <td><?= display_account($item->status) ?></td>
 
                         <td>
-                          <a aria-label="" href="<?= admin_url('account/update') ?>/<?= $item->id ?>" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
+                          <a aria-label="" href="<?= ctv_url('account/update') ?>/<?= $item->id ?>" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
                             <i class="fas fa-edit mr-1"></i><span class="">Edit</span>
                           </a>
                           <button style="color:white;" onclick="RemovePackage(<?= $item->id; ?>,'<?= $item->name ?>')" class="btn btn-danger btn-sm btn-icon-left m-b-10" type="button">
@@ -123,7 +122,7 @@
   <script type="text/javascript">
     function postRemove(id) {
       $.ajax({
-        url: "<?= admin_url('account/remove'); ?>",
+        url: "<?= ctv_url('account/remove'); ?>",
         type: 'POST',
         dataType: "JSON",
         data: {

@@ -123,19 +123,19 @@
 </div><!-- /.container-fluid -->
 <!-- /.content -->
 
-<div class="show">
+<div class="show-popup">
   <div class="overlay"></div>
   <div class="img-show">
-    <span>X</span>
+    <span id="closedPop">X</span>
     <?= getSettingByName('popup_home') ?>
   </div>
 </div>
 
 <script>
   $(function() {
-    setTimeout($(".show").fadeIn(), 1500);
-    $("span, .overlay").click(function() {
-      $(".show").fadeOut();
+    setTimeout($(".show-popup").fadeIn(), 1500);
+    $("#closedPop").click(function() {
+      $(".show-popup").fadeOut();
     });
   });
 </script>

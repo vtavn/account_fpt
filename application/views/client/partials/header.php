@@ -6,28 +6,30 @@
           <span>Chăm sóc khách hàng</span>
           <span>Email: <a href="mailto:<?= getSettingByName('email') ?>" class="text-white"><?= getSettingByName('email') ?></a></span>
         </div>
-        <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center m-2 m-lg-0">
-          <span class="phone-topbar"><i class="fas fa-phone-alt"></i> <?= getSettingByName('phone') ?></span>
+        <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center flex-column">
+          <p class="m-0">Hotline tư vấn đăng ký</p>
+          <span class="phone-topbar"><i class="fas fa-phone-alt"></i> <?= getSettingByName('phone_topbar') ?></span>
         </div>
-        <div class="col-12 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">
-          <a href="tel:<?= getSettingByName('phone') ?>" class="btn btn-block btn-buy-cua btn-cua-top">Hỗ Trợ Trực Tuyến</a>
+
+        <div class="col-6 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">
+          <a href="tel:<?= getSettingByName('phone') ?>" class="text-uppercase btn btn-block btn-buy-cua btn-cua-top">Hỗ Trợ Trực Tuyến</a>
         </div>
-        <div class="col-12 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">
-          <a href="<?= getSettingByName('facebook_admin') ?>" class="btn btn-block btn-buy-cua btn-cua-top-2">Đăng Ký Đại Lý/CTV</a>
+        <div class="col-6 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">
+          <a href="<?= getSettingByName('facebook_admin') ?>" class="text-uppercase btn btn-block btn-buy-cua btn-cua-top-2">Đăng Ký Đại Lý/CTV</a>
         </div>
+
       </div>
     </div>
   </div>
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark">
+  <nav id="navbar_top" class="main-header navbar navbar-expand-md navbar-dark">
     <div class="container">
 
-
-      <a href="/" class="navbar-brand order-1">
+      <a href="/" class="navbar-brand">
         <img src="<?= getSettingByName('logo') ?>" al="Logo" class="">
       </a>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -41,23 +43,6 @@
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <?php if (empty($my_info)) : ?>
-          <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">1</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-header">1 Thông báo</span>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> Cập nhật phiên bản.
-                <span class="float-right text-muted text-sm">3 phút</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer">Xem tất cả thông báo</a>
-            </div>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('auth/register') ?>">
               <i class="fas fa-sign-in-alt"></i> Đăng ký
@@ -74,28 +59,15 @@
               <a class="btn btn-md btn-danger text-white" target="_blank" href="<?= admin_url('dashboard') ?>">Administrator</a>
             </li>
           <?php endif ?>
-          <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">1</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-header">1 Thông báo</span>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> Chào mừng.
-                <span class="float-right text-muted text-sm">3 phút</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer">Xem tất cả thông báo</a>
-            </div>
-          </li>
-
+          <?php if ($my_info->role_id == '2') : ?>
+            <li class="nav-item">
+              <a class="btn btn-md btn-danger text-white" target="_blank" href="<?= ctv_url('dashboard') ?>">CTV</a>
+            </li>
+          <?php endif ?>
           <li class="nav-item dropdown dropdown-hover">
             <a id="drMemberHeader" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><?= $my_info->username ?></a>
             <ul aria-labelledby="drMemberHeader" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Số dư: <?= number_format($my_info->money) ?> vnđ</a></li>
+              <li><a href="#" class="dropdown-item">Số dư: <b class="text-red"><?= number_format($my_info->money) ?> vnđ</b></a></li>
               <li><a href="<?= base_url('auth/profile') ?>" class="dropdown-item">Thông tin của bạn </a></li>
               <li><a href="<?= base_url('auth/logout') ?>" class="dropdown-item">Đăng xuất</a></li>
             </ul>

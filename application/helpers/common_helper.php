@@ -52,6 +52,11 @@ function admin_url($url = '')
   return base_url('admin/' . $url);
 }
 
+function ctv_url($url = '')
+{
+  return base_url('ctv/' . $url);
+}
+
 function createUsername($email)
 {
   return strtolower(explode('@', $email)[0]);
@@ -117,6 +122,17 @@ function is_admin()
   return ($is_admin == 1);
 }
 
+
+function is_ctv()
+{
+  $CI = &get_instance();
+
+  $user_id = $CI->session->userdata('uid');
+  $is_admin = $CI->db->get_where('members', array('id' => $user_id, 'role_id' => 2))->num_rows();
+  return ($is_admin == 1);
+}
+
+
 function display_status($id)
 {
   if ($id == 1) {
@@ -151,9 +167,11 @@ function display_banned($banned)
 function display_account($status)
 {
   if ($status == 1) {
-    return '<span class="badge badge-warning">Đang bán</span>';
+    return '<span class="badge badge-primary">Đang bán</span>';
   } elseif ($status == 2) {
     return '<span class="badge badge-success">Đã bán</span>';
+  } elseif ($status == 4) {
+    return '<span class="badge badge-warning">Đang chờ duyệt</span>';
   } else {
     return '<span class="badge badge-danger">Xoá</span>';
   }
@@ -218,11 +236,11 @@ function getTotalAccountByIdPackage($id, $status = 1)
   return $CI->account_model->getTotal($input);
 }
 
-function insertLog($text, $uid = '0')
+function insertLog($text, $uid = 0)
 {
   $CI = &get_instance();
   $CI->load->model('log_model');
-  $user_id = $CI->session->userdata('uid') ? $CI->session->userdata('uid') : $uid;
+  $user_id = ($uid != 0) ? $uid : $CI->session->userdata('uid');
 
   $data = array(
     'member_id' => $user_id,
@@ -453,5 +471,14 @@ function getSettingByName($name)
   $CI->load->model('setting_model');
   $where = array('name' => $name);
   $setting = $CI->setting_model->get_info_rule($where);
+  return $setting->value;
+}
+
+function getSettingMoneyByKey($name)
+{
+  $CI = &get_instance();
+  $CI->load->model('setting_money_model');
+  $where = array('name' => $name);
+  $setting = $CI->setting_money_model->get_info_rule($where);
   return $setting->value;
 }

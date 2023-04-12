@@ -602,8 +602,13 @@ a:hover {
 }
 
 .phone-topbar {
-  font-size: 20px;
+  font-size: 25px;
   word-spacing: 5px;
+  font-weight: bold !important;
+}
+
+.phone-topbar i {
+  color: yellow;
 }
 
 a:hover {
@@ -625,12 +630,12 @@ a:hover {
 }
 
 /* popup */
-.show {
+.show-popup {
   z-index: 999;
   display: none;
 }
 
-.show .overlay {
+.show-popup .overlay {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, .66);
@@ -640,7 +645,7 @@ a:hover {
   z-index: 9999;
 }
 
-.show .img-show {
+.show-popup .img-show {
   width: 400px;
   height: 400px;
   background: #FFF;
@@ -676,4 +681,41 @@ a:hover {
 
 .d-flex.justify-content-center.gap-2 {
   gap: 12px;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .dropdown-menu-end {
+    right: 0;
+    left: auto;
+  }
+
+  .navbar .nav-item .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    margin-top: 0;
+  }
+
+  .navbar .nav-item:hover .nav-link {
+    color: #fff;
+  }
+
+  .navbar .dropdown-menu.fade-down {
+    top: 80%;
+    transform: rotateX(-75deg);
+    transform-origin: 0% 0%;
+  }
+
+  .navbar .dropdown-menu.fade-up {
+    top: 180%;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    transition: .3s;
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+    transform: rotateX(0deg);
+  }
 }

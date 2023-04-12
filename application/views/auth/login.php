@@ -18,6 +18,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>css/adminlte.min.css">
+  <style>
+    b.h4 {
+      color: #000;
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 1.8;
+    }
+  </style>
 </head>
 
 <body class="hold-transition login-page">
@@ -25,7 +33,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        <a href="#" class="h1"><b>Đăng Nhập</b></a>
+        <a href="/">
+          <img src="<?= getSettingByName('logo') ?>" al="Logo" class=""><br>
+          <b class="h4">Đăng Nhập</b>
+        </a>
       </div>
       <div class="card-body">
         <?php $this->load->view('message', $this->data); ?>
