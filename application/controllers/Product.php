@@ -43,7 +43,7 @@ class Product extends MY_Controller
         die(json_encode(['status' => 'error', 'msg' => 'Lỗi vui lòng thử lại sau.']));
       } else {
         //get account
-        $sql = "SELECT * FROM accounts WHERE package_id = '$package_id' AND status = 1 ORDER BY RAND() LIMIT 1";
+        $sql = "SELECT * FROM accounts WHERE package_id = '$package_id' AND status = 1 AND ctv != 1 ORDER BY RAND() LIMIT 1";
         $result = $this->account_model->query($sql);
         if ($result) {
           $accountOK = $result[0];

@@ -56,6 +56,25 @@
               </ul>
             </li>
 
+
+            <li class="nav-item">
+              <a href="<?= ctv_url('bank') ?>" class="nav-link <?= ($controller == 'bank' && ($action == 'index' || $action == 'update')) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-university"></i>
+                <p>
+                  Ngân Hàng
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?= ctv_url('payment') ?>" class="nav-link <?= ($controller == 'payment' && ($action == 'index' || $action == 'create')) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-university"></i>
+                <p>
+                  Hoá Đơn
+                </p>
+              </a>
+            </li>
+
             <!-- <li class="nav-item">
               <a href="<?= ctv_url('bank') ?>" class="nav-link <?= ($controller == 'bank' && ($action == 'index' || $action == 'update')) ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-university"></i>

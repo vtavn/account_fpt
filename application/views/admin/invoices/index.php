@@ -27,8 +27,17 @@
             </div>
             <?php $this->load->view('message'); ?>
             <div class="card-body">
+              <a class="btn btn-success mb-2" href="<?= admin_url('invoices') ?>?type=withdraw_money"><i class="fas fa-funnel-dollar"></i>
+                Danh sách rút tiền
+              </a>
               <form method="get" action="<?= admin_url('invoices') ?>" class="mb-2">
                 <div class="row">
+                  <select class="form-control  col-sm-2 mb-2" name="type">
+                    <option value="">Loại hoá đơn</option>
+                    <option value="deposit_money" <?= (getValueinGet('type') == 'deposit_money') ? 'selected' : '' ?>>Nạp Tiền</option>
+                    <option value="withdraw_money" <?= (getValueinGet('type') == 'withdraw_money') ? 'selected' : '' ?>>Rút Tiền</option>
+                  </select>
+
                   <input class="form-control col-sm-2 mb-2" name="member_id" value="<?= getValueinGet('member_id') ?>" placeholder="Id Thành Viên">
                   <input class="form-control col-sm-2 mb-2" name="trans_id" value="<?= getValueinGet('trans_id') ?>" placeholder="Mã Giao Dịch">
                   <select class="form-control select2bs4 col-sm-2 m-2" name="payment_method">
@@ -43,7 +52,6 @@
                     <option value="1" <?= (getValueinGet('status') == 1) ? 'selected' : '' ?>>Đã thanh toán</option>
                     <option value="2" <?= (getValueinGet('status') == 2) ? 'selected' : '' ?>>Huỷ bỏ</option>
                   </select>
-
                   <div class="col-sm-4 mb-2">
                     <button type="submit" class="btn btn-warning"><i class="fa fa-search"></i>
                       Tìm kiếm

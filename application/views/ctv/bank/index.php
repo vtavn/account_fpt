@@ -7,7 +7,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?= admin_url('dashboard') ?>">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="<?= ctv_url('dashboard') ?>">Trang chủ</a></li>
             <li class="breadcrumb-item active"><?= $title ?></li>
           </ol>
         </div><!-- /.col -->
@@ -36,27 +36,20 @@
                     <th>ShortName</th>
                     <th>Account Number</th>
                     <th>Account Name</th>
-                    <th>Thành viên</th>
                     <th>Status</th>
-                    <th style="width: 20%">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($data as $bank) { ?>
+                  <?php
+                  $i = 1;
+                  foreach ($data as $bank) { ?>
                     <tr>
-                      <td><?= $bank->id; ?></td>
+                      <td><?= $i++; ?></td>
                       <td><?= $bank->name; ?></td>
                       <td><?= $bank->accountNumber; ?></td>
                       <td><?= $bank->accountName; ?></td>
-                      <td><?= getNameMemberById($bank->member_id)->name; ?> (<?= getNameMemberById($bank->member_id)->id ?>)</td>
                       <td><?= display_status($bank->status); ?></td>
-                      <td><a aria-label="" href="<?= admin_url('bank/update/') ?><?= $bank->id ?>" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
-                          <i class="fas fa-edit mr-1"></i><span class="">Edit</span>
-                        </a>
-                        <button style="color:white;" onclick="RemoveRow('<?= $bank->id; ?>')" class="btn btn-danger btn-sm btn-icon-left m-b-10" type="button">
-                          <i class="fas fa-trash mr-1"></i><span class="">Delete</span>
-                        </button>
-                      </td>
+
                     </tr>
                   <?php } ?>
                 </tbody>
@@ -72,7 +65,7 @@
                 THÊM NGÂN HÀNG
               </h3>
             </div>
-            <form action="<?= admin_url('bank/create') ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= ctv_url('bank/create') ?>" method="POST" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Ngân hàng</label>
@@ -123,44 +116,4 @@
         theme: "bootstrap4"
       });
     });
-
-    function RemoveRow(id) {
-      cuteAlert({
-        type: "question",
-        title: "Xác Nhận Xóa Ngân Hàng",
-        message: "Bạn có chắc chắn muốn xóa ngân hàng ID " + id + " không ?",
-        confirmText: "Đồng Ý",
-        cancelText: "Hủy"
-      }).then((e) => {
-        if (e) {
-          $.ajax({
-            url: "<?= admin_url("bank/remove"); ?>",
-            method: "POST",
-            dataType: "JSON",
-            data: {
-              id: id
-            },
-            success: function(response) {
-              if (response.status == 'success') {
-                cuteToast({
-                  type: "success",
-                  title: "Thành Công",
-                  message: "Đã xóa thành công tài khoản " + id,
-                  timer: 3000
-                });
-                location.reload();
-              } else {
-                cuteToast({
-                  type: "error",
-                  title: "Lỗi",
-                  message: "Đã xảy ra lỗi khi xoá tài khoản " + id,
-                  timer: 5000
-                });
-                location.reload();
-              }
-            }
-          });
-        }
-      })
-    }
   </script>

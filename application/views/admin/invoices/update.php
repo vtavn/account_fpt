@@ -54,7 +54,7 @@
                             <input type="text" class="form-control" value="<?= number_format($invoice_info->amount) ?>đ" disabled>
                           <?php else : ?>
                             <input type="text" class="form-control" value="<?= $invoice_info->amount ?>" name="pay" placeholder="Số tiền đã trả.">
-                            <i>* nhập số tiền thành viên đã nạp thành công. Chú ý số tiền này sẽ được cộng vào tài khoản của người dùng.</i>
+                            <i>* nhập số tiền thành viên đã nạp/rút thành công. Chú ý số tiền này sẽ được cộng/trừ vào tài khoản của người dùng.</i>
                           <?php endif ?>
                         </div>
                       </div>

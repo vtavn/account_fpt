@@ -132,12 +132,12 @@
 </div>
 
 <script>
-  $(function() {
-    setTimeout($(".show-popup").fadeIn(), 1500);
-    $("#closedPop").click(function() {
-      $(".show-popup").fadeOut();
-    });
-  });
+  // $(function() {
+  //   setTimeout($(".show-popup").fadeIn(), 1500);
+  //   $("#closedPop").click(function() {
+  //     $(".show-popup").fadeOut();
+  //   });
+  // });
 </script>
 
 <?php

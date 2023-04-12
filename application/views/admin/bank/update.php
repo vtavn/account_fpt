@@ -18,6 +18,7 @@
 
   <div class="content">
     <div class="container-fluid">
+      <?php $this->load->view('message'); ?>
       <div class="row">
         <section class="col-lg-7 connectedSortable">
           <div class="card card-primary card-outline">
@@ -35,6 +36,8 @@
                     <th>ShortName</th>
                     <th>Account Number</th>
                     <th>Account Name</th>
+                    <th>Thành viên</th>
+                    <th>Status</th>
                     <th style="width: 20%">Action</th>
                   </tr>
                 </thead>
@@ -45,7 +48,9 @@
                       <td><?= $bank->name; ?></td>
                       <td><?= $bank->accountNumber; ?></td>
                       <td><?= $bank->accountName; ?></td>
-                      <td><a aria-label="" href="" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
+                      <td><?= getNameMemberById($bank->member_id)->name; ?> (<?= getNameMemberById($bank->member_id)->id ?>)</td>
+                      <td><?= display_status($bank->status); ?></td>
+                      <td><a aria-label="" href="<?= admin_url('bank/update/') ?><?= $bank->id ?>" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
                           <i class="fas fa-edit mr-1"></i><span class="">Edit</span>
                         </a>
                         <button style="color:white;" onclick="RemoveRow('<?= $bank->id; ?>')" class="btn btn-danger btn-sm btn-icon-left m-b-10" type="button">
@@ -105,6 +110,18 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tên chủ tài khoản</label>
                   <input type="text" class="form-control" name="accountName" value="<?= $bank_info->accountName ?>" placeholder="Nhập tên chủ tài khoản" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Id Thành viên</label>
+                  <input type="text" class="form-control" name="member_id" value="<?= $bank_info->member_id ?>" placeholder="Id Thành viên" required>
+                  <i>* Không nên chỉnh sửa id thành viên.</i>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Trạng thái</label>
+                  <select class="form-control  col-sm-2 mb-2" name="status">
+                    <option value="0" <?= ($bank_info->status == '0') ? 'selected' : '' ?>>Không Duyệt</option>
+                    <option value="1" <?= ($bank_info->status == '1') ? 'selected' : '' ?>>Duyệt</option>
+                  </select>
                 </div>
               </div>
               <div class="card-footer clearfix">

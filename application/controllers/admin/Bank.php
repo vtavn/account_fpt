@@ -47,7 +47,8 @@ class Bank extends MY_Controller
         $thumb = $this->input->post('thumb');
         $accountName = $this->input->post('accountName');
         $accountNumber = $this->input->post('accountNumber');
-        $member_id = $this->session->userdata('uid');
+        $member_id = $this->input->post('member_id');
+        $status = $this->input->post('status');
 
         $data = array(
           'name' => $name,
@@ -55,7 +56,9 @@ class Bank extends MY_Controller
           'accountName' => $accountName,
           'accountNumber' => $accountNumber,
           'member_id' => $member_id,
+          'status' => $status
         );
+
         $this->bank_model->update($bank_info->id, $data);
         insertLog('Sửa thành công ngân hàng: ' . $bank_info->name . ' STK: ' . $bank_info->accountNumber . ' Tên: ' . $bank_info->accountName . ' => ' . $name . ' STK: ' . $accountNumber . ' Tên: ' . $accountName);
         $this->session->set_flashdata('success', 'Cập nhật thành công!.');

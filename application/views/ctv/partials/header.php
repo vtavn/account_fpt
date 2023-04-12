@@ -25,11 +25,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?php echo public_url('admin/') ?>plugins/cute-alert/cute-alert.js"></script>
   <!-- AdminLTE App -->
   <script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
+  <link rel="stylesheet" href="<?php echo public_url('admin/plugins/') ?>sweetalert2/sweetalert2.min.css">
 
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <script src="<?php echo public_url('admin/') ?>plugins/select2/js/select2.full.min.js"></script>
+  <script src="<?php echo public_url('admin/') ?>plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
 
 </head>
 

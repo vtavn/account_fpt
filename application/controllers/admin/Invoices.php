@@ -26,6 +26,7 @@ class Invoices extends MY_Controller
     $trans_id = $this->input->get('trans_id');
     $status = $this->input->get('status');
     $payment_method = $this->input->get('payment_method');
+    $type = $this->input->get('type');
 
 
     $where = "WHERE id like '%'";
@@ -37,8 +38,15 @@ class Invoices extends MY_Controller
     if ($trans_id) {
       $where .= " AND trans_id = '" . $trans_id . "'";
     }
+
     if ($payment_method) {
       $where .= " AND payment_method = '" . $payment_method . "'";
+    }
+
+    if ($type) {
+      $where .= " AND type = '" . $type . "'";
+    } else {
+      $where .= " AND type = 'deposit_money'";
     }
 
     if ($status == 'pending') {
@@ -119,12 +127,17 @@ class Invoices extends MY_Controller
       );
 
       if ($status == 1) {
-        $this->member_model->addMoney("members", "money", $pay, $invoice_info->member_id);
+        if ($invoice_info->type == 'deposit_money') {
+          insertLog('Cộng tiền cho thành viên hoá đơn #' . $invoice_info->trans_id);
+          $this->member_model->addMoney("members", "money", $pay, $invoice_info->member_id);
+        } elseif ($invoice_info->type == 'withdraw_money') {
+          insertLog('Duyệt rút tiền cho thành viên hoá đơn #' . $invoice_info->trans_id);
+          $this->member_model->deductMoney("members", "money_ctv", $pay, $invoice_info->member_id);
+        }
       }
 
       $this->invoice_model->update($invoice_info->id, $data);
 
-      insertLog('Sửa hoá đơn #' . $invoice_info->trans_id);
       $this->session->set_flashdata('success', 'Cập nhật thành công!.');
       return redirect(admin_url('invoices'));
     }

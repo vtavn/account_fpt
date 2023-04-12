@@ -24,9 +24,11 @@ class Payment extends MY_Controller
       redirect(base_url('auth/login'));
     }
 
-    $fillterS = array();
-    $fillterS['order'] = array('id', 'DESC');
-    $banks = $this->bank_model->getList($fillterS);
+    $where = "WHERE id like '%'";
+    $where .= " AND ctv = 0 AND status = 1";
+    $sql = 'SELECT * FROM banks ' . $where;
+    $banks = $this->bank_model->query($sql);
+
     $this->data['list_banks'] = $banks;
 
     $this->data['title'] = 'Nạp tiền';
@@ -223,13 +225,14 @@ class Payment extends MY_Controller
           $trans_id = random("CUAQWERTYUPASDFGHJKZXCVBNM0123456789", 10);
           $time_expired = date("Y-m-d H:i:s", strtotime(convertNumberToTime($accountOK->duration)));
           $this->member_model->deductMoney("members", "money", $pricePay, $member_id);
-
+          $ctv = 0;
           //add money to seller 
           if ($accountOK->ctv) {
             $percenSell = getSettingMoneyByKey('pecent_sell');
             $moneyEarn = $pricePay - (($pricePay * $percenSell) / 100);
             $this->member_model->addMoney("members", "money_ctv", $moneyEarn, $accountOK->seller_id);
             insertLog("nhận tiền từ bán tài khoản số: " . $accountOK->id . " người mua: " . getNameMemberById($member_id)->name . " số tiền thụ hưởng: " . $moneyEarn, $accountOK->seller_id);
+            $ctv = 1;
           }
 
           // update accout => out of stock
@@ -244,6 +247,7 @@ class Payment extends MY_Controller
             'pay' => $pricePay,
             'cost' => 0,
             'status' => 1,
+            'ctv' => $ctv,
             'expired_at' => $time_expired,
           );
           $this->order_model->create($orderData);

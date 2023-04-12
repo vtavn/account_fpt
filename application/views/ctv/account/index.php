@@ -74,7 +74,7 @@
                       <th>Người bán</th>
                       <th>Người mua</th>
                       <th>Trạng thái</th>
-                      <th>Action</th>
+                      <!-- <th>Action</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -91,14 +91,14 @@
                         <td><span class="badge badge-success"><?= ($item->buyer_id) ? getNameMemberById($item->buyer_id)->name : 'none' ?></span></td>
                         <td><?= display_account($item->status) ?></td>
 
-                        <td>
+                        <!-- <td>
                           <a aria-label="" href="<?= ctv_url('account/update') ?>/<?= $item->id ?>" style="color:white;" class="btn btn-info btn-sm btn-icon-left m-b-10" type="button">
                             <i class="fas fa-edit mr-1"></i><span class="">Edit</span>
                           </a>
                           <button style="color:white;" onclick="RemovePackage(<?= $item->id; ?>,'<?= $item->name ?>')" class="btn btn-danger btn-sm btn-icon-left m-b-10" type="button">
                             <i class="fas fa-trash mr-1"></i><span class="">Delete</span>
                           </button>
-                        </td>
+                        </td> -->
                       </tr>
                     <?php endforeach ?>
                   </tbody>
