@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.js" integrity="sha512-vONptKEoKbP1gaC5UkbYDa9OPr04ur4bxaaqT7DAJxGHB2oogtseCPrl5e5hPFokGYotlGNV4d+GM593ka7iNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.css" integrity="sha512-uPqDOam5vjVgnASE75fCgMtdLa3oK2+3muDU5ESulSImHAA0Z0xjEnuJpKowTsXUWY09MsYre48zgBFwh2P/yw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <!-- slider -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
@@ -84,7 +87,9 @@
       <?= getSettingByName('ads_img_home') ?>
     </div>
     <div class="col-lg-6">
-      <?= getSettingByName('ads_video_home') ?>
+      <video id="player" playsinline controls>
+        <source src="<?= getSettingByName('ads_video_home') ?>" type="video/mp4" />
+      </video>
     </div>
   </div>
 
@@ -242,6 +247,8 @@
   <!-- /.content -->
 
   <script>
+    const player = new Plyr('#player');
+
     $('.count').each(function() {
       $(this).prop('Counter', 0).animate({
         Counter: $(this).text()
