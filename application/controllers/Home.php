@@ -10,6 +10,7 @@ class Home extends MY_Controller
     $this->load->model('package_model');
     $this->load->model('account_model');
     $this->load->model('slider_model');
+    $this->load->model('blog_model');
   }
 
   public function index()
@@ -34,6 +35,12 @@ class Home extends MY_Controller
     $fillterS['where'] = array('status', '1');
     $banners = $this->slider_model->getList($fillterS);
     $this->data['list_banner'] = $banners;
+
+    //blog list 
+    $blogW = "WHERE id like '%' AND status != 2 AND deleted_at IS NULL ORDER BY id DESC LIMIT 3";
+    $sql = 'SELECT * FROM blog_posts ' . $blogW;
+    $blog_list = $this->blog_model->query($sql);
+    $this->data['blog_list'] = $blog_list;
 
     $this->data['title'] = 'Trang chủ';
     $this->data['temp'] = 'client/pages/home';

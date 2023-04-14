@@ -15,7 +15,9 @@
           <a href="tel:<?= getSettingByName('phone') ?>" class="text-uppercase btn btn-block btn-buy-cua btn-cua-top">Hỗ Trợ Trực Tuyến</a>
         </div>
         <div class="col-6 col-lg-2 d-flex align-items-center mb-2 mb-lg-0">
-          <a href="<?= getSettingByName('facebook_admin') ?>" class="text-uppercase btn btn-block btn-buy-cua btn-cua-top-2">Đăng Ký Đại Lý/CTV</a>
+          <? //= getSettingByName('facebook_admin') 
+          ?>
+          <a href="<?= base_url('auth/register') ?>" class="text-uppercase btn btn-block btn-buy-cua btn-cua-top-2">Đăng Ký Đại Lý / CTV</a>
         </div>
 
       </div>

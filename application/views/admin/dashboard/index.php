@@ -25,7 +25,7 @@
             <button type="button" class="close" data-dismiss="alert">×</button>
             <b>Phiên bản hiện tại: <span style="color: yellow;font-size:25px;">1.0.0</span></b>
             <ul>
-              <li>Chi tiết phiên bản sẽ được cập nhật tại đây.</li>
+              <li>1. Blog</li>
             </ul>
             <i>Xin chào, Cảm ơn bạn đã xử dụng dịch vụ của tôi.</i>
           </div>

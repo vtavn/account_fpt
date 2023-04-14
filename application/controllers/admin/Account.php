@@ -141,7 +141,7 @@ class Account extends MY_Controller
         'msg'       => 'Xoá tài khoản người dùng thành công.'
       ]);
     }
-    return ($data);
+    die($data);
   }
 
   function create()

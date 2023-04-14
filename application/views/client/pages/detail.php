@@ -92,13 +92,15 @@
             <div class="nav nav-tabs justify-content-center" id="product-tab" role="tablist">
               <a class="nav-item nav-link active font-weight-bold" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Mô Tả</a>
               <a class="nav-item nav-link font-weight-bold" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">Đánh giá</a>
-              <a class="nav-item nav-link font-weight-bold" id="product-comment" data-toggle="tab" href="#product-comment" role="tab" aria-controls="product-comment" aria-selected="false">Bình luận</a>
+              <a class="nav-item nav-link font-weight-bold" id="product-comment-tab" data-toggle="tab" href="#product-comment" role="tab" aria-controls="product-comment" aria-selected="false">Bình luận</a>
             </div>
           </nav>
           <div class="tab-content p-3" id="nav-tabContent">
             <div class="tab-pane fade active show" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> <?= $package_info->content ?></div>
             <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">Rate</div>
-            <div class="tab-pane fade" id="product-comment" role="tabpanel" aria-labelledby="product-comment-tab">Comment</div>
+            <div class="tab-pane fade" id="product-comment" role="tabpanel" aria-labelledby="product-comment-tab">
+              <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div>
+            </div>
           </div>
         </div>
       </div>

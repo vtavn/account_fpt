@@ -30,7 +30,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <script src="<?php echo public_url('admin/') ?>plugins/select2/js/select2.full.min.js"></script>
+  <script src="<?php echo public_url('admin/') ?>plugins/ckeditor/ckeditor.js"></script>
 
+  <!-- facebook -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0&appId=323964847989584&autoLogAppEvents=1" nonce="9WpJJ6tN"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">

@@ -535,6 +535,11 @@ a:hover {
   border-image-source: linear-gradient(to right, gray, #ff6a00);
 }
 
+.posts-detail {
+  background: #000;
+  color: #fff;
+}
+
 .dark-mode .content-wrapper {
   background-color: #000000 !important;
 }
@@ -727,4 +732,18 @@ a:hover {
 
 img.img-fluid.banner-home {
   border-radius: 1%;
+}
+
+.card-img-overlay {
+  background: #0000006b;
+}
+
+.posts-detail h1 {
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.readmore {
+  font-size: 16px;
 }

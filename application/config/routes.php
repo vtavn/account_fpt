@@ -55,3 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 //custom router
 $route['(:any)-(:num)\.html'] = 'product/index/$1/$2';
+
+//custom blog
+$route['blog/(:any)-(:num)\.html'] = 'blog/detail/$1/$2';

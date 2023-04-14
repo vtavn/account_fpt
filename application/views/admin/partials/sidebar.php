@@ -80,6 +80,14 @@
               </ul>
             </li>
 
+            <li class="nav-item">
+              <a href="<?= admin_url('blog') ?>" class="nav-link <?= ($controller == 'blog' && ($action == 'index' || $action == 'update' || $action == 'create')) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-blog"></i>
+                <p>
+                  Blog
+                </p>
+              </a>
+            </li>
 
             <li class="nav-item">
               <a href="<?= admin_url('member') ?>" class="nav-link <?= ($controller == 'member' && $action == 'index') ? 'active' : '' ?>">
@@ -167,6 +175,14 @@
               </ul>
             </li>
 
+            <li class="nav-item">
+              <a href="<?= admin_url('uploadimg') ?>" class="nav-link  <?= ($controller == 'uploadimg' && ($action == 'index')) ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-upload"></i>
+                <p>
+                  Upload Ảnh
+                </p>
+              </a>
+            </li>
 
           </ul>
         </nav>

@@ -105,9 +105,21 @@
     </div>
 
     <div class="col-lg-12">
-      <h3 class="mt-3 d-flex title-home">Tin tức</h3>
+      <h3 class="mt-3 d-flex title-home">Tin tức <a href="<?= base_url('blog') ?>" class="ml-2 readmore"><i class="fas fa-angle-double-right"></i></a></h3>
       <div class="row">
-        tin tức
+        <?php foreach ($blog_list as $blog) : ?>
+          <div class="col-md-12 col-lg-6 col-xl-4" style="border-radius: 10px!important;">
+            <a href="<?= base_url() . 'blog/' . create_slug($blog->title) . '-' . $blog->id . '.html' ?>">
+              <div class="card mb-2 bg-gradient-dark">
+                <img class="card-img-top" style="border-radius: 10px!important;" src="<?= $blog->thumb ?>" alt="Dist Photo 1">
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                  <h5 class="card-title text-primary text-white"><?= split_content($blog->title, 150) ?></h5>
+                  <a href="#" class="text-white mt-2"><?= getNameMemberById($blog->member_id)->name ?> - <?= $blog->updated_at ?></a>
+                </div>
+              </div>
+            </a>
+          </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </div>
