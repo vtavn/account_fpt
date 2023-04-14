@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '103.82.20.33',
-	'username' => 'acc1vut7quC',
-	'password' => 'v9xMFKzL3i2SGWV', //
-	'database' => 'sdya_acc1vut7quc', // ci3_accountfpt
+	'hostname' => '103.179.188.121',
+	'username' => 'admin',
+	'password' => '810dd6cb8edf1d491', //
+	'database' => 'fpl_store1', // 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
