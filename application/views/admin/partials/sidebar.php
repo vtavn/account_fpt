@@ -176,7 +176,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="<?= admin_url('uploadimg') ?>" class="nav-link  <?= ($controller == 'uploadimg' && ($action == 'index')) ? 'active' : '' ?>">
+              <a href="<?= admin_url('imagemanager') ?>" class="nav-link  <?= ($controller == 'imagemanager' && ($action == 'index')) ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-upload"></i>
                 <p>
                   Upload Ảnh

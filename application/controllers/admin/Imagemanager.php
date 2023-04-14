@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class UploadImg extends MY_Controller
+class Imagemanager extends MY_Controller
 {
 
   function __construct()

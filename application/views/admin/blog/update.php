@@ -41,7 +41,7 @@
 
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Ảnh đại diện <a href="<?= admin_url('uploadimg') ?>" target="_blank">Upload Ảnh</a></label>
+                      <label>Ảnh đại diện <a href="<?= admin_url('imagemanager') ?>" target="_blank">Upload Ảnh</a></label>
                       <input type="text" class="form-control" name="thumb" placeholder="Ảnh đại diện" required value="<?= $post_info->thumb ?>">
                     </div>
                   </div>
