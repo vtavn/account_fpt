@@ -21,8 +21,7 @@ class Product extends MY_Controller
     if (!$package_info) {
       return redirect(base_url('/'));
     }
-
-    $sql_account = "SELECT * FROM `accounts` WHERE `buyed_at` IS NULL AND `status` = 1 ORDER BY RAND() LIMIT 8";
+    $sql_account = "SELECT * FROM `accounts` WHERE `buyed_at` IS NULL AND `status` = 1 AND ctv != 1 ORDER BY RAND() LIMIT 8";
     $accounts = $this->account_model->query($sql_account);
     $this->data['list_account'] = $accounts;
 

@@ -154,7 +154,7 @@
             confirmButtonText: 'OK!'
           }).then((result) => {
             if (result.isConfirmed) {
-              location.href = respone.url;
+              location.reload();
             }
           })
         }
