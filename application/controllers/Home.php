@@ -42,7 +42,7 @@ class Home extends MY_Controller
     $blog_list = $this->blog_model->query($sql);
     $this->data['blog_list'] = $blog_list;
 
-    $this->data['title'] = 'Trang chủ';
+    $this->data['title'] = 'FPL.VN - Website ứng dụng cung cấp tài khoản FPT Play';
     $this->data['temp'] = 'client/pages/home';
     $this->load->view('client/main', $this->data);
   }
