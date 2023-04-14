@@ -43,14 +43,14 @@
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <?php if (empty($my_info)) : ?>
-          <li class="nav-item">
+          <li class="nav-item d-none d-lg-inline-block">
             <a class="nav-link" href="<?= base_url('auth/register') ?>">
-              <i class="fas fa-sign-in-alt"></i> Đăng ký
+              <i class="fas fa-registered"></i> <span class="">Đăng ký</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('auth/login') ?>">
-              <i class="fas fa-sign-in-alt"></i> Đăng nhập
+              <i class="fas fa-sign-in-alt"></i> <span>Đăng nhập</span>
             </a>
           </li>
         <?php else : ?>
