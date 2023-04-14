@@ -156,36 +156,40 @@
   <!-- /.content -->
   <div class="modal fade" id="notiGuest">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+      <div class="modal-content modal-content-custom">
         <div class="modal-body">
           <div class="d-flex justify-content-center mb-3 pophome">
             <img src="<?= getSettingByName('popup_home') ?>" alt="Pop" class="img-fluid">
           </div>
-          <a class="btn btn-buy-auto" href="<?= getSettingByName('popup_link_home') ?>">Xem thêm</a>
+
+          <p class="d-block" style="color: black;font-size: 18px;text-align: center;"><?= getSettingByName('popup_content_home') ?></p>
+          <div class="d-flex justify-content-center mb-3 pophome">
+            <a class="btn btn-buy" href="<?= getSettingByName('popup_link_home') ?>">Xem ngay</a>
+          </div>
+
         </div>
+        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-content -->
+      <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
-  </div>
 
-</div><!-- /.container-fluid -->
-<!-- /.content -->
+  </div><!-- /.container-fluid -->
+  <!-- /.content -->
 
-<?php
-if (isset($my_info)) {
-  if ($my_info->role_id != '3') {
-?>
+  <?php
+  if (isset($my_info)) {
+    if ($my_info->role_id != '3') {
+  ?>
+      <script>
+        setTimeout(function() {
+          $('#noticeAdmin').modal('show')
+        }, 1000);
+      </script>
+    <?php }
+  } else { ?>
     <script>
       setTimeout(function() {
-        $('#noticeAdmin').modal('show')
+        $('#notiGuest').modal('show')
       }, 1000);
     </script>
-  <?php }
-} else { ?>
-  <script>
-    setTimeout(function() {
-      $('#notiGuest').modal('show')
-    }, 1000);
-  </script>
-<?php } ?>
+  <?php } ?>

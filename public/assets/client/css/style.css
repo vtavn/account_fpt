@@ -701,3 +701,7 @@ img.img-fluid.banner-home {
 .pophome img {
   max-width: 70% !important;
 }
+
+.dark-mode .modal-content-custom {
+  background-color: #e8e8e8 !important;
+}
