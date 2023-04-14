@@ -76,6 +76,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?php echo public_url('admin/') ?>js/adminlte.min.js"></script>
   <script src="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.js"></script>
   <script src="<?php echo public_url('client/js/') ?>owl.js?v=1.0.3"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-90NQ1XX58K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-90NQ1XX58K');
+  </script>
 </body>
 
 </html>
