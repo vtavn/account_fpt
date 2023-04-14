@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?php echo public_url('admin/') ?>plugins/sweetalert2/sweetalert2.all.min.js"></script>
   <!-- CuteAleart -->
   <script src="<?php echo public_url('admin/') ?>plugins/cute-alert/cute-alert.js"></script>
+  <link rel="icon" href="<?= getSettingByName('favicon') ?>">
 
   <link href="https://fpt.vn/assets/frontend/smart_banner/smartbanner.css" rel="stylesheet">
   <!--******** // CAI DAT APP HI FPT _ DoanVH  *****-->
