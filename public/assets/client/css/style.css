@@ -725,3 +725,7 @@ img.img-fluid.banner-home {
   text-transform: uppercase;
   font-weight: 450;
 }
+
+.carousel-item.active {
+  max-height: 43vh;
+}
