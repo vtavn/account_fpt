@@ -327,6 +327,7 @@ footer ul {
 .device {
   display: flex;
   gap: 8px;
+  justify-content: center;
 }
 
 .device img {
