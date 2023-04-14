@@ -152,27 +152,25 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
+
+  <!-- /.content -->
+  <div class="modal fade" id="notiGuest">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="d-flex justify-content-center mb-3 pophome">
+            <img src="<?= getSettingByName('popup_home') ?>" alt="Pop" class="img-fluid">
+          </div>
+          <a class="btn btn-buy-auto" href="<?= getSettingByName('popup_link_home') ?>">Xem thêm</a>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
 </div><!-- /.container-fluid -->
 <!-- /.content -->
-
-<div class="show-popup">
-  <div class="overlay"></div>
-  <div class="img-show">
-    <span id="closedPop">X</span>
-    <?= getSettingByName('popup_home') ?>
-  </div>
-</div>
-
-<script>
-  // $(function() {
-  //   setTimeout($(".show-popup").fadeIn(), 1500);
-  //   $("#closedPop").click(function() {
-  //     $(".show-popup").fadeOut();
-  //   });
-  // });
-</script>
 
 <?php
 if (isset($my_info)) {
@@ -183,5 +181,11 @@ if (isset($my_info)) {
         $('#noticeAdmin').modal('show')
       }, 1000);
     </script>
-<?php }
-} ?>
+  <?php }
+} else { ?>
+  <script>
+    setTimeout(function() {
+      $('#notiGuest').modal('show')
+    }, 1000);
+  </script>
+<?php } ?>
