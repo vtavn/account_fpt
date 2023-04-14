@@ -15,7 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>css/adminlte.min.css">
-  <link rel="stylesheet" href="<?php echo public_url('client/') ?>css/style.css?v=1.0.8">
+  <link rel="stylesheet" href="<?php echo public_url('client/') ?>css/style.css?v=1.0.9">
   <link rel="stylesheet" href="<?php echo public_url('client/plugins/') ?>owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="<?php echo public_url('admin/plugins/') ?>sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="<?php echo public_url('admin/') ?>plugins/cute-alert/style.css">
