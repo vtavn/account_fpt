@@ -31,7 +31,6 @@
 
 <div class="container">
   <div class="row">
-
     <div class="col-lg-12 mt-2">
       <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="3" scrolldelay="5" direction="left">
         <div class="link-slide">
@@ -45,7 +44,9 @@
       </marquee>
     </div>
     <!-- endslider -->
+  </div>
 
+  <div class="row">
     <!-- categories -->
     <div class="col-lg-12">
       <div class="row owl-carousel owl-theme" id="listPackageHome">
@@ -63,7 +64,9 @@
         <?php endforeach; ?>
       </div>
     </div>
+  </div>
 
+  <div class="row">
     <div class="col-lg-12">
       <h3 class="mt-3 d-flex title-home">Tài khoản mới</h3>
       <?php if (count($list_account) > 0) : ?>
@@ -71,26 +74,21 @@
           <?php $this->load->view('client/pages/products/listAccounts') ?>
         </div>
       <?php else : ?>
-        <h4 class="alert alert-danger text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
+        <h4 class="alert alert-gray text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
       <?php endif; ?>
     </div>
+  </div>
 
-    <div class="col-6 counter-cua">
-      <span class="count">1000</span>
-      <span class="text">Người dùng</span>
-    </div>
-    <div class="col-6 counter-cua">
-      <span class="count">300</span>
-      <span class="text">CTV</span>
-    </div>
-
+  <div class="row">
     <div class="col-lg-6">
       <?= getSettingByName('ads_img_home') ?>
     </div>
     <div class="col-lg-6">
       <?= getSettingByName('ads_video_home') ?>
     </div>
+  </div>
 
+  <div class="row">
     <div class="col-lg-12">
       <h3 class="mt-3 d-flex title-home">Tài khoản Cộng Tác Viên</h3>
       <?php if (count($list_account_ctv) > 0) : ?>
@@ -98,10 +96,65 @@
           <?php $this->load->view('client/pages/products/listAccountsCtv') ?>
         </div>
       <?php else : ?>
-        <h4 class="alert alert-danger text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
+        <h4 class="alert alert-gray text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
       <?php endif; ?>
     </div>
+  </div>
 
+  <div class="row bg-total">
+    <div class="bg-overlay"></div>
+    <div class="col-12 d-flex justify-items-center flex-column text-center pt-3">
+      <p class="text-uppercase">ĐỐI TÁC KHÁCH HÀNG</p>
+      <h3 class="text-uppercase">FPL.VN - MANG CẢ THẾ GIỚI TRONG TẦM TAY BẠN</h3>
+    </div>
+    <div class="col-12 row">
+      <div class="col-6 col-lg-3 counter-cua">
+        <div class="icon">
+          <img width="40" height="40" src="<?= public_url('client/img/') ?>checklist.png">
+        </div>
+        <div class="d-flex flex-column pl-3">
+          <span class="count">3000</span>
+          <span class="text">Đã và đang sử dụng</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3 counter-cua">
+        <div class="icon">
+          <img width="40" height="40" src="<?= public_url('client/img/') ?>advertising.png">
+        </div>
+        <div class="d-flex flex-column pl-3">
+          <span class="count">500</span>
+          <span class="text">Đại lý / CTV cộng tác</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3 counter-cua">
+        <div class="icon">
+          <img width="40" height="40" src="<?= public_url('client/img/') ?>rating.png">
+        </div>
+        <div class="d-flex flex-column pl-3">
+          <span class="count">1000</span>
+          <span class="text">Khách hàng online</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3 counter-cua">
+        <div class="icon">
+          <img width="40" height="40" src="<?= public_url('client/img/') ?>checklist.png">
+        </div>
+        <div class="d-flex flex-column pl-3">
+          <span class="count">300</span>
+          <span class="text">Đối tác tiêu biểu</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 d-flex justify-items-center flex-column text-center pt-3 align-items-center">
+      <h3 class="text-uppercase rs">Đăng ký ngay nhận nhiều ưu đãi</h3>
+      <a href="<?= base_url('auth/register') ?>" class="text-uppercase btn btn-block btn-buy-cua btn-cua-top mb-3" style="max-width: 30%;">Đăng ký ngay</a>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-lg-12">
       <h3 class="mt-3 d-flex title-home">Tài khoản nổi bật</h3>
       <?php if (count($list_account) > 0) : ?>
@@ -109,10 +162,13 @@
           <?php $this->load->view('client/pages/products/listAccounts') ?>
         </div>
       <?php else : ?>
-        <h4 class="alert alert-danger text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
+        <h4 class="alert alert-gray text-center text-uppercase">Đã hết Tài khoản, Vui lòng quay lại sau.</h4>
       <?php endif; ?>
     </div>
+  </div>
 
+
+  <div class="row">
     <div class="col-lg-12">
       <h3 class="mt-3 d-flex title-home align-items-center">Tin tức <a href="<?= base_url('blog') ?>" class="ml-2 readmore"><i class="fas fa-angle-double-right"></i></a></h3>
       <div class="row owl-carousel owl-theme" id="listPosts">
