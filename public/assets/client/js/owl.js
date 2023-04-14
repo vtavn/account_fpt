@@ -56,6 +56,30 @@ $(document).ready(function () {
 		},
 	});
 
+	$("#listPosts").owlCarousel({
+		loop: true,
+		autoplay: true,
+		autoplayTimeout: 5000,
+		autoplayHoverPause: true,
+		margin: 10,
+		nav: false,
+		navText: [
+			"<i class='fas fa-chevron-left'></i>",
+			"<i class='fas fa-chevron-right'></i>",
+		],
+		dots: false,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			600: {
+				items: 3,
+			},
+			1000: {
+				items: 3,
+			},
+		},
+	});
 	// logo footer loop
 	$("#logo-foot-slide").owlCarousel({
 		loop: true,

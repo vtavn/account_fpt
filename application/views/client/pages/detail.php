@@ -23,7 +23,7 @@
             </div>
             <hr>
             <div class="row justify-content-center align-items-center">
-              <div class="col-12 mb-3 col-lg-6">
+              <div class="col-12 mb-3 col-lg-6 text-center">
                 <div class="product-price">
                   <?php if ($package_info->sale_price > 0) : ?>
                     <?php $priceBuy = $package_info->sale_price; ?>

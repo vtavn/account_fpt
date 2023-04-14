@@ -75,6 +75,15 @@
       <?php endif; ?>
     </div>
 
+    <div class="col-6 counter-cua">
+      <span class="count">1000</span>
+      <span class="text">Người dùng</span>
+    </div>
+    <div class="col-6 counter-cua">
+      <span class="count">300</span>
+      <span class="text">CTV</span>
+    </div>
+
     <div class="col-lg-6">
       <?= getSettingByName('ads_img_home') ?>
     </div>
@@ -105,10 +114,10 @@
     </div>
 
     <div class="col-lg-12">
-      <h3 class="mt-3 d-flex title-home">Tin tức <a href="<?= base_url('blog') ?>" class="ml-2 readmore"><i class="fas fa-angle-double-right"></i></a></h3>
-      <div class="row">
+      <h3 class="mt-3 d-flex title-home align-items-center">Tin tức <a href="<?= base_url('blog') ?>" class="ml-2 readmore"><i class="fas fa-angle-double-right"></i></a></h3>
+      <div class="row owl-carousel owl-theme" id="listPosts">
         <?php foreach ($blog_list as $blog) : ?>
-          <div class="col-md-12 col-lg-6 col-xl-4" style="border-radius: 10px!important;">
+          <div class="" style="border-radius: 10px!important;">
             <a href="<?= base_url() . 'blog/' . create_slug($blog->title) . '-' . $blog->id . '.html' ?>">
               <div class="card mb-2 bg-gradient-dark">
                 <img class="card-img-top" style="border-radius: 10px!important;" src="<?= $blog->thumb ?>" alt="Dist Photo 1">
@@ -176,6 +185,19 @@
   </div><!-- /.container-fluid -->
   <!-- /.content -->
 
+  <script>
+    $('.count').each(function() {
+      $(this).prop('Counter', 0).animate({
+        Counter: $(this).text()
+      }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function(now) {
+          $(this).text(Math.ceil(now) + '+');
+        }
+      });
+    });
+  </script>
   <?php
   if (isset($my_info)) {
     if ($my_info->role_id != '3') {

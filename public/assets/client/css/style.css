@@ -705,3 +705,23 @@ img.img-fluid.banner-home {
 .dark-mode .modal-content-custom {
   background-color: #e8e8e8 !important;
 }
+
+.counter-cua {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 1px 0 29px 0;
+}
+
+.counter-cua .count {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.counter-cua .text {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 450;
+}
