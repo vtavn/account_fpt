@@ -62,7 +62,7 @@
         var form_data = new FormData();
         form_data.append('file', file_data);
         $.ajax({
-          url: '<?= admin_url('uploadimg/upload_file') ?>', // point to server-side controller method
+          url: '<?= admin_url('imagemanager/upload_file') ?>', // point to server-side controller method
           dataType: 'text', // what to expect back from the server
           cache: false,
           contentType: false,
