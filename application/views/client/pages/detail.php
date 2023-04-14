@@ -14,7 +14,7 @@
             <h3 class="product-title my-3 text-uppercase"><?= $package_info->name ?></h3>
             <p><?= $package_info->short_content ?></p>
 
-            <div class="device">
+            <div class="device justify-content-center justify-content-lg-start">
               <img src="<?= public_url('client/img/iconfpt/') ?>android.png" alt="">
               <img src="<?= public_url('client/img/iconfpt/') ?>apple.png" alt="">
               <img src="<?= public_url('client/img/iconfpt/') ?>box.png" alt="">
