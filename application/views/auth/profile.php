@@ -37,13 +37,13 @@
               <p class="text-muted text-center"><?= getRoleById($my_info->role_id)->name ?></p>
 
               <ul class="list-group list-group-unbordered mb-3">
-                <li class="list-group-item">
+                <li class="dark-list list-group-item">
                   <b>Tiền đã nạp</b> <b class="float-right text-primary"><?= number_format(getTotalPaymentById($my_info->id)) ?> đ</b>
                 </li>
-                <li class="list-group-item">
+                <li class="dark-list list-group-item">
                   <b>Tiền đã tiêu</b> <b class="float-right text-danger"><?= number_format(getTotalPaymentById($my_info->id) - $my_info->money) ?> vnđ</b>
                 </li>
-                <li class="list-group-item">
+                <li class="dark-list list-group-item">
                   <b>Số dư</b> <b class="float-right text-success"><?= number_format($my_info->money) ?> vnđ</b>
                 </li>
               </ul>

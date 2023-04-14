@@ -127,6 +127,9 @@
           </button>
         </div>
         <div class="modal-body">
+          <div class="d-flex justify-content-center mb-3">
+            <img src="<?= getSettingByName('logo') ?>" alt="Logo">
+          </div>
           <?= getSettingByName('notice_home_admin') ?>
         </div>
         <div class="modal-footer justify-content-between">

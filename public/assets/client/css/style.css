@@ -719,3 +719,12 @@ a:hover {
     transform: rotateX(0deg);
   }
 }
+
+.dark-list {
+  background-color: #1a1a1a !important;
+  border-color: #1a1a1a !important;
+}
+
+img.img-fluid.banner-home {
+  border-radius: 1%;
+}
